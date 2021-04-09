@@ -12,11 +12,6 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -37,7 +32,6 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
         let item = users[indexPath.row]
         cell.textLabel?.text = item.name
-
         return cell
     }
     
@@ -45,7 +39,6 @@ class TableViewController: UITableViewController {
         
         if let indexPath = self.tableView.indexPathForSelectedRow,
             let detailVC = segue.destination as? DetailViewController {
-            
             detailVC.selectedUser = users[indexPath.row]
             
         }
