@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F13D8ECE2643EC6E00492E92 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13D8ECD2643EC6E00492E92 /* DummyData.swift */; };
 		F13D8ED1264404C600492E92 /* salmonella.png in Resources */ = {isa = PBXBuildFile; fileRef = F13D8ED0264404C600492E92 /* salmonella.png */; };
+		F13D8ED72644100100492E92 /* Hand.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13D8ED62644100100492E92 /* Hand.storyboard */; };
 		F16064A7261EF2820072858F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16064A6261EF2820072858F /* AppDelegate.swift */; };
 		F16064A9261EF2820072858F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16064A8261EF2820072858F /* SceneDelegate.swift */; };
 		F16064AB261EF2820072858F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16064AA261EF2820072858F /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		F13D8ECD2643EC6E00492E92 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		F13D8ED0264404C600492E92 /* salmonella.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = salmonella.png; path = ../../../Desktop/salmonella.png; sourceTree = "<group>"; };
+		F13D8ED62644100100492E92 /* Hand.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hand.storyboard; sourceTree = "<group>"; };
 		F16064A3261EF2820072858F /* CleanHands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanHands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16064A6261EF2820072858F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F16064A8261EF2820072858F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				F16064A8261EF2820072858F /* SceneDelegate.swift */,
 				F16064AA261EF2820072858F /* ViewController.swift */,
 				F16064AC261EF2820072858F /* Main.storyboard */,
+				F13D8ED62644100100492E92 /* Hand.storyboard */,
 				F16064AF261EF2850072858F /* Assets.xcassets */,
 				F16064B1261EF2850072858F /* LaunchScreen.storyboard */,
 				F16064B4261EF2850072858F /* Info.plist */,
@@ -134,6 +137,7 @@
 				F13D8ED1264404C600492E92 /* salmonella.png in Resources */,
 				F16064B0261EF2850072858F /* Assets.xcassets in Resources */,
 				F16064AE261EF2820072858F /* Main.storyboard in Resources */,
+				F13D8ED72644100100492E92 /* Hand.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
