@@ -14,7 +14,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFq-a7-dq1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="-160"/>
+            <point key="canvasLocation" x="1145" y="91"/>
         </scene>
         <!--Settings-->
         <scene sceneID="oDB-4z-CIa">
@@ -24,7 +24,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMZ-JZ-dm7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1243" y="323"/>
+            <point key="canvasLocation" x="1146" y="361"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="L0h-Iq-zB8">
@@ -32,6 +32,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="TaT-CR-1Im" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xvh-Uy-oof">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -54,7 +55,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hb-z6-Pf2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1154" y="144"/>
+            <point key="canvasLocation" x="1146" y="186"/>
         </scene>
         <!--Collection-->
         <scene sceneID="9wW-vJ-OQt">
@@ -64,7 +65,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUK-sn-dSy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1173" y="258"/>
+            <point key="canvasLocation" x="1145" y="272"/>
         </scene>
     </scenes>
 </document>
