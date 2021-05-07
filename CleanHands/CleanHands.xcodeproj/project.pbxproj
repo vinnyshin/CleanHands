@@ -13,6 +13,7 @@
 		27D37654264526260074EDAC /* Statistic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37653264526260074EDAC /* Statistic.storyboard */; };
 		F13D8ECE2643EC6E00492E92 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13D8ECD2643EC6E00492E92 /* DummyData.swift */; };
 		F13D8ED72644100100492E92 /* Hand.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13D8ED62644100100492E92 /* Hand.storyboard */; };
+		F13D8EE52645281C00492E92 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13D8EE42645281C00492E92 /* StatisticViewController.swift */; };
 		F16064A7261EF2820072858F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16064A6261EF2820072858F /* AppDelegate.swift */; };
 		F16064A9261EF2820072858F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16064A8261EF2820072858F /* SceneDelegate.swift */; };
 		F16064AB261EF2820072858F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16064AA261EF2820072858F /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		27D37653264526260074EDAC /* Statistic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistic.storyboard; sourceTree = "<group>"; };
 		F13D8ECD2643EC6E00492E92 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		F13D8ED62644100100492E92 /* Hand.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hand.storyboard; sourceTree = "<group>"; };
+		F13D8EE42645281C00492E92 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		F16064A3261EF2820072858F /* CleanHands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanHands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16064A6261EF2820072858F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F16064A8261EF2820072858F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				F13D8ECD2643EC6E00492E92 /* DummyData.swift */,
 				27D37650264525E40074EDAC /* Settings.storyboard */,
 				27D37653264526260074EDAC /* Statistic.storyboard */,
+				F13D8EE42645281C00492E92 /* StatisticViewController.swift */,
 			);
 			path = CleanHands;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				F13D8ECE2643EC6E00492E92 /* DummyData.swift in Sources */,
 				27D3764B264521C40074EDAC /* CollectionTableViewController.swift in Sources */,
 				F16064AB261EF2820072858F /* ViewController.swift in Sources */,
+				F13D8EE52645281C00492E92 /* StatisticViewController.swift in Sources */,
 				F16064A7261EF2820072858F /* AppDelegate.swift in Sources */,
 				F16064A9261EF2820072858F /* SceneDelegate.swift in Sources */,
 			);
