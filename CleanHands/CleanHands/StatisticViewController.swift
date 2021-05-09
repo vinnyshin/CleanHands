@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Charts
 
 class StatisticViewController: UIViewController {
 
@@ -14,6 +15,7 @@ class StatisticViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
     
 
     /*
