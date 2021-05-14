@@ -34,6 +34,8 @@ enum PathoganType {
 }
 
 struct User {
+    static var userState = User(name: "initName", pathoganList: [], washDataList: [], handState: HandState(lastWashTime: Date(), pathoganAmount: 0), exp: 0)
+    
     var name: String
 //    var profileImage : String?
     var pathoganList: [Pathogan]
