@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="5ON-66-dcf" detailTextLabel="jmX-cE-T3x" imageView="G6F-z8-Tti" style="IBUITableViewCellStyleSubtitle" id="c92-qS-ddW">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollectionCell" textLabel="5ON-66-dcf" detailTextLabel="jmX-cE-T3x" imageView="G6F-z8-Tti" style="IBUITableViewCellStyleSubtitle" id="c92-qS-ddW" customClass="CollectionCell" customModule="CleanHands" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c92-qS-ddW" id="Rbn-SN-5je">
@@ -45,6 +45,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="eliminatedCountLabel" destination="jmX-cE-T3x" id="fy8-2d-F67"/>
+                                    <outlet property="pathoganImage" destination="G6F-z8-Tti" id="7nU-e0-ytT"/>
+                                    <outlet property="pathoganLabel" destination="5ON-66-dcf" id="D7o-Mb-LWJ"/>
                                     <segue destination="Z2Y-J1-t4W" kind="show" id="wZr-Oh-2Vw"/>
                                 </connections>
                             </tableViewCell>
@@ -54,7 +57,9 @@
                             <outlet property="delegate" destination="cnh-Ej-yWe" id="nnf-97-7Zc"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Collection" id="Dx0-fa-IIb"/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="q7h-ZI-ibl"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hS-lE-XuA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,6 +88,15 @@
                     <view key="view" contentMode="scaleToFill" id="jTS-Qp-AUP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbC-DW-TgK">
+                                <rect key="frame" x="210" y="368" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="cuY-dk-yw5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
