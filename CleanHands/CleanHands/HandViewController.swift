@@ -10,32 +10,36 @@ import UIKit
 class HandViewController: UIViewController {
 
     var pathogenImageList = Array<UIImageView>()
-    var currentDate : Date?
-    var pathongenNumber : Double?
+    var pathogenCreateInterval:Double = 10
+    var maxPathogenNum = 100
     
     @IBOutlet weak var handImageView: UIImageView!
     let pathogenImage = UIImage(named: "pathogen")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        startTimer()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        currentDate = Date()
-        pathongenNumber = currentDate!.timeIntervalSince(User.userState.handState.lastWashTime)
-        
-        print(pathongenNumber!)
+        onTimePassed()
     }
     
-    func createPathogen(_ number:Int) {
+    func startTimer() {
+        Timer.scheduledTimer(timeInterval: pathogenCreateInterval, target: self, selector: #selector(onTimePassed), userInfo: nil, repeats: true)
+    }
+    
+    func createPathogen(numberOfCreate number:Int) {
         let imageLeftX = handImageView.frame.minX
         let imageUpY = handImageView.frame.minY
         let imageWidth = handImageView.frame.size.width
         let imageHeight = handImageView.frame.size.height
         
         for _ in Range(1...number) {
+            if (pathogenImageList.count >= maxPathogenNum) {
+                break
+            }
             let pathogenView = UIImageView(image: pathogenImage)
             
             let x = arc4random_uniform(UInt32(imageWidth)) + UInt32(imageLeftX)
@@ -45,18 +49,30 @@ class HandViewController: UIViewController {
             
             self.view.addSubview(pathogenView)
             pathogenImageList.append(pathogenView)
+            
+            User.userState.handState.pathoganAmount = pathogenImageList.count
+        }
+    }
+    
+    @objc func onTimePassed() {
+        let currentDate = Date()
+        let expectedPathongenNumber = Int(currentDate.timeIntervalSince(User.userState.handState.lastWashTime)/pathogenCreateInterval)
+
+        if (pathogenImageList.count < expectedPathongenNumber)  {
+            createPathogen(numberOfCreate: expectedPathongenNumber - pathogenImageList.count)
         }
     }
     
     func cleanPathogen() {
         for i in pathogenImageList {
             i.removeFromSuperview()
+            //usleep(50000)
         }
         pathogenImageList = Array<UIImageView>()
     }
 
     @IBAction func onWashButtonPressed(_ sender: Any) {
-        createPathogen(1)
+        createPathogen(numberOfCreate: 1)
     }
 
     @IBAction func test(_ sender: Any) {
