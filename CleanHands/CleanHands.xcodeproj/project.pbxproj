@@ -12,8 +12,10 @@
 		27D37651264525E40074EDAC /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37650264525E40074EDAC /* Settings.storyboard */; };
 		27D37654264526260074EDAC /* Statistic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37653264526260074EDAC /* Statistic.storyboard */; };
 		7A1D340C26452F5A002D460D /* HandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D340B26452F5A002D460D /* HandViewController.swift */; };
+		328E63A473D8D367C51144A6 /* Pods_CleanHands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E1CFD389E4207CA0DCB4F2 /* Pods_CleanHands.framework */; };
 		F13D8ECE2643EC6E00492E92 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13D8ECD2643EC6E00492E92 /* DummyData.swift */; };
 		F13D8ED72644100100492E92 /* Hand.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13D8ED62644100100492E92 /* Hand.storyboard */; };
+		F13D8EE52645281C00492E92 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13D8EE42645281C00492E92 /* StatisticViewController.swift */; };
 		F16064A7261EF2820072858F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16064A6261EF2820072858F /* AppDelegate.swift */; };
 		F16064A9261EF2820072858F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16064A8261EF2820072858F /* SceneDelegate.swift */; };
 		F16064AB261EF2820072858F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16064AA261EF2820072858F /* ViewController.swift */; };
@@ -28,8 +30,12 @@
 		27D37650264525E40074EDAC /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		27D37653264526260074EDAC /* Statistic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistic.storyboard; sourceTree = "<group>"; };
 		7A1D340B26452F5A002D460D /* HandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandViewController.swift; sourceTree = "<group>"; };
+		86E1CFD389E4207CA0DCB4F2 /* Pods_CleanHands.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanHands.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3946C4C15ED2ECFF19BAF25 /* Pods-CleanHands.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanHands.debug.xcconfig"; path = "Target Support Files/Pods-CleanHands/Pods-CleanHands.debug.xcconfig"; sourceTree = "<group>"; };
+		E26F87257DD2CF62ACE9FEE6 /* Pods-CleanHands.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanHands.release.xcconfig"; path = "Target Support Files/Pods-CleanHands/Pods-CleanHands.release.xcconfig"; sourceTree = "<group>"; };
 		F13D8ECD2643EC6E00492E92 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		F13D8ED62644100100492E92 /* Hand.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hand.storyboard; sourceTree = "<group>"; };
+		F13D8EE42645281C00492E92 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		F16064A3261EF2820072858F /* CleanHands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanHands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16064A6261EF2820072858F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F16064A8261EF2820072858F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,17 +51,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				328E63A473D8D367C51144A6 /* Pods_CleanHands.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE9C7CEA607F59F739404156 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				86E1CFD389E4207CA0DCB4F2 /* Pods_CleanHands.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3976355C32831F6E70F655B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D3946C4C15ED2ECFF19BAF25 /* Pods-CleanHands.debug.xcconfig */,
+				E26F87257DD2CF62ACE9FEE6 /* Pods-CleanHands.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F160649A261EF2820072858F = {
 			isa = PBXGroup;
 			children = (
 				F16064A5261EF2820072858F /* CleanHands */,
 				F16064A4261EF2820072858F /* Products */,
+				E3976355C32831F6E70F655B /* Pods */,
+				BE9C7CEA607F59F739404156 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +111,7 @@
 				F13D8ECD2643EC6E00492E92 /* DummyData.swift */,
 				27D37650264525E40074EDAC /* Settings.storyboard */,
 				27D37653264526260074EDAC /* Statistic.storyboard */,
+				F13D8EE42645281C00492E92 /* StatisticViewController.swift */,
 			);
 			path = CleanHands;
 			sourceTree = "<group>";
@@ -95,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F16064B7261EF2850072858F /* Build configuration list for PBXNativeTarget "CleanHands" */;
 			buildPhases = (
+				B78B9B8D41211FEBAC0A641A /* [CP] Check Pods Manifest.lock */,
 				F160649F261EF2820072858F /* Sources */,
 				F16064A0261EF2820072858F /* Frameworks */,
 				F16064A1261EF2820072858F /* Resources */,
+				B83CB7B114C79C7955A859B1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,6 +187,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B78B9B8D41211FEBAC0A641A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CleanHands-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B83CB7B114C79C7955A859B1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CleanHands/Pods-CleanHands-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CleanHands/Pods-CleanHands-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CleanHands/Pods-CleanHands-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F160649F261EF2820072858F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -166,6 +238,7 @@
 				7A1D340C26452F5A002D460D /* HandViewController.swift in Sources */,
 				27D3764B264521C40074EDAC /* CollectionTableViewController.swift in Sources */,
 				F16064AB261EF2820072858F /* ViewController.swift in Sources */,
+				F13D8EE52645281C00492E92 /* StatisticViewController.swift in Sources */,
 				F16064A7261EF2820072858F /* AppDelegate.swift in Sources */,
 				F16064A9261EF2820072858F /* SceneDelegate.swift in Sources */,
 			);
@@ -311,6 +384,7 @@
 		};
 		F16064B8261EF2850072858F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3946C4C15ED2ECFF19BAF25 /* Pods-CleanHands.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -329,6 +403,7 @@
 		};
 		F16064B9261EF2850072858F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E26F87257DD2CF62ACE9FEE6 /* Pods-CleanHands.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
