@@ -28,7 +28,7 @@ class CollectionTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dummyPathoganDic.count
+        return dummyPathogenDic.count
     }
 
     
@@ -37,8 +37,8 @@ class CollectionTableViewController: UITableViewController {
         
         // Configure the cell...
         // dummyPathoganDic의 시작 index부터 indexpath.row만큼 떨어진 index를 가져온다.
-        let index = dummyPathoganDic.index(dummyPathoganDic.startIndex, offsetBy: indexPath.row)
-        cell.item = dummyPathoganDic.keys[index]
+        let index = dummyPathogenDic.index(dummyPathogenDic.startIndex, offsetBy: indexPath.row)
+        cell.item = dummyPathogenDic.keys[index]
         
         return cell
     }
@@ -100,7 +100,7 @@ class CollectionCell : UITableViewCell {
     @IBOutlet weak var eliminatedCountLabel: UILabel!
     @IBOutlet weak var pathoganImage: UIImageView!
     
-    var item: Pathogan? {
+    var item: Pathogen? {
         didSet {
             guard let pathogan = item else {
                 return

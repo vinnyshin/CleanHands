@@ -10,7 +10,7 @@ import UIKit
 class HandViewController: UIViewController {
 
     var pathogenImageList = Array<UIImageView>()
-    var capturedPathogenList = Array<Pathogen>()
+    var capturedPathogenDic = [Pathogen:Int]()
     
     let pathogenCreateInterval:Double = 1
     let maxPathogenNum = 100
@@ -73,7 +73,7 @@ class HandViewController: UIViewController {
             i.removeFromSuperview()
             //usleep(50000)
         }
-        let newWashData = WashData(date: Date(), capturedPathogenList: capturedPathogenList)
+        let newWashData = WashData(date: Date(), capturedPathogenDic: capturedPathogenDic)
         User.userState.washDataList.append(newWashData)
         print(newWashData)
         pathogenImageList = Array<UIImageView>()
@@ -82,7 +82,13 @@ class HandViewController: UIViewController {
 
     func getRandomPathogen() {
         if (drand48() < percentageOfGettingPathogen) {
-            capturedPathogenList.append(dummyPathogen)
+            let newPathogen = dummyPathogen
+            if (capturedPathogenDic[newPathogen] != nil) {
+                capturedPathogenDic[newPathogen]! += 1
+            }
+            else {
+                capturedPathogenDic[newPathogen] = 1
+            }
         }
     }
 

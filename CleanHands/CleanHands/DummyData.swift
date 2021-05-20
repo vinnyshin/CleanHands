@@ -8,8 +8,8 @@
 import Foundation
 
 //병원체
-struct Pathogan {
-    let type: PathoganType
+struct Pathogen {
+    let type: PathogenType
     let name: String
     let exp: Int
     let description: String
@@ -21,7 +21,7 @@ struct Pathogan {
     let image : String
 }
 
-extension Pathogan : Hashable {
+extension Pathogen : Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.name)
     }
@@ -33,18 +33,18 @@ enum Frequency {
     case low
 }
 
-enum PathoganType {
+enum PathogenType {
     case bacteria // 세균
     case virus    // 바이러스
     case mold     // 곰팡이
 }
 
 struct User {
-    static var userState = User(name: "initName", pathoganList: [], washDataList: [], handState: HandState(lastWashTime: Date(), pathogenAmount: 0), exp: 0)
+    static var userState = User(name: "initName", pathogenDic: [:], washDataList: [], handState: HandState(lastWashTime: Date(), pathogenAmount: 0), exp: 0)
     
     var name: String
 //    var profileImage : String?
-    var pathoganDic: [Pathogan: Int]
+    var pathogenDic: [Pathogen: Int]
     var washDataList: [WashData]
     var handState: HandState
     var exp: Int
@@ -52,7 +52,7 @@ struct User {
 
 struct WashData{
     let date: Date
-    var capturedPathogenList : [Pathogen : Int]
+    var capturedPathogenDic : [Pathogen : Int]
 }
 
 struct HandState{
@@ -62,7 +62,7 @@ struct HandState{
 
 
 var dummyPathogen =
-    Pathogen(type: PathoganType.bacteria ,name: "살모넬라균"
+    Pathogen(type: PathogenType.bacteria ,name: "살모넬라균"
              ,exp: 10, description: "살모사한테 물리면 걸려요"
              , illnesses: Array<String>(["탈모"]),symptom: "머리빠짐", careMethod: "의사 선생님"
              , location: "황국이 입속", frequency: Frequency.high ,image: "salmonella.png")
@@ -70,15 +70,15 @@ var dummyPathogen =
 
 
 
-var dummyPathoganDic = [dummyPathogan: 120]
-var pathoganAmount = dummyPathoganDic.reduce(0) {$0 + $1.value}
+var dummyPathogenDic = [dummyPathogen: 120]
+var pathogenAmount = dummyPathogenDic.reduce(0) {$0 + $1.value}
 
-var dummyWashData = WashData(date: Date(), capturedPathoganDic: dummyPathoganDic)
+var dummyWashData = WashData(date: Date(), capturedPathogenDic: dummyPathogenDic)
 
 var dummyWashDataList = [dummyWashData]
 
-var dummyHandState = HandState(lastWashTime: Date(), pathoganAmount: pathoganAmount)
+var dummyHandState = HandState(lastWashTime: Date(), pathogenAmount: pathogenAmount)
 
-var dummyUser = User(name: "유황국", pathoganDic: dummyPathoganDic, washDataList: dummyWashDataList, handState: dummyHandState, exp: 3)
+var dummyUser = User(name: "유황국", pathogenDic: dummyPathogenDic, washDataList: dummyWashDataList, handState: dummyHandState, exp: 3)
 
 
