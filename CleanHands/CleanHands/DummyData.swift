@@ -8,7 +8,7 @@
 import Foundation
 
 //병원체
-struct Pathogan{
+struct Pathogen{
     let type: PathoganType
     let name: String
     let exp: Int
@@ -34,29 +34,29 @@ enum PathoganType {
 }
 
 struct User {
-    static var userState = User(name: "initName", pathoganList: [], washDataList: [], handState: HandState(lastWashTime: Date(), pathoganAmount: 0), exp: 0)
+    static var userState = User(name: "initName", pathoganList: [], washDataList: [], handState: HandState(lastWashTime: Date(), pathogenAmount: 0), exp: 0)
     
     var name: String
 //    var profileImage : String?
-    var pathoganList: [Pathogan]
+    var pathoganList: [Pathogen]
     var washDataList: [WashData]
     var handState: HandState
     var exp: Int
 }
 
 struct WashData{
-    let date: [Date]
-    var capturedPathoganList : [Pathogan]
+    let date: Date
+    var capturedPathogenList : [Pathogen]
 }
 
 struct HandState{
     var lastWashTime: Date
-    var pathoganAmount: Int
+    var pathogenAmount: Int
 }
 
 
-var dummyPathogan =
-    Pathogan(type: PathoganType.bacteria ,name: "살모넬라균"
+var dummyPathogen =
+    Pathogen(type: PathoganType.bacteria ,name: "살모넬라균"
              ,exp: 10, description: "살모사한테 물리면 걸려요"
              , illnesses: Array<String>(["탈모"]),symptom: "머리빠짐", careMethod: "의사 선생님"
              , location: "황국이 입속", frequency: Frequency.high ,image: "salmonella.png")
@@ -64,13 +64,13 @@ var dummyPathogan =
 
 
 
-var dummyPathoganList = [dummyPathogan]
+var dummyPathoganList = [dummyPathogen]
 
-var dummyWashData = WashData(date: Array<Date>([Date()]), capturedPathoganList: dummyPathoganList)
+var dummyWashData = WashData(date: Date(), capturedPathogenList: dummyPathoganList)
 
 var dummyWashDataList = [dummyWashData]
 
-var dummyHandState = HandState(lastWashTime: Date(), pathoganAmount: dummyPathoganList.count)
+var dummyHandState = HandState(lastWashTime: Date(), pathogenAmount: dummyPathoganList.count)
 
 var dummyUser = User(name: "유황국", pathoganList: dummyPathoganList, washDataList: dummyWashDataList
                      , handState: dummyHandState, exp: 3)

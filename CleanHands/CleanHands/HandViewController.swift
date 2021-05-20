@@ -10,8 +10,11 @@ import UIKit
 class HandViewController: UIViewController {
 
     var pathogenImageList = Array<UIImageView>()
-    var pathogenCreateInterval:Double = 10
-    var maxPathogenNum = 100
+    var capturedPathogenList = Array<Pathogen>()
+    
+    let pathogenCreateInterval:Double = 1
+    let maxPathogenNum = 100
+    let percentageOfGettingPathogen = 0.3
     
     @IBOutlet weak var handImageView: UIImageView!
     let pathogenImage = UIImage(named: "pathogen")
@@ -50,7 +53,7 @@ class HandViewController: UIViewController {
             self.view.addSubview(pathogenView)
             pathogenImageList.append(pathogenView)
             
-            User.userState.handState.pathoganAmount = pathogenImageList.count
+            User.userState.handState.pathogenAmount = pathogenImageList.count
         }
     }
     
@@ -63,12 +66,24 @@ class HandViewController: UIViewController {
         }
     }
     
-    func cleanPathogen() {
+    func removePathogen() {
+        User.userState.handState.lastWashTime = Date()
         for i in pathogenImageList {
+            getRandomPathogen()
             i.removeFromSuperview()
             //usleep(50000)
         }
+        let newWashData = WashData(date: Date(), capturedPathogenList: capturedPathogenList)
+        User.userState.washDataList.append(newWashData)
+        print(newWashData)
         pathogenImageList = Array<UIImageView>()
+    }
+    
+
+    func getRandomPathogen() {
+        if (drand48() < percentageOfGettingPathogen) {
+            capturedPathogenList.append(dummyPathogen)
+        }
     }
 
     @IBAction func onWashButtonPressed(_ sender: Any) {
@@ -76,6 +91,6 @@ class HandViewController: UIViewController {
     }
 
     @IBAction func test(_ sender: Any) {
-        cleanPathogen()
+        removePathogen()
     }
 }
