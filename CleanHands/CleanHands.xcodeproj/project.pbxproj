@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,11 @@
 		27D3764B264521C40074EDAC /* CollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3764A264521C40074EDAC /* CollectionTableViewController.swift */; };
 		27D37651264525E40074EDAC /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37650264525E40074EDAC /* Settings.storyboard */; };
 		27D37654264526260074EDAC /* Statistic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37653264526260074EDAC /* Statistic.storyboard */; };
+<<<<<<< HEAD
+		27D990F726553197007FE5DB /* CollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D990F626553197007FE5DB /* CollectionDetailViewController.swift */; };
+=======
 		7A1D340C26452F5A002D460D /* HandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D340B26452F5A002D460D /* HandViewController.swift */; };
+>>>>>>> 56e538115d8b7f44e32844923c54571342090806
 		328E63A473D8D367C51144A6 /* Pods_CleanHands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E1CFD389E4207CA0DCB4F2 /* Pods_CleanHands.framework */; };
 		F13D8ECE2643EC6E00492E92 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13D8ECD2643EC6E00492E92 /* DummyData.swift */; };
 		F13D8ED72644100100492E92 /* Hand.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13D8ED62644100100492E92 /* Hand.storyboard */; };
@@ -29,7 +33,11 @@
 		27D3764A264521C40074EDAC /* CollectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewController.swift; sourceTree = "<group>"; };
 		27D37650264525E40074EDAC /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		27D37653264526260074EDAC /* Statistic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistic.storyboard; sourceTree = "<group>"; };
+<<<<<<< HEAD
+		27D990F626553197007FE5DB /* CollectionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailViewController.swift; sourceTree = "<group>"; };
+=======
 		7A1D340B26452F5A002D460D /* HandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandViewController.swift; sourceTree = "<group>"; };
+>>>>>>> 56e538115d8b7f44e32844923c54571342090806
 		86E1CFD389E4207CA0DCB4F2 /* Pods_CleanHands.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanHands.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3946C4C15ED2ECFF19BAF25 /* Pods-CleanHands.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanHands.debug.xcconfig"; path = "Target Support Files/Pods-CleanHands/Pods-CleanHands.debug.xcconfig"; sourceTree = "<group>"; };
 		E26F87257DD2CF62ACE9FEE6 /* Pods-CleanHands.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanHands.release.xcconfig"; path = "Target Support Files/Pods-CleanHands/Pods-CleanHands.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,7 +80,6 @@
 				D3946C4C15ED2ECFF19BAF25 /* Pods-CleanHands.debug.xcconfig */,
 				E26F87257DD2CF62ACE9FEE6 /* Pods-CleanHands.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -112,6 +119,7 @@
 				27D37650264525E40074EDAC /* Settings.storyboard */,
 				27D37653264526260074EDAC /* Statistic.storyboard */,
 				F13D8EE42645281C00492E92 /* StatisticViewController.swift */,
+				27D990F626553197007FE5DB /* CollectionDetailViewController.swift */,
 			);
 			path = CleanHands;
 			sourceTree = "<group>";
@@ -238,6 +246,7 @@
 				7A1D340C26452F5A002D460D /* HandViewController.swift in Sources */,
 				27D3764B264521C40074EDAC /* CollectionTableViewController.swift in Sources */,
 				F16064AB261EF2820072858F /* ViewController.swift in Sources */,
+				27D990F726553197007FE5DB /* CollectionDetailViewController.swift in Sources */,
 				F13D8EE52645281C00492E92 /* StatisticViewController.swift in Sources */,
 				F16064A7261EF2820072858F /* AppDelegate.swift in Sources */,
 				F16064A9261EF2820072858F /* SceneDelegate.swift in Sources */,

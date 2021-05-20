@@ -8,7 +8,7 @@
 import Foundation
 
 //병원체
-struct Pathogen{
+struct Pathogan {
     let type: PathoganType
     let name: String
     let exp: Int
@@ -19,6 +19,12 @@ struct Pathogen{
     let location : String
     let frequency : Frequency
     let image : String
+}
+
+extension Pathogan : Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.name)
+    }
 }
 
 enum Frequency {
@@ -38,7 +44,7 @@ struct User {
     
     var name: String
 //    var profileImage : String?
-    var pathoganList: [Pathogen]
+    var pathoganDic: [Pathogan: Int]
     var washDataList: [WashData]
     var handState: HandState
     var exp: Int
@@ -46,7 +52,7 @@ struct User {
 
 struct WashData{
     let date: Date
-    var capturedPathogenList : [Pathogen]
+    var capturedPathogenList : [Pathogen : Int]
 }
 
 struct HandState{
@@ -64,15 +70,15 @@ var dummyPathogen =
 
 
 
-var dummyPathoganList = [dummyPathogen]
+var dummyPathoganDic = [dummyPathogan: 120]
+var pathoganAmount = dummyPathoganDic.reduce(0) {$0 + $1.value}
 
-var dummyWashData = WashData(date: Date(), capturedPathogenList: dummyPathoganList)
+var dummyWashData = WashData(date: Date(), capturedPathoganDic: dummyPathoganDic)
 
 var dummyWashDataList = [dummyWashData]
 
-var dummyHandState = HandState(lastWashTime: Date(), pathogenAmount: dummyPathoganList.count)
+var dummyHandState = HandState(lastWashTime: Date(), pathoganAmount: pathoganAmount)
 
-var dummyUser = User(name: "유황국", pathoganList: dummyPathoganList, washDataList: dummyWashDataList
-                     , handState: dummyHandState, exp: 3)
+var dummyUser = User(name: "유황국", pathoganDic: dummyPathoganDic, washDataList: dummyWashDataList, handState: dummyHandState, exp: 3)
 
 

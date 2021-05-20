@@ -11,13 +11,13 @@
         <!--Root View Controller-->
         <scene sceneID="f5B-QM-xCa">
             <objects>
-                <tableViewController id="cnh-Ej-yWe" sceneMemberID="viewController">
+                <tableViewController id="cnh-Ej-yWe" customClass="CollectionTableViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jxw-Fc-jXC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="5ON-66-dcf" detailTextLabel="jmX-cE-T3x" imageView="G6F-z8-Tti" style="IBUITableViewCellStyleSubtitle" id="c92-qS-ddW">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollectionCell" textLabel="5ON-66-dcf" detailTextLabel="jmX-cE-T3x" imageView="G6F-z8-Tti" style="IBUITableViewCellStyleSubtitle" id="c92-qS-ddW" customClass="CollectionCell" customModule="CleanHands" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c92-qS-ddW" id="Rbn-SN-5je">
@@ -45,6 +45,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="eliminatedCountLabel" destination="jmX-cE-T3x" id="fy8-2d-F67"/>
+                                    <outlet property="pathoganImage" destination="G6F-z8-Tti" id="7nU-e0-ytT"/>
+                                    <outlet property="pathoganLabel" destination="5ON-66-dcf" id="D7o-Mb-LWJ"/>
                                     <segue destination="Z2Y-J1-t4W" kind="show" id="wZr-Oh-2Vw"/>
                                 </connections>
                             </tableViewCell>
@@ -54,7 +57,9 @@
                             <outlet property="delegate" destination="cnh-Ej-yWe" id="nnf-97-7Zc"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" tag="-3" title="Collection" image="pencil" catalog="system" id="Dx0-fa-IIb"/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="q7h-ZI-ibl"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hS-lE-XuA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,15 +81,26 @@
             </objects>
             <point key="canvasLocation" x="775" y="66"/>
         </scene>
-        <!--View Controller-->
+        <!--Collection Detail View Controller-->
         <scene sceneID="wSb-bV-7hT">
             <objects>
-                <viewController id="Z2Y-J1-t4W" sceneMemberID="viewController">
+                <viewController id="Z2Y-J1-t4W" customClass="CollectionDetailViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jTS-Qp-AUP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFx-Nq-hba">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="cuY-dk-yw5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cuY-dk-yw5" firstAttribute="bottom" secondItem="rFx-Nq-hba" secondAttribute="bottom" id="02r-Lb-tCQ"/>
+                            <constraint firstItem="rFx-Nq-hba" firstAttribute="leading" secondItem="cuY-dk-yw5" secondAttribute="leading" id="4UZ-9E-diO"/>
+                            <constraint firstItem="rFx-Nq-hba" firstAttribute="top" secondItem="cuY-dk-yw5" secondAttribute="top" id="XlW-Ni-3th"/>
+                            <constraint firstItem="cuY-dk-yw5" firstAttribute="trailing" secondItem="rFx-Nq-hba" secondAttribute="trailing" id="YXs-ZW-bf4"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="j13-M6-66I"/>
                 </viewController>
@@ -94,6 +110,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

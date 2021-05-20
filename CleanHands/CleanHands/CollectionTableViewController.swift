@@ -23,23 +23,26 @@ class CollectionTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return dummyPathoganDic.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionCell", for: indexPath) as! CollectionCell
+        
         // Configure the cell...
-
+        // dummyPathoganDic의 시작 index부터 indexpath.row만큼 떨어진 index를 가져온다.
+        let index = dummyPathoganDic.index(dummyPathoganDic.startIndex, offsetBy: indexPath.row)
+        cell.item = dummyPathoganDic.keys[index]
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -84,6 +87,27 @@ class CollectionTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+     
+     */
 
+    
+    
+}
+
+class CollectionCell : UITableViewCell {
+    
+    @IBOutlet weak var pathoganLabel: UILabel!
+    @IBOutlet weak var eliminatedCountLabel: UILabel!
+    @IBOutlet weak var pathoganImage: UIImageView!
+    
+    var item: Pathogan? {
+        didSet {
+            guard let pathogan = item else {
+                return
+            }
+            pathoganImage.image = UIImage(named: "salmonella.png")
+            pathoganLabel.text = pathogan.name
+            eliminatedCountLabel.text = "100"
+        }
+    }
 }
