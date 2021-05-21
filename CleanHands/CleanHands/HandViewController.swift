@@ -17,7 +17,7 @@ class HandViewController: UIViewController {
     let percentageOfGettingPathogen = 0.3
     
     @IBOutlet weak var handImageView: UIImageView!
-    let pathogenImage = UIImage(named: "pathogen")
+    let pathogenImage = UIImage(named: "Pathogen")
     
     override func viewDidLoad() {
         super.viewDidLoad()
