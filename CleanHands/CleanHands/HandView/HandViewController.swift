@@ -17,7 +17,7 @@ class HandViewController: UIViewController {
     let percentageOfGettingPathogen = 0.3
     
     @IBOutlet weak var handImageView: UIImageView!
-    let pathogenImage = UIImage(named: "pathogen")
+    let pathogenImage = UIImage(named: "Pathogen")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,10 +93,16 @@ class HandViewController: UIViewController {
     }
 
     @IBAction func onWashButtonPressed(_ sender: Any) {
-        createPathogen(numberOfCreate: 1)
+        presentTimerModal()
+        removePathogen()
     }
 
-    @IBAction func test(_ sender: Any) {
-        removePathogen()
+//    @IBAction func test(_ sender: Any) {
+//        createPathogen(numberOfCreate: 1)
+//    }
+    
+    func presentTimerModal() {
+        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "nextVC") else {return}
+        self.present(nextVC, animated: true)
     }
 }
