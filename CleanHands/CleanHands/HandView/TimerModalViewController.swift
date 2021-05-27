@@ -22,12 +22,12 @@ class TimerModalViewController: UIViewController {
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        configure()
+        animateModal()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configure()
+        animateModal()
     }
     
     override func viewWillLayoutSubviews() {
@@ -60,14 +60,15 @@ class TimerModalViewController: UIViewController {
         }
     }
     
-    func configure() {
+    func animateModal() {
         //view.layer.cornerRadius = 25
         modalPresentationStyle = .custom
         modalTransitionStyle = .coverVertical             // use whatever transition you want
         transitioningDelegate = customTransitioningDelegate
     }
     @IBAction func cancelButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        
     }
 }
 

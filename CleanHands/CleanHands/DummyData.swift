@@ -8,7 +8,11 @@
 import Foundation
 
 //병원체
-struct Pathogen {
+struct Pathogen : Comparable{
+    static func < (lhs: Pathogen, rhs: Pathogen) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
     let type: PathogenType
     let name: String
     let exp: Int
@@ -19,6 +23,8 @@ struct Pathogen {
     let location : String
     let frequency : Frequency
     let image : String
+    
+    
 }
 
 extension Pathogen : Hashable {
@@ -65,10 +71,20 @@ var dummyPathogen =
     Pathogen(type: PathogenType.bacteria ,name: "살모넬라균"
              ,exp: 10, description: "살모사한테 물리면 걸려요"
              , illnesses: Array<String>(["탈모"]),symptom: "머리빠짐", careMethod: "의사 선생님"
-             , location: "황국이 입속", frequency: Frequency.high ,image: "salmonella.png")
+             , location: "황국이 입속", frequency: Frequency.high ,image: "Salmonella.png")
+var dummyPathogen2 =
+    Pathogen(type: PathogenType.bacteria ,name: "살모사"
+             ,exp: 10, description: "살모사한테 물리면 걸려요"
+             , illnesses: Array<String>(["탈모"]),symptom: "머리빠짐", careMethod: "의사 선생님"
+             , location: "황국이 입속", frequency: Frequency.high ,image: "Salmonella.png")
+var dummyPathogen3 =
+    Pathogen(type: PathogenType.bacteria ,name: "살모넬라곤"
+             ,exp: 10, description: "살모사한테 물리면 걸려요"
+             , illnesses: Array<String>(["탈모"]),symptom: "머리빠짐", careMethod: "의사 선생님"
+             , location: "황국이 입속", frequency: Frequency.high ,image: "Salmonella.png")
 
 
-
+var dummyPathogenList = [dummyPathogen, dummyPathogen2, dummyPathogen3]
 
 var dummyPathogenDic = [dummyPathogen: 120]
 var pathogenAmount = dummyPathogenDic.reduce(0) {$0 + $1.value}

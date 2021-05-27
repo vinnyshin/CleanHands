@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -49,7 +50,7 @@
             <objects>
                 <viewController storyboardIdentifier="nextVC" id="KBu-au-LBs" customClass="TimerModalViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="meT-Id-ONc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyS-TA-qwn">
@@ -62,6 +63,7 @@
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="KBu-au-LBs" eventType="touchUpInside" id="Hgu-F3-HeB"/>
                                     <action selector="test:" destination="ABu-Ec-sst" eventType="touchUpInside" id="yf5-nP-USG"/>
+                                    <segue destination="AXQ-jq-h3I" kind="show" id="ja7-7t-TVM"/>
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Hao-ye-t4j">
@@ -81,6 +83,8 @@
                         <viewLayoutGuide key="safeArea" id="fr0-Yt-2ib"/>
                         <color key="backgroundColor" red="0.098039215686274508" green="0.24705882352941178" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="500"/>
                     <connections>
                         <outlet property="remainTimeLabel" destination="s8p-QD-BU6" id="iBq-bF-BhL"/>
                         <outlet property="washProgressBar" destination="Hao-ye-t4j" id="YXp-6m-VWf"/>
@@ -88,11 +92,73 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08B-w9-cDk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="161"/>
+            <point key="canvasLocation" x="494" y="161"/>
+        </scene>
+        <!--Wash Data Collection View Controller-->
+        <scene sceneID="3gs-Kn-DdU">
+            <objects>
+                <collectionViewController id="AXQ-jq-h3I" customClass="WashDataCollectionViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Lti-cw-wCm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h6a-sE-LhD">
+                            <size key="itemSize" width="128" height="204"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="pathogenImageCell" id="kDK-Z0-ysf" customClass="PathogenImageCell" customModule="CleanHands" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="128" height="204"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9w5-Es-ZnJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="204"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHp-xb-zX4">
+                                            <rect key="frame" x="8" y="121" width="112" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ygu-Uv-NB7">
+                                            <rect key="frame" x="8" y="165" width="112" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Salmonella" translatesAutoresizingMaskIntoConstraints="NO" id="w9N-57-YL9">
+                                            <rect key="frame" x="20" y="14" width="88.999999999999886" height="89"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="128" height="204"/>
+                                <connections>
+                                    <outlet property="numberOfPathogen" destination="Ygu-Uv-NB7" id="cMM-OM-fna"/>
+                                    <outlet property="pathogenImage" destination="w9N-57-YL9" id="e7M-qy-fxO"/>
+                                    <outlet property="pathogenName" destination="vHp-xb-zX4" id="sAw-N3-DSQ"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="AXQ-jq-h3I" id="Tl3-Rg-GK4"/>
+                            <outlet property="delegate" destination="AXQ-jq-h3I" id="0Yx-PL-V6K"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="aJx-Lh-vH8"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sym-dm-BAB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1224.6376811594205" y="160.71428571428569"/>
         </scene>
     </scenes>
     <resources>
         <image name="Hand" width="85.5" height="120"/>
+        <image name="Salmonella" width="548" height="306"/>
         <image name="WandTabIcon" width="15.774999618530273" height="20.507999420166016"/>
         <image name="WashButtonBackground" width="58" height="21"/>
         <systemColor name="labelColor">
