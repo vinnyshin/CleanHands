@@ -105,7 +105,7 @@ class CollectionCell : UITableViewCell {
             guard let pathogan = item else {
                 return
             }
-            pathoganImage.image = UIImage(named: "Salmonella.png")
+            pathoganImage.image = UIImage(named: "salmonella.png")
             pathoganLabel.text = pathogan.name
             eliminatedCountLabel.text = "100"
         }
