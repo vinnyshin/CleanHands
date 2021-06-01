@@ -9,6 +9,8 @@ import UIKit
 
 class washResultViewController: UIViewController {
     
+    @IBOutlet weak var resultView: UIView!
+    @IBOutlet weak var forMoreDetailButton: UIButton!
     let washDataList = User.userState.washDataList
     //private var customTransitioningDelegate = TransitioningDelegate2()
     let padding:CGFloat = 30
@@ -23,9 +25,20 @@ class washResultViewController: UIViewController {
         
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        resultView.layer.cornerRadius = 25
+        
+        
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         animateModal()
+    }
+    @IBAction func onForMoreDetailPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        
     }
     
     func animateModal() {

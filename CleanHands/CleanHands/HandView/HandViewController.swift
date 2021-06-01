@@ -5,6 +5,8 @@
 //  Created by hwangguk on 2021/05/07.
 //
 
+
+//TODO 타이머 관리
 import UIKit
 
 class HandViewController: UIViewController {
@@ -15,6 +17,17 @@ class HandViewController: UIViewController {
     let pathogenCreateInterval:Double = 1
     let maxPathogenNum = 100
     let percentageOfGettingPathogen = 1.0
+    
+    var timerModalView : TimerModalViewController?
+    var captureSuccess = false {
+        didSet {
+            if (captureSuccess) {
+                timerModalView!.dismiss(animated: false, completion: nil)
+                presentResultView()
+                captureSuccess = false
+            }
+        }
+    }
     
     @IBOutlet weak var handImageView: UIImageView!
     let pathogenImage = UIImage(named: "Pathogen")
@@ -105,6 +118,14 @@ class HandViewController: UIViewController {
     
     func presentTimerModal() {
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "nextVC") else {return}
-        self.present(nextVC, animated: true)
+        let timerModalView = nextVC as! TimerModalViewController
+        timerModalView.handViewController = self
+        self.timerModalView = timerModalView
+        self.present(timerModalView, animated: true)
+    }
+    
+    func presentResultView() {
+        guard let resultView = self.storyboard?.instantiateViewController(identifier: "resultView") else {return}
+        self.present(resultView, animated: true)
     }
 }

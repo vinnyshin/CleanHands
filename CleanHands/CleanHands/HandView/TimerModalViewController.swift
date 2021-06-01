@@ -10,6 +10,8 @@ import UIKit
 class TimerModalViewController: UIViewController {
     @IBOutlet weak var remainTimeLabel: UILabel!
     @IBOutlet weak var washProgressBar: UIProgressView!
+    var scaled = false
+    var handViewController:HandViewController?
 
     private var customTransitioningDelegate = TransitioningDelegate()
     
@@ -35,8 +37,13 @@ class TimerModalViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         view.layer.cornerRadius = 25
-        washProgressBar.transform = washProgressBar.transform.scaledBy(x: 1, y: 1.5)
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        if (!scaled) {
+            washProgressBar.transform = washProgressBar.transform.scaledBy(x: 1, y: 1.5)
+            scaled = true
+        }
         washProgressBar.layer.cornerRadius = 3
         washProgressBar.clipsToBounds = true
         washProgressBar.layer.sublayers![1].cornerRadius = 3
@@ -79,7 +86,7 @@ class TimerModalViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
         else {
-            
+            handViewController?.captureSuccess = true
         }
     }
     
