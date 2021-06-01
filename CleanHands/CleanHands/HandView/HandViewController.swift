@@ -14,7 +14,7 @@ class HandViewController: UIViewController {
     
     let pathogenCreateInterval:Double = 1
     let maxPathogenNum = 100
-    let percentageOfGettingPathogen = 0.3
+    let percentageOfGettingPathogen = 1.0
     
     @IBOutlet weak var handImageView: UIImageView!
     let pathogenImage = UIImage(named: "Pathogen")

@@ -12,6 +12,7 @@ private let reuseIdentifier = "Cell"
 class WashDataCollectionViewController: UICollectionViewController {
 
     let washDataList = User.userState.washDataList
+    private var customTransitioningDelegate = TransitioningDelegate2()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,10 @@ class WashDataCollectionViewController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        animateModal()
     }
 
     /*
@@ -61,6 +66,12 @@ class WashDataCollectionViewController: UICollectionViewController {
         // Configure the cell
     
         return cell
+    }
+    func animateModal() {
+        //view.layer.cornerRadius = 25
+        modalPresentationStyle = .custom
+        modalTransitionStyle = .coverVertical             // use whatever transition you want
+        transitioningDelegate = customTransitioningDelegate
     }
 
     // MARK: UICollectionViewDelegate

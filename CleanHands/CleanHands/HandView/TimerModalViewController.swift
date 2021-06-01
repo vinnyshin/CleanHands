@@ -10,7 +10,11 @@ import UIKit
 class TimerModalViewController: UIViewController {
     @IBOutlet weak var remainTimeLabel: UILabel!
     @IBOutlet weak var washProgressBar: UIProgressView!
+
     private var customTransitioningDelegate = TransitioningDelegate()
+    
+    var timer: Timer?
+    var completeWash = false
     
     var remainTime = 20
     var timeText:String {
@@ -47,7 +51,7 @@ class TimerModalViewController: UIViewController {
     
     func timerStart() {
         washProgressBar.progress = 0
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(onTimePassed), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(onTimePassed), userInfo: nil, repeats: true)
     }
     
     @objc func onTimePassed() {
@@ -56,7 +60,11 @@ class TimerModalViewController: UIViewController {
         remainTimeLabel.text = timeText
         
         if (washProgressBar.progress >= 1) {
-            self.dismiss(animated: true, completion: nil)
+            timer?.invalidate()
+            timer = nil
+            completeWash = true
+            remainTimeLabel.text = "완료"
+            //self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -67,12 +75,18 @@ class TimerModalViewController: UIViewController {
         transitioningDelegate = customTransitioningDelegate
     }
     @IBAction func cancelButtonPressed(_ sender: Any) {
-        //self.dismiss(animated: true, completion: nil)
-        
+        if (completeWash) {
+            self.dismiss(animated: true, completion: nil)
+        }
+        else {
+            
+        }
     }
+    
 }
 
 class TransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+    
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return PresentationController(presentedViewController: presented, presenting: presenting)
     }
