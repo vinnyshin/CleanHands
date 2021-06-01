@@ -63,7 +63,7 @@
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="KBu-au-LBs" eventType="touchUpInside" id="Hgu-F3-HeB"/>
                                     <action selector="test:" destination="ABu-Ec-sst" eventType="touchUpInside" id="yf5-nP-USG"/>
-                                    <segue destination="AXQ-jq-h3I" kind="show" id="ja7-7t-TVM"/>
+                                    <segue destination="Pha-zR-fAn" kind="show" id="ZZQ-vL-3EY"/>
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Hao-ye-t4j">
@@ -94,66 +94,121 @@
             </objects>
             <point key="canvasLocation" x="494" y="161"/>
         </scene>
-        <!--Wash Data Collection View Controller-->
-        <scene sceneID="3gs-Kn-DdU">
+        <!--Wash Result View Controller-->
+        <scene sceneID="wO5-JT-5na">
             <objects>
-                <collectionViewController id="AXQ-jq-h3I" customClass="WashDataCollectionViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Lti-cw-wCm">
+                <viewController id="Pha-zR-fAn" customClass="washResultViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dvr-5f-CT8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h6a-sE-LhD">
-                            <size key="itemSize" width="128" height="204"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="pathogenImageCell" id="kDK-Z0-ysf" customClass="PathogenImageCell" customModule="CleanHands" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="204"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9w5-Es-ZnJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="204"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHp-xb-zX4">
-                                            <rect key="frame" x="8" y="121" width="112" height="25"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ygu-Uv-NB7">
-                                            <rect key="frame" x="8" y="165" width="112" height="25"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Salmonella" translatesAutoresizingMaskIntoConstraints="NO" id="w9N-57-YL9">
-                                            <rect key="frame" x="20" y="14" width="88.999999999999886" height="89"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        </imageView>
-                                    </subviews>
-                                </collectionViewCellContentView>
-                                <size key="customSize" width="128" height="204"/>
-                                <connections>
-                                    <outlet property="numberOfPathogen" destination="Ygu-Uv-NB7" id="cMM-OM-fna"/>
-                                    <outlet property="pathogenImage" destination="w9N-57-YL9" id="e7M-qy-fxO"/>
-                                    <outlet property="pathogenName" destination="vHp-xb-zX4" id="sAw-N3-DSQ"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="AXQ-jq-h3I" id="Tl3-Rg-GK4"/>
-                            <outlet property="delegate" destination="AXQ-jq-h3I" id="0Yx-PL-V6K"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="aJx-Lh-vH8"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sym-dm-BAB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Sc-iW-qHO">
+                                <rect key="frame" x="20.5" y="138" width="373" height="566"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wash pathogen list" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5e-uj-GOd">
+                                        <rect key="frame" x="0.0" y="30" width="373" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="QVU-B0-plX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="srk-t2-bej">
+                                        <rect key="frame" x="0.0" y="100" width="373" height="368"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iHJ-SG-0lu">
+                                            <size key="itemSize" width="100" height="150"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="pathogenImageCell" id="ram-MS-d6J" customClass="PathogenCell" customModule="CleanHands" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6i1-cM-Pui">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-OG-ugw">
+                                                            <rect key="frame" x="29.5" y="94.5" width="41.5" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d15-c2-p1y">
+                                                            <rect key="frame" x="29.5" y="124.5" width="41.5" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Salmonella" translatesAutoresizingMaskIntoConstraints="NO" id="xgY-Ga-UGH">
+                                                            <rect key="frame" x="12.5" y="12.5" width="75" height="75"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="75" id="2OQ-KL-IKi"/>
+                                                                <constraint firstAttribute="height" constant="75" id="V5a-3Y-A9A"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="jfA-OG-ugw" firstAttribute="centerX" secondItem="6i1-cM-Pui" secondAttribute="centerX" id="K4s-Fd-GhT"/>
+                                                        <constraint firstItem="jfA-OG-ugw" firstAttribute="centerY" secondItem="6i1-cM-Pui" secondAttribute="centerY" constant="30" id="Xjy-1N-YLq"/>
+                                                        <constraint firstItem="d15-c2-p1y" firstAttribute="centerX" secondItem="6i1-cM-Pui" secondAttribute="centerX" id="bmv-JP-NgK"/>
+                                                        <constraint firstItem="d15-c2-p1y" firstAttribute="centerY" secondItem="6i1-cM-Pui" secondAttribute="centerY" constant="60" id="lhP-PG-p4V"/>
+                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="centerY" secondItem="6i1-cM-Pui" secondAttribute="centerY" constant="-25" id="oLy-JX-xqP"/>
+                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="centerX" secondItem="6i1-cM-Pui" secondAttribute="centerX" id="yPP-2L-Mhv"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="100" height="150"/>
+                                                <connections>
+                                                    <outlet property="numberOfPathogen" destination="d15-c2-p1y" id="VgO-3B-lpw"/>
+                                                    <outlet property="pathogenImage" destination="xgY-Ga-UGH" id="9Rj-mx-3rM"/>
+                                                    <outlet property="pathogenName" destination="jfA-OG-ugw" id="mwi-pF-ty3"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yb0-r2-c4z">
+                                        <rect key="frame" x="126.5" y="498" width="120" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Zbg-Zo-mYL"/>
+                                            <constraint firstAttribute="width" constant="120" id="cjC-rr-TdH"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" backgroundImage="WashButtonBackground"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="yb0-r2-c4z" firstAttribute="top" secondItem="srk-t2-bej" secondAttribute="bottom" constant="30" id="5nZ-If-LVE"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q5e-uj-GOd" secondAttribute="trailing" id="Eyn-Ll-ky7"/>
+                                    <constraint firstItem="srk-t2-bej" firstAttribute="height" secondItem="6Sc-iW-qHO" secondAttribute="height" multiplier="0.65" id="LQ2-4y-zVI"/>
+                                    <constraint firstItem="yb0-r2-c4z" firstAttribute="centerX" secondItem="6Sc-iW-qHO" secondAttribute="centerX" id="cFR-M2-bFM"/>
+                                    <constraint firstAttribute="trailing" secondItem="srk-t2-bej" secondAttribute="trailing" id="e3Q-Sd-bL2"/>
+                                    <constraint firstItem="srk-t2-bej" firstAttribute="leading" secondItem="6Sc-iW-qHO" secondAttribute="leading" id="p8I-SA-uZZ"/>
+                                    <constraint firstItem="srk-t2-bej" firstAttribute="top" secondItem="Q5e-uj-GOd" secondAttribute="bottom" constant="30" id="uAR-Ro-G4L"/>
+                                    <constraint firstItem="Q5e-uj-GOd" firstAttribute="leading" secondItem="6Sc-iW-qHO" secondAttribute="leading" id="uqP-Jv-Sp6"/>
+                                    <constraint firstItem="Q5e-uj-GOd" firstAttribute="top" secondItem="6Sc-iW-qHO" secondAttribute="top" constant="30" id="vsh-NG-0il"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HVn-xf-LaT"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.30295426324503311" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Sc-iW-qHO" firstAttribute="centerX" secondItem="Dvr-5f-CT8" secondAttribute="centerX" id="NIb-dJ-ajq"/>
+                            <constraint firstItem="6Sc-iW-qHO" firstAttribute="centerY" secondItem="Dvr-5f-CT8" secondAttribute="centerY" id="XbV-hh-25f"/>
+                            <constraint firstItem="6Sc-iW-qHO" firstAttribute="width" secondItem="HVn-xf-LaT" secondAttribute="width" multiplier="0.9" id="YWv-Dh-NX2"/>
+                            <constraint firstItem="6Sc-iW-qHO" firstAttribute="height" secondItem="HVn-xf-LaT" secondAttribute="height" multiplier="0.7" id="cxq-P3-lb5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Eg5-hy-i9C"/>
+                    <connections>
+                        <outlet property="washResultCollectionView" destination="srk-t2-bej" id="0ya-Vc-31F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vL3-NV-WKv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1224.6376811594205" y="160.71428571428569"/>
+            <point key="canvasLocation" x="1269.5652173913045" y="184.82142857142856"/>
         </scene>
     </scenes>
     <resources>
