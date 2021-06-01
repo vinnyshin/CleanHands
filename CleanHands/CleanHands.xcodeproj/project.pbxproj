@@ -25,6 +25,7 @@
 		F16064AE261EF2820072858F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16064AC261EF2820072858F /* Main.storyboard */; };
 		F16064B0261EF2850072858F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F16064AF261EF2850072858F /* Assets.xcassets */; };
 		F16064B3261EF2850072858F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16064B1261EF2850072858F /* LaunchScreen.storyboard */; };
+		F1BF572026664857006C5201 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BF571F26664857006C5201 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		F16064AF261EF2850072858F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F16064B2261EF2850072858F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F16064B4261EF2850072858F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1BF571F26664857006C5201 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				27D37650264525E40074EDAC /* Settings.storyboard */,
 				27D37653264526260074EDAC /* Statistic.storyboard */,
 				F13D8EE42645281C00492E92 /* StatisticViewController.swift */,
+				F1BF571F26664857006C5201 /* Util.swift */,
 			);
 			path = CleanHands;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1BF572026664857006C5201 /* Util.swift in Sources */,
 				F13D8ECE2643EC6E00492E92 /* DummyData.swift in Sources */,
 				7A1D340C26452F5A002D460D /* HandViewController.swift in Sources */,
 				7A0073D62665E58F00E7057B /* washResultViewController.swift in Sources */,

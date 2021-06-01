@@ -91,7 +91,7 @@ var pathogenAmount = dummyPathogenDic.reduce(0) {$0 + $1.value}
 
 var dummyWashData = WashData(date: Date(), capturedPathogenDic: dummyPathogenDic)
 
-var dummyWashDataList = [dummyWashData]
+var dummyWashDataList = [dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData,dummyWashData]
 
 var dummyHandState = HandState(lastWashTime: Date(), pathogenAmount: pathogenAmount)
 
