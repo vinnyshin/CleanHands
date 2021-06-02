@@ -11,12 +11,6 @@ class CollectionTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -43,6 +37,13 @@ class CollectionTableViewController: UITableViewController {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = self.tableView.indexPathForSelectedRow,
+           let detailVC = segue.destination as? CollectionDetailViewController {
+            let index = dummyPathogenDic.index(dummyPathogenDic.startIndex, offsetBy: indexPath.row)
+            detailVC.selectedPathogen = dummyPathogenDic.keys[index]
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
