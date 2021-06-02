@@ -34,9 +34,18 @@ extension Pathogen : Hashable {
 }
 
 enum Frequency {
-    case high
-    case medium
-    case low
+    case high, medium, low
+    
+    var toString: String {
+        switch self {
+        case .high:
+            return "상"
+        case .medium:
+            return "중"
+        case .low:
+            return "하"
+        }
+    }
 }
 
 enum PathogenType {
@@ -71,17 +80,17 @@ var dummyPathogen =
     Pathogen(type: PathogenType.bacteria ,name: "살모넬라균"
              ,exp: 10, description: "살모사한테 물리면 걸려요"
              , illnesses: Array<String>(["탈모"]),symptom: "머리빠짐", careMethod: "의사 선생님"
-             , location: "황국이 입속", frequency: Frequency.high ,image: "Salmonella.png")
+             , location: "황국이 입속", frequency: Frequency.high ,image: "salmonella.png")
 var dummyPathogen2 =
     Pathogen(type: PathogenType.bacteria ,name: "살모사"
              ,exp: 10, description: "살모사한테 물리면 걸려요"
              , illnesses: Array<String>(["탈모"]),symptom: "머리빠짐", careMethod: "의사 선생님"
-             , location: "황국이 입속", frequency: Frequency.high ,image: "Salmonella.png")
+             , location: "황국이 입속", frequency: Frequency.high ,image: "salmonella.png")
 var dummyPathogen3 =
     Pathogen(type: PathogenType.bacteria ,name: "살모넬라곤"
              ,exp: 10, description: "살모사한테 물리면 걸려요"
              , illnesses: Array<String>(["탈모"]),symptom: "머리빠짐", careMethod: "의사 선생님"
-             , location: "황국이 입속", frequency: Frequency.high ,image: "Salmonella.png")
+             , location: "황국이 입속", frequency: Frequency.high ,image: "salmonella.png")
 
 
 var dummyPathogenList = [dummyPathogen, dummyPathogen2, dummyPathogen3]
