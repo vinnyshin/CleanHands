@@ -13,6 +13,15 @@ class CollectionTableViewController: UITableViewController {
         super.viewDidLoad()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.view.layoutIfNeeded()
+        for indexPath in self.tableView.indexPathsForVisibleRows! {
+            let collectionCell: CollectionCell = self.tableView.cellForRow(at: indexPath) as! CollectionCell
+            collectionCell.pathogenImage.layer.cornerRadius = collectionCell.pathogenImage.layer.bounds.width / 2
+            print(collectionCell.pathogenImage.layer.bounds.width)
+        }
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
