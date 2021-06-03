@@ -19,6 +19,7 @@ class washResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         self.washResultCollectionView.delegate = self
         self.washResultCollectionView.dataSource = self
         

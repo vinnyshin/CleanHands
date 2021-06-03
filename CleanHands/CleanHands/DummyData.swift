@@ -91,9 +91,14 @@ var dummyPathogen3 =
              ,exp: 10, description: "살모사한테 물리면 걸려요"
              , illnesses: Array<String>(["탈모"]),symptom: "머리빠짐", careMethod: "의사 선생님"
              , location: "황국이 입속", frequency: Frequency.high ,image: "salmonella.png")
+var dummyPathogen4 =
+    Pathogen(type: PathogenType.bacteria ,name: "살모넬라간"
+             ,exp: 10, description: "살모사한테 물리면 걸려요"
+             , illnesses: Array<String>(["탈모"]),symptom: "머리빠짐", careMethod: "의사 선생님"
+             , location: "황국이 입속", frequency: Frequency.high ,image: "Pathogen.png")
 
 
-var dummyPathogenList = [dummyPathogen, dummyPathogen2, dummyPathogen3]
+var dummyPathogenList = [dummyPathogen, dummyPathogen2, dummyPathogen3, dummyPathogen4]
 
 var dummyPathogenDic = [dummyPathogen: 120]
 var pathogenAmount = dummyPathogenDic.reduce(0) {$0 + $1.value}

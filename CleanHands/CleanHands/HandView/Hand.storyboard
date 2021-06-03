@@ -131,6 +131,17 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yb0-r2-c4z">
+                                        <rect key="frame" x="126.5" y="504" width="120" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Zbg-Zo-mYL"/>
+                                            <constraint firstAttribute="width" constant="120" id="cjC-rr-TdH"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" backgroundImage="WashButtonBackground"/>
+                                        <connections>
+                                            <action selector="onForMoreDetailPressed:" destination="Pha-zR-fAn" eventType="touchUpInside" id="QAP-jB-VYu"/>
+                                        </connections>
+                                    </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="srk-t2-bej">
                                         <rect key="frame" x="0.0" y="100.5" width="373" height="372"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -155,25 +166,23 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d15-c2-p1y">
-                                                            <rect key="frame" x="29.5" y="124.5" width="41.5" height="21"/>
+                                                            <rect key="frame" x="29.5" y="121" width="41.5" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Salmonella" translatesAutoresizingMaskIntoConstraints="NO" id="xgY-Ga-UGH">
-                                                            <rect key="frame" x="12.5" y="12.5" width="75" height="75"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="75" id="2OQ-KL-IKi"/>
-                                                                <constraint firstAttribute="height" constant="75" id="V5a-3Y-A9A"/>
-                                                            </constraints>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="salmonella" translatesAutoresizingMaskIntoConstraints="NO" id="xgY-Ga-UGH">
+                                                            <rect key="frame" x="12.5" y="11.5" width="75" height="75"/>
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="jfA-OG-ugw" firstAttribute="centerX" secondItem="6i1-cM-Pui" secondAttribute="centerX" id="K4s-Fd-GhT"/>
-                                                        <constraint firstItem="jfA-OG-ugw" firstAttribute="centerY" secondItem="6i1-cM-Pui" secondAttribute="centerY" constant="30" id="Xjy-1N-YLq"/>
+                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="width" secondItem="6i1-cM-Pui" secondAttribute="width" multiplier="0.75" id="TyE-kx-bdk"/>
+                                                        <constraint firstItem="jfA-OG-ugw" firstAttribute="centerY" secondItem="6i1-cM-Pui" secondAttribute="centerY" multiplier="1.4" id="Xjy-1N-YLq"/>
                                                         <constraint firstItem="d15-c2-p1y" firstAttribute="centerX" secondItem="6i1-cM-Pui" secondAttribute="centerX" id="bmv-JP-NgK"/>
-                                                        <constraint firstItem="d15-c2-p1y" firstAttribute="centerY" secondItem="6i1-cM-Pui" secondAttribute="centerY" constant="60" id="lhP-PG-p4V"/>
-                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="centerY" secondItem="6i1-cM-Pui" secondAttribute="centerY" constant="-25" id="oLy-JX-xqP"/>
+                                                        <constraint firstItem="d15-c2-p1y" firstAttribute="centerY" secondItem="6i1-cM-Pui" secondAttribute="centerY" multiplier="1.75" id="lhP-PG-p4V"/>
+                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="centerY" secondItem="6i1-cM-Pui" secondAttribute="centerY" multiplier="0.65" id="oLy-JX-xqP"/>
+                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="height" secondItem="6i1-cM-Pui" secondAttribute="height" multiplier="0.5" id="ow0-lK-6Q8"/>
                                                         <constraint firstItem="xgY-Ga-UGH" firstAttribute="centerX" secondItem="6i1-cM-Pui" secondAttribute="centerX" id="yPP-2L-Mhv"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
@@ -186,17 +195,6 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yb0-r2-c4z">
-                                        <rect key="frame" x="126.5" y="504" width="120" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Zbg-Zo-mYL"/>
-                                            <constraint firstAttribute="width" constant="120" id="cjC-rr-TdH"/>
-                                        </constraints>
-                                        <state key="normal" title="Button" backgroundImage="WashButtonBackground"/>
-                                        <connections>
-                                            <action selector="onForMoreDetailPressed:" destination="Pha-zR-fAn" eventType="touchUpInside" id="QAP-jB-VYu"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -229,14 +227,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vL3-NV-WKv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1264" y="161"/>
+            <point key="canvasLocation" x="1263.768115942029" y="160.71428571428569"/>
         </scene>
     </scenes>
     <resources>
         <image name="Hand" width="85.5" height="120"/>
-        <image name="Salmonella" width="548" height="306"/>
         <image name="WandTabIcon" width="15.774999618530273" height="20.507999420166016"/>
         <image name="WashButtonBackground" width="58" height="21"/>
+        <image name="salmonella" width="548" height="306"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
