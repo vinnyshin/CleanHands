@@ -58,7 +58,7 @@
         <!--Timer Modal View Controller-->
         <scene sceneID="Yoc-rv-cHg">
             <objects>
-                <viewController storyboardIdentifier="nextVC" id="KBu-au-LBs" customClass="TimerModalViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="timerModalView" id="KBu-au-LBs" customClass="TimerModalViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="meT-Id-ONc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
