@@ -125,6 +125,7 @@
 		F16064A5261EF2820072858F /* CleanHands */ = {
 			isa = PBXGroup;
 			children = (
+				F167EB712668BDFB008CA7DF /* Statistic */,
 				2744C36B265F831600543BD7 /* CollectionView */,
 				7A50EFAC265A83FE008FF744 /* HandView */,
 				F16064A6261EF2820072858F /* AppDelegate.swift */,
@@ -136,11 +137,18 @@
 				F16064B4261EF2850072858F /* Info.plist */,
 				F13D8ECD2643EC6E00492E92 /* DummyData.swift */,
 				27D37650264525E40074EDAC /* Settings.storyboard */,
-				27D37653264526260074EDAC /* Statistic.storyboard */,
-				F13D8EE42645281C00492E92 /* StatisticViewController.swift */,
 				F1BF571F26664857006C5201 /* Util.swift */,
 			);
 			path = CleanHands;
+			sourceTree = "<group>";
+		};
+		F167EB712668BDFB008CA7DF /* Statistic */ = {
+			isa = PBXGroup;
+			children = (
+				27D37653264526260074EDAC /* Statistic.storyboard */,
+				F13D8EE42645281C00492E92 /* StatisticViewController.swift */,
+			);
+			path = Statistic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

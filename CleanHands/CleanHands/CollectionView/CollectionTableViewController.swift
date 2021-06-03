@@ -97,18 +97,38 @@ class CollectionTableViewController: UITableViewController {
 
 class CollectionCell : UITableViewCell {
     
-    @IBOutlet weak var pathoganLabel: UILabel!
-    @IBOutlet weak var eliminatedCountLabel: UILabel!
-    @IBOutlet weak var pathoganImage: UIImageView!
+    @IBOutlet weak var pathogenLabel: UILabel!
+    @IBOutlet weak var exterminationCountLabel: UILabel!
+    @IBOutlet weak var pathogenImage: UIImageView!
     
     var item: Pathogen? {
         didSet {
-            guard let pathogan = item else {
+            guard let pathogen = item else {
                 return
             }
-            pathoganImage.image = UIImage(named: "salmonella.png")
-            pathoganLabel.text = pathogan.name
-            eliminatedCountLabel.text = "100"
+            pathogenImage.image = UIImage(named: pathogen.image)
+            
+            pathogenImage.layer.masksToBounds = true
+            
+            // width와 height가 각각 83으로 잘 나옴
+            // width2가 41.5인것 확인
+            let width = pathogenImage.bounds.width
+            let height = pathogenImage.bounds.height
+            let width2 = pathogenImage.bounds.width / 2
+            
+            // 허나 CollectionDetailViewController의 56번째 줄은
+            // 잘 작동하는 것을 확인
+            // 같은 코드...? 다른 동작...?
+            pathogenImage.layer.cornerRadius = pathogenImage.bounds.width / 2
+            
+//            pathogenImage.layer.borderWidth = 5
+//            pathogenImage.layer.borderColor = UIColor.white.cgColor
+            
+            pathogenLabel.text = pathogen.name
+            
+            if let exterminationCount = dummyPathogenDic[pathogen] {
+                exterminationCountLabel.text = "\(exterminationCount)"
+            }
         }
     }
 }
