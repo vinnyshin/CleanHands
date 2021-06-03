@@ -10,7 +10,6 @@ import UIKit
 class washResultViewController: UIViewController {
     
     @IBOutlet weak var resultView: UIView!
-    @IBOutlet weak var forMoreDetailButton: UIButton!
     let washDataList = User.userState.washDataList
     //private var customTransitioningDelegate = TransitioningDelegate2()
     let padding:CGFloat = 30

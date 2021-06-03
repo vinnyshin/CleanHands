@@ -23,7 +23,7 @@ class HandViewController: UIViewController {
         didSet {
             if (captureSuccess) {
                 timerModalView!.dismiss(animated: false, completion: nil)
-                presentResultView()
+                presentWashResultView()
                 captureSuccess = false
             }
         }
@@ -111,21 +111,18 @@ class HandViewController: UIViewController {
         presentTimerModal()
         removePathogen()
     }
-
-//    @IBAction func test(_ sender: Any) {
-//        createPathogen(numberOfCreate: 1)
-//    }
     
     func presentTimerModal() {
-        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "nextVC") else {return}
-        let timerModalView = nextVC as! TimerModalViewController
+        guard let getTimerModalView = self.storyboard?.instantiateViewController(identifier: "timerModalView") else {return}
+        let timerModalView = getTimerModalView as! TimerModalViewController
         timerModalView.handViewController = self
         self.timerModalView = timerModalView
         self.present(timerModalView, animated: true)
     }
     
-    func presentResultView() {
+    func presentWashResultView() {
         guard let resultView = self.storyboard?.instantiateViewController(identifier: "resultView") else {return}
+        resultView.modalTransitionStyle = .coverVertical
         self.present(resultView, animated: true)
     }
 }
