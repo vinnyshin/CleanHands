@@ -24,12 +24,19 @@ class washResultViewController: UIViewController {
         self.washResultCollectionView.dataSource = self
         
     }
+    override func viewDidLayoutSubviews() {
+        self.view.layoutIfNeeded()
+        super.viewDidLayoutSubviews()
+        for indexPath in washResultCollectionView.indexPathsForVisibleItems {
+            let pathogenCell:PathogenCell = washResultCollectionView.cellForItem(at: indexPath) as! PathogenCell
+            pathogenCell.pathogenImage.layer.cornerRadius = pathogenCell.pathogenImage.layer.bounds.width/2
+            print(pathogenCell.pathogenImage.layer.bounds.width)
+        }
+    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         resultView.layer.cornerRadius = 25
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -78,7 +85,7 @@ extension washResultViewController:UICollectionViewDelegateFlowLayout {
         return padding
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: padding, bottom: padding, right: padding)
+        return UIEdgeInsets(top: 0, left: padding*1.5, bottom: padding, right: padding*1.5)
     }
 }
 
@@ -91,7 +98,7 @@ class PathogenCell : UICollectionViewCell {
     
     var item : Pathogen? {
         didSet {
-            pathogenImage.layer.cornerRadius = pathogenImage.frame.height/2
+            pathogenImage.layer.cornerRadius = self.pathogenImage.frame.height/2
             pathogenImage.layer.borderWidth = 1
             pathogenImage.layer.borderColor = UIColor.clear.cgColor
             pathogenImage.clipsToBounds = true
@@ -101,7 +108,7 @@ class PathogenCell : UICollectionViewCell {
             let imageString = pathogen.image
             pathogenImage.image = UIImage(named: imageString)
             pathogenName.text = pathogen.name
-            
+
         }
     }
     var number : Int? {

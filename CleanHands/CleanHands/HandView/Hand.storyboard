@@ -145,7 +145,7 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="srk-t2-bej">
                                         <rect key="frame" x="0.0" y="100.5" width="373" height="372"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iHJ-SG-0lu">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iHJ-SG-0lu">
                                             <size key="itemSize" width="100" height="150"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -155,9 +155,9 @@
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="pathogenImageCell" id="ram-MS-d6J" customClass="PathogenCell" customModule="CleanHands" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6i1-cM-Pui">
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KR7-A9-Q6B">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-OG-ugw">
                                                             <rect key="frame" x="29.5" y="94.5" width="41.5" height="21"/>
@@ -173,17 +173,18 @@
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="salmonella" translatesAutoresizingMaskIntoConstraints="NO" id="xgY-Ga-UGH">
                                                             <rect key="frame" x="12.5" y="11.5" width="75" height="75"/>
+                                                            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="jfA-OG-ugw" firstAttribute="centerX" secondItem="6i1-cM-Pui" secondAttribute="centerX" id="K4s-Fd-GhT"/>
-                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="width" secondItem="6i1-cM-Pui" secondAttribute="width" multiplier="0.75" id="TyE-kx-bdk"/>
-                                                        <constraint firstItem="jfA-OG-ugw" firstAttribute="centerY" secondItem="6i1-cM-Pui" secondAttribute="centerY" multiplier="1.4" id="Xjy-1N-YLq"/>
-                                                        <constraint firstItem="d15-c2-p1y" firstAttribute="centerX" secondItem="6i1-cM-Pui" secondAttribute="centerX" id="bmv-JP-NgK"/>
-                                                        <constraint firstItem="d15-c2-p1y" firstAttribute="centerY" secondItem="6i1-cM-Pui" secondAttribute="centerY" multiplier="1.75" id="lhP-PG-p4V"/>
-                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="centerY" secondItem="6i1-cM-Pui" secondAttribute="centerY" multiplier="0.65" id="oLy-JX-xqP"/>
-                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="height" secondItem="6i1-cM-Pui" secondAttribute="height" multiplier="0.5" id="ow0-lK-6Q8"/>
-                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="centerX" secondItem="6i1-cM-Pui" secondAttribute="centerX" id="yPP-2L-Mhv"/>
+                                                        <constraint firstItem="jfA-OG-ugw" firstAttribute="centerX" secondItem="KR7-A9-Q6B" secondAttribute="centerX" id="K4s-Fd-GhT"/>
+                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="width" secondItem="KR7-A9-Q6B" secondAttribute="width" multiplier="0.75" id="TyE-kx-bdk"/>
+                                                        <constraint firstItem="jfA-OG-ugw" firstAttribute="centerY" secondItem="KR7-A9-Q6B" secondAttribute="centerY" multiplier="1.4" id="Xjy-1N-YLq"/>
+                                                        <constraint firstItem="d15-c2-p1y" firstAttribute="centerX" secondItem="KR7-A9-Q6B" secondAttribute="centerX" id="bmv-JP-NgK"/>
+                                                        <constraint firstItem="d15-c2-p1y" firstAttribute="centerY" secondItem="KR7-A9-Q6B" secondAttribute="centerY" multiplier="1.75" id="lhP-PG-p4V"/>
+                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="centerY" secondItem="KR7-A9-Q6B" secondAttribute="centerY" multiplier="0.65" id="oLy-JX-xqP"/>
+                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="height" secondItem="KR7-A9-Q6B" secondAttribute="height" multiplier="0.5" id="ow0-lK-6Q8"/>
+                                                        <constraint firstItem="xgY-Ga-UGH" firstAttribute="centerX" secondItem="KR7-A9-Q6B" secondAttribute="centerX" id="yPP-2L-Mhv"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <size key="customSize" width="100" height="150"/>
@@ -227,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vL3-NV-WKv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1263.768115942029" y="160.71428571428569"/>
+            <point key="canvasLocation" x="1262.3188405797102" y="160.71428571428569"/>
         </scene>
     </scenes>
     <resources>
