@@ -86,14 +86,14 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMC-20-uei">
                                 <rect key="frame" x="80" y="74" width="22" height="22"/>
-                                <state key="normal" title="Button" image="arrow.left" catalog="system"/>
+                                <state key="normal" image="arrow.left" catalog="system"/>
                                 <connections>
                                     <action selector="changeChartPrev:" destination="62x-o8-5ha" eventType="touchUpInside" id="CNs-ms-aVI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEg-xO-GN0">
                                 <rect key="frame" x="311" y="74" width="23" height="22"/>
-                                <state key="normal" title="Button" image="arrow.right" catalog="system"/>
+                                <state key="normal" image="arrow.right" catalog="system"/>
                                 <connections>
                                     <action selector="changeChartNext:" destination="62x-o8-5ha" eventType="touchUpInside" id="WZr-c3-B5Q"/>
                                 </connections>
