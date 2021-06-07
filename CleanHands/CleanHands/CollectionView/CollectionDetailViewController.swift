@@ -67,7 +67,7 @@ class CollectionDetailViewController: UIViewController {
         let frequency = selectedPathogen.frequency.toString
         frequencyLabel.text = "출현 빈도 \(frequency)"
         
-        if let exterminationCount = dummyPathogenDic[selectedPathogen] {
+        if let exterminationCount = User.userState.pathogenDic[selectedPathogen] {
             exterminationCountLabel.text = "박멸 횟수 \(exterminationCount)"
         }
     }

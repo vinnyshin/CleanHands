@@ -31,7 +31,8 @@ class CollectionTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dummyPathogenDic.count
+        print("dic: \(User.userState.pathogenDic.count)")
+        return User.userState.pathogenDic.count
     }
 
     
@@ -40,8 +41,8 @@ class CollectionTableViewController: UITableViewController {
         
         // Configure the cell...
         // dummyPathoganDic의 시작 index부터 indexpath.row만큼 떨어진 index를 가져온다.
-        let index = dummyPathogenDic.index(dummyPathogenDic.startIndex, offsetBy: indexPath.row)
-        cell.item = dummyPathogenDic.keys[index]
+        let index = User.userState.pathogenDic.index(User.userState.pathogenDic.startIndex, offsetBy: indexPath.row)
+        cell.item = User.userState.pathogenDic.keys[index]
         
         return cell
     }
@@ -49,8 +50,8 @@ class CollectionTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = self.tableView.indexPathForSelectedRow,
            let detailVC = segue.destination as? CollectionDetailViewController {
-            let index = dummyPathogenDic.index(dummyPathogenDic.startIndex, offsetBy: indexPath.row)
-            detailVC.selectedPathogen = dummyPathogenDic.keys[index]
+            let index = User.userState.pathogenDic.index(User.userState.pathogenDic.startIndex, offsetBy: indexPath.row)
+            detailVC.selectedPathogen = User.userState.pathogenDic.keys[index]
         }
     }
 
@@ -119,23 +120,14 @@ class CollectionCell : UITableViewCell {
             
             pathogenImage.layer.masksToBounds = true
             
-            // width와 height가 각각 83으로 잘 나옴
-            // width2가 41.5인것 확인
-            let width = pathogenImage.bounds.width
-            let height = pathogenImage.bounds.height
-            let width2 = pathogenImage.bounds.width / 2
-            
-            // 허나 CollectionDetailViewController의 56번째 줄은
-            // 잘 작동하는 것을 확인
-            // 같은 코드...? 다른 동작...?
             pathogenImage.layer.cornerRadius = pathogenImage.bounds.width / 2
             
-//            pathogenImage.layer.borderWidth = 5
-//            pathogenImage.layer.borderColor = UIColor.white.cgColor
+            pathogenImage.layer.borderWidth = 5
+            pathogenImage.layer.borderColor = UIColor.white.cgColor
             
             pathogenLabel.text = pathogen.name
             
-            if let exterminationCount = dummyPathogenDic[pathogen] {
+            if let exterminationCount = User.userState.pathogenDic[pathogen] {
                 exterminationCountLabel.text = "\(exterminationCount)"
             }
         }
