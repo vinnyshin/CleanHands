@@ -49,3 +49,46 @@ func getPrevDateBy(daysToSub : Int) ->Date{
     let PrevDate = Calendar.current.date(byAdding: dateComponents, to: Date())
     return PrevDate!
 }
+
+func criteriaFromWeekday(today: Date)-> Int{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE"
+    let dayOfTheWeekString = dateFormatter.string(from: today)
+    
+    switch dayOfTheWeekString {
+        case DAY_OF_WEEK_EN[0]:
+            return 0
+            
+        case DAY_OF_WEEK_EN[1]:
+            return 1
+            
+        case DAY_OF_WEEK_EN[2]:
+            return 2
+            
+        case DAY_OF_WEEK_EN[3]:
+            return 3
+            
+        case DAY_OF_WEEK_EN[4]:
+            return 4
+            
+        case DAY_OF_WEEK_EN[5]:
+            return 5
+            
+        case DAY_OF_WEEK_EN[6]:
+            return 6
+        default:
+            return -1
+    }
+}
+
+func daysBetween(start: Date, end: Date) -> Int {
+    let calendar = Calendar.current
+
+    // Replace the hour (time) of both dates with 00:00
+    let date1 = calendar.startOfDay(for: start)
+    let date2 = calendar.startOfDay(for: end)
+
+    let components = calendar.dateComponents([.day], from: date1, to: date2)
+    return components.day!
+    
+}
