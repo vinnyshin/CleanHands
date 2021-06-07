@@ -8,15 +8,17 @@
 
 //TODO 타이머 관리
 import UIKit
+import GameplayKit
 
 class HandViewController: UIViewController {
-    let handMatrix = [[],
-                      [],
-                      [],
-                      [],
-                      [],
-                      [],
-                      []]
+    let widthGererater = GKGaussianDistribution(randomSource: GKRandomSource(), lowestValue: -2, highestValue: 8)
+    let handMatrix = [[2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5],
+                      [2.7 ,2.7, 2.9, 2.9, 3.1, 3.1, 3.3],
+                      [0.5, 1, 2, 3, 4, 5, 5.5],
+                      [1, 1, 2, 3, 4, 5, 5.5],
+                      [0.5, 1, 2, 3, 4, 5, 5.5],
+                      [0.7, 1, 2, 2.5, 1, 2, 2.5],
+                      [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5]]
     
     var pathogenImageList = Array<UIImageView>()
     var capturedPathogenDic = [Pathogen:Int]()
@@ -56,8 +58,8 @@ class HandViewController: UIViewController {
     func createPathogen(numberOfCreate number:Int) {
         let imageLeftX = handImageView.frame.minX
         let imageUpY = handImageView.frame.minY
-        let imageWidth = handImageView.frame.size.width
-        let imageHeight = handImageView.frame.size.height
+        //let imageWidth = handImageView.frame.size.width
+        let devidedImageWidth = Int(handImageView.frame.size.width/7)
         
         for _ in Range(1...number) {
             if (pathogenImageList.count >= maxPathogenNum) {
@@ -65,13 +67,21 @@ class HandViewController: UIViewController {
             }
             let pathogenView = UIImageView(image: pathogenImage)
             
-            let x = arc4random_uniform(UInt32(imageWidth)) + UInt32(imageLeftX)
-            let y = arc4random_uniform(UInt32(imageHeight)) + UInt32(imageUpY)
-//            let randomWidth = arc4random_uniform(UInt32(imageWidth))
-//            let ratio = CGFloat(randomWidth)/imageWidth
-//            print(ratio)
+            var randomWidthIndex = widthGererater.nextInt()
+            if (randomWidthIndex < 0) {
+                randomWidthIndex = 0
+            }
+            if (randomWidthIndex > 6) {
+                randomWidthIndex = 6
+            }
+            let widthRange = Range(devidedImageWidth * randomWidthIndex...devidedImageWidth * (randomWidthIndex + 1))
+            let randomWidth = Int.random(in: widthRange)
+            let heightRange = getRandomPositionRange(widthIndex: randomWidthIndex)
             
-            pathogenView.frame = CGRect(x: Int(x), y: Int(y), width: 10, height: 10)
+            let x = UInt32(randomWidth) + UInt32(imageLeftX)
+            let y = Int.random(in: heightRange) + Int(imageUpY)
+            
+            pathogenView.frame = CGRect(x: Int(x), y: y, width: 10, height: 10)
             
             self.view.addSubview(pathogenView)
             pathogenImageList.append(pathogenView)
@@ -81,16 +91,23 @@ class HandViewController: UIViewController {
     }
     
     //손 모양에 맞춰 세균을 생성하기 위한 함수
-//    func randomPositionByWidth() -> Range<Int>{
-//
-//    }
+    func getRandomPositionRange(widthIndex:Int) -> Range<Int>{
+        let devidedImageHeight = handImageView.frame.size.height/7
+        let yIndexinMatrix = Int.random(in: 0...6)
+        let matrixValue = CGFloat(handMatrix[widthIndex][yIndexinMatrix])
+        let startRange = Int(devidedImageHeight*matrixValue)
+        let endRange = Int(devidedImageHeight*(matrixValue+1.0))
+
+        return Range(startRange...endRange)
+    }
     
     @objc func onTimePassed() {
         let currentDate = Date()
         let expectedPathongenNumber = Int(currentDate.timeIntervalSince(User.userState.handState.lastWashTime)/pathogenCreateInterval)
 
         if (pathogenImageList.count < expectedPathongenNumber)  {
-            createPathogen(numberOfCreate: expectedPathongenNumber - pathogenImageList.count)
+//            createPathogen(numberOfCreate: expectedPathongenNumber - pathogenImageList.count)
+            createPathogen(numberOfCreate: 100)
         }
     }
     
@@ -121,7 +138,6 @@ class HandViewController: UIViewController {
     func getRandomPathogen() {
         if (drand48() < percentageOfGettingPathogen) {
             let randomInt = Int.random(in: 0...dummyPathogenList.count-1)
-            print(randomInt)
             let newPathogen = dummyPathogenList[randomInt]
             if (capturedPathogenDic[newPathogen] != nil) {
                 capturedPathogenDic[newPathogen]! += 1
