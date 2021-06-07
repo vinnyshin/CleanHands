@@ -119,12 +119,25 @@ func generateWashDummies() -> [WashData]{
     var list :[WashData] = []
 
     for _ in 0...99{
-        let temp = arc4random_uniform(100);
+        let temp = arc4random_uniform(21);
         list.append(WashData(date: getPrevDateBy(daysToSub: Int(temp)), capturedPathogenDic: dummyPathogenDic))
         print(temp)
-        
+
     }
     return list
 }
 
 var randomWashList = generateWashDummies()
+
+func generateTestWashDataList() -> [WashData]{
+    var list :[WashData] = []
+
+    for i in 0...21{
+        list.append(WashData(date: getPrevDateBy(daysToSub: i), capturedPathogenDic: dummyPathogenDic))
+    }
+    return list
+}
+
+
+
+var testWashList = generateTestWashDataList()
