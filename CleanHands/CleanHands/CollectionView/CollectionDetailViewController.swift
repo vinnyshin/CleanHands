@@ -15,7 +15,6 @@ class CollectionDetailViewController: UIViewController {
     @IBOutlet weak var pathogenImageView: UIImageView!
     
     @IBOutlet weak var pathogenKoreanNameLabel: UILabel!
-    @IBOutlet weak var pathogenScientificNameLabel: UILabel!
     @IBOutlet weak var frequencyLabel: UILabel!
     @IBOutlet weak var exterminationCountLabel: UILabel!
     
@@ -24,23 +23,43 @@ class CollectionDetailViewController: UIViewController {
     @IBOutlet weak var careMethodLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
+    @IBOutlet var headerLabelCollection: [UILabel]!
+    
+    @IBOutlet var detailInfoViewCollection: [UIView]!
+    
+    @IBOutlet var detailInfoStackViewCollection: [UIStackView]!
+    
+    @IBOutlet var detailInfoViewConstraintCollection: [NSLayoutConstraint]!
+    
+    
     var selectedPathogen: Pathogen!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(selectedPathogen)
         setPathogenImageUI()
         setDetailsStackViewUI()
-        setHeaderUI()
+        setPathogenHeader()
         setContentsUI()
+        
+        for headerLabel in headerLabelCollection {
+            setHeaderLabelUI(headerLabel)
+        }
+        
+        for detailInfoView in detailInfoViewCollection {
+            setShadowUI(detailInfoView)
+        }
+        
+        for detailInfoStackView in detailInfoStackViewCollection {
+            setMarginUI(detailInfoStackView)
+        }
+        
+        for detailInfoViewConstraint in detailInfoViewConstraintCollection {
+            setDetailInfoViewConstraint(detailInfoViewConstraint)
+        }
 //        animateDetails()
-        // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
     
     func setDetailsStackViewUI() {
         detailsStackView.layoutMargins = UIEdgeInsets(top: 100, left: 0, bottom: 100, right: 0)
@@ -56,44 +75,90 @@ class CollectionDetailViewController: UIViewController {
         pathogenImageView.layer.cornerRadius = pathogenImageView.bounds.width / 2
         
         pathogenImageView.layer.borderWidth = 5
+        
         pathogenImageView.layer.borderColor = UIColor.white.cgColor
     }
     
-    func setHeaderUI() {
-        pathogenKoreanNameLabel.text = selectedPathogen.name
+    func setPathogenHeader() {
+        let attributedNameString = NSMutableAttributedString()
+            .bold(selectedPathogen.name, fontSize: 20)
+
+        pathogenKoreanNameLabel.attributedText = attributedNameString
         
-        pathogenScientificNameLabel.text = "학명 추가 필요"
         
         let frequency = selectedPathogen.frequency.toString
-        frequencyLabel.text = "출현 빈도 \(frequency)"
+        let attributedFrequencyString = NSMutableAttributedString()
+            .normal("출몰 빈도 ", fontSize: 15)
+            .bold("\(frequency)", fontSize: 15)
+        
+        frequencyLabel.attributedText = attributedFrequencyString
         
         if let exterminationCount = User.userState.pathogenDic[selectedPathogen] {
-            exterminationCountLabel.text = "박멸 횟수 \(exterminationCount)"
+            let attributedExterminationCountString = NSMutableAttributedString()
+                .normal("박멸 횟수 ", fontSize: 15)
+                .bold("\(exterminationCount)", fontSize: 15)
+            exterminationCountLabel.attributedText = attributedExterminationCountString
+            
         }
     }
     
+    func setHeaderLabelUI(_ headerLabel: UILabel) {
+        headerLabel.textAlignment = .center
+        let textColor = UIColor(red: 25.0 / 255, green: 63.0 / 255, blue: 110.0 / 255, alpha: 1.0)
+        
+        headerLabel.textColor = textColor
+        
+        
+        
+        let attributedHeaderString = NSMutableAttributedString()
+            .bold(headerLabel.text!, fontSize: 15)
+        
+        headerLabel.attributedText = attributedHeaderString
+        
+//        headerLabel.font = headerLabel.font.withSize(15)
+        
+    }
+    
     func setContentsUI() {
-        decriptionLabel.text = selectedPathogen.description
+        decriptionLabel.text = selectedPathogen.description + selectedPathogen.description + selectedPathogen.description
+        
         symptomLabel.text = selectedPathogen.symptom
         careMethodLabel.text = selectedPathogen.careMethod
         locationLabel.text = selectedPathogen.location
     }
-//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//
-//
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        animateDetails()
-//    }
     
-//    func animateDetails() {
-//        self.stackViewTopConstraint.constant = 100
-//        self.stackViewOutlet.setNeedsUpdateConstraints()
-//        UIView.animate(withDuration: 1.0) {
-//            self.view.layoutIfNeeded()
-//        }
-//    }
+    func setShadowUI(_ view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.01
+//        view.layer.shadowOffset = CGSize(width: 10, height: 10)
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 2
+        view.layer.masksToBounds = false
+        
+    }
+    
+    
+    func setMarginUI(_ stackView: UIStackView) {
+        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        stackView.isLayoutMarginsRelativeArrangement = true
+    }
+    
+    func setDetailInfoViewConstraint(_ constraint: NSLayoutConstraint) {
+        constraint.constant = 25
+    }
+    
+}
+
+extension NSMutableAttributedString {
+    func bold(_ text: String, fontSize: CGFloat) -> NSMutableAttributedString {
+        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: fontSize)]
+        self.append(NSMutableAttributedString(string: text, attributes: attrs))
+        return self
+    }
+    
+    func normal(_ text: String, fontSize: CGFloat) -> NSMutableAttributedString {
+        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: fontSize)]
+        self.append(NSMutableAttributedString(string: text, attributes: attrs))
+        return self
+    }
 }
