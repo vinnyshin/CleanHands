@@ -39,11 +39,15 @@ class HandViewController: UIViewController {
     }
     
     @IBOutlet weak var handImageView: UIImageView!
+    
+    @IBOutlet weak var explainText: UILabel!
+    
     let pathogenImage = UIImage(named: "Pathogen")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         startTimer()
+        updateUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,6 +112,29 @@ class HandViewController: UIViewController {
         if (pathogenImageList.count < expectedPathongenNumber)  {
 //            createPathogen(numberOfCreate: expectedPathongenNumber - pathogenImageList.count)
             createPathogen(numberOfCreate: 100)
+        }
+        updateUI()
+    }
+    
+    func updateUI() {
+        let timeInterval = Date().timeIntervalSince(User.userState.handState.lastWashTime)
+        let hour = Int(timeInterval/3600)
+        let min = Int(timeInterval/60)
+        if (hour > 23) {
+            explainText.text = "마지막으로 손을 씻은 지 오랜 시간이 지났습니다.\n\(pathogenImageList.count) 마리의 세균을 서둘러 씻어내세요!"
+            let attributedStr = NSMutableAttributedString(string: explainText.text!)
+            attributedStr.addAttribute(.foregroundColor, value: UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1), range: (explainText.text! as NSString).range(of: "\(pathogenImageList.count) 마리"))
+            explainText.attributedText = attributedStr
+        }
+        else if (timeInterval > 600) {
+            explainText.text = "마지막으로 손을 씻은 지 \(hour)시간 \(min)분 지났습니다. \n\(pathogenImageList.count) 마리의 세균을 서둘러 씻어내세요!"
+            let attributedStr = NSMutableAttributedString(string: explainText.text!)
+            attributedStr.addAttribute(.foregroundColor, value: UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1), range: (explainText.text! as NSString).range(of: "\(hour)시간 \(min)분"))
+            attributedStr.addAttribute(.foregroundColor, value: UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1), range: (explainText.text! as NSString).range(of: "\(pathogenImageList.count) 마리"))
+            explainText.attributedText = attributedStr
+        }
+        else {
+            explainText.text = "손이 깨끗해요!"
         }
     }
     

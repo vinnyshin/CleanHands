@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hand" translatesAutoresizingMaskIntoConstraints="NO" id="vt9-3j-9SM">
-                                <rect key="frame" x="83" y="172.5" width="248" height="461.5"/>
+                                <rect key="frame" x="83" y="127.5" width="248" height="461.5"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JE-Jq-WlV">
-                                <rect key="frame" x="147" y="697.5" width="120" height="40"/>
+                                <rect key="frame" x="147" y="707" width="120" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="TI0-Q3-G9R"/>
                                     <constraint firstAttribute="height" constant="40" id="fnV-5a-W40"/>
@@ -33,21 +33,127 @@
                                     <action selector="onWashButtonPressed:" destination="ABu-Ec-sst" eventType="touchUpInside" id="lL7-H4-OE1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R23-9R-BDM">
+                                <rect key="frame" x="0.0" y="614.5" width="414" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="lsP-GQ-307"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="마지막으로">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="손을">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="씻은">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="지">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" 1">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="시간">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" 21">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="분이">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="지났습니다">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">.
+12,632 마리의 세균을 서둘러 씻어내세요!</string>
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XMg-0d-egj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6JE-Jq-WlV" firstAttribute="top" secondItem="vt9-3j-9SM" secondAttribute="bottom" multiplier="1.1" id="1kk-pZ-C1c"/>
+                            <constraint firstItem="6JE-Jq-WlV" firstAttribute="top" secondItem="vt9-3j-9SM" secondAttribute="bottom" multiplier="1.2" id="1kk-pZ-C1c"/>
                             <constraint firstItem="vt9-3j-9SM" firstAttribute="width" secondItem="XMg-0d-egj" secondAttribute="width" multiplier="0.6" id="Ajy-2W-qlm"/>
                             <constraint firstItem="vt9-3j-9SM" firstAttribute="centerX" secondItem="iVB-Al-xjC" secondAttribute="centerX" id="FZU-3c-jnc"/>
                             <constraint firstItem="6JE-Jq-WlV" firstAttribute="centerX" secondItem="iVB-Al-xjC" secondAttribute="centerX" id="JMP-aK-Pe2"/>
-                            <constraint firstItem="vt9-3j-9SM" firstAttribute="centerY" secondItem="iVB-Al-xjC" secondAttribute="centerY" multiplier="0.9" id="XXf-AX-HrD"/>
+                            <constraint firstItem="R23-9R-BDM" firstAttribute="leading" secondItem="XMg-0d-egj" secondAttribute="leading" id="KUy-rM-me9"/>
+                            <constraint firstItem="vt9-3j-9SM" firstAttribute="centerY" secondItem="iVB-Al-xjC" secondAttribute="centerY" multiplier="0.8" id="XXf-AX-HrD"/>
                             <constraint firstItem="vt9-3j-9SM" firstAttribute="height" secondItem="XMg-0d-egj" secondAttribute="height" multiplier="0.6" id="YDq-7H-DFg"/>
+                            <constraint firstItem="XMg-0d-egj" firstAttribute="trailing" secondItem="R23-9R-BDM" secondAttribute="trailing" id="dZU-e7-vNh"/>
+                            <constraint firstItem="R23-9R-BDM" firstAttribute="top" secondItem="vt9-3j-9SM" secondAttribute="bottom" multiplier="1.043" id="tZS-Pj-7Dq"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Wash" image="WandTabIcon" id="XJC-uK-Gvk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="explainText" destination="R23-9R-BDM" id="z5q-OT-aNU"/>
                         <outlet property="handImageView" destination="vt9-3j-9SM" id="fvL-gw-iPs"/>
                     </connections>
                 </viewController>
