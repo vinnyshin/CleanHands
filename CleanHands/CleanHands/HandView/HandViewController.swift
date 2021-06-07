@@ -10,7 +10,14 @@
 import UIKit
 
 class HandViewController: UIViewController {
-
+    let handMatrix = [[],
+                      [],
+                      [],
+                      [],
+                      [],
+                      [],
+                      []]
+    
     var pathogenImageList = Array<UIImageView>()
     var capturedPathogenDic = [Pathogen:Int]()
     
@@ -60,6 +67,9 @@ class HandViewController: UIViewController {
             
             let x = arc4random_uniform(UInt32(imageWidth)) + UInt32(imageLeftX)
             let y = arc4random_uniform(UInt32(imageHeight)) + UInt32(imageUpY)
+//            let randomWidth = arc4random_uniform(UInt32(imageWidth))
+//            let ratio = CGFloat(randomWidth)/imageWidth
+//            print(ratio)
             
             pathogenView.frame = CGRect(x: Int(x), y: Int(y), width: 10, height: 10)
             
@@ -69,6 +79,11 @@ class HandViewController: UIViewController {
             User.userState.handState.pathogenAmount = pathogenImageList.count
         }
     }
+    
+    //손 모양에 맞춰 세균을 생성하기 위한 함수
+//    func randomPositionByWidth() -> Range<Int>{
+//
+//    }
     
     @objc func onTimePassed() {
         let currentDate = Date()
@@ -89,6 +104,16 @@ class HandViewController: UIViewController {
         }
         let newWashData = WashData(date: Date(), capturedPathogenDic: capturedPathogenDic)
         User.userState.washDataList.append(newWashData)
+        
+        for (capturedPathogen, number) in capturedPathogenDic {
+            if (User.userState.pathogenDic[capturedPathogen] != nil) {
+                User.userState.pathogenDic[capturedPathogen]! += number
+            }
+            else {
+                User.userState.pathogenDic[capturedPathogen] = number
+            }
+        }
+        
         pathogenImageList = Array<UIImageView>()
     }
     
