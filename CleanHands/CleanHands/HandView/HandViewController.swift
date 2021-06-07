@@ -81,6 +81,7 @@ class HandViewController: UIViewController {
     
     func removePathogen() {
         User.userState.handState.lastWashTime = Date()
+        capturedPathogenDic = [Pathogen:Int]()
         for i in pathogenImageList {
             getRandomPathogen()
             i.removeFromSuperview()
@@ -88,7 +89,6 @@ class HandViewController: UIViewController {
         }
         let newWashData = WashData(date: Date(), capturedPathogenDic: capturedPathogenDic)
         User.userState.washDataList.append(newWashData)
-        print(newWashData)
         pathogenImageList = Array<UIImageView>()
     }
     
