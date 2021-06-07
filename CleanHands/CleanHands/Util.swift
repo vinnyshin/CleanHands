@@ -8,7 +8,7 @@
 import Foundation
 
 let DAY_OF_WEEK_EN
-    = ["Monday", "Tuesday", "Wendnesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 let DAY_OF_WEEK  = ["월", "화", "수", "목", "금", "토", "일"]
 
 
@@ -43,4 +43,9 @@ func dateToDayOfWeek(date: Date) -> String {
     }
 }
 
-
+func getPrevDateBy(daysToSub : Int) ->Date{
+    var dateComponents = DateComponents()
+    dateComponents.day = -daysToSub
+    let PrevDate = Calendar.current.date(byAdding: dateComponents, to: Date())
+    return PrevDate!
+}

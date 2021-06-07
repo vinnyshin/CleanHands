@@ -18,7 +18,7 @@ class StatisticViewController: UIViewController {
     @IBAction func changeChartNext(_ sender: Any) {
     }
     
-    var allData = dummyWashDataList
+    var allData = randomWashList
     var curChartDataSet : BarChartDataSet?
     var curChartData : BarChartData?// 실제로 차트 뷰에 넣는 데이터.
     
