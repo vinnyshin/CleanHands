@@ -13,6 +13,10 @@ class CollectionTableViewController: UITableViewController {
         super.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.view.layoutIfNeeded()
@@ -31,7 +35,6 @@ class CollectionTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print("dic: \(User.userState.pathogenDic.count)")
         return User.userState.pathogenDic.count
     }
 
@@ -122,8 +125,12 @@ class CollectionCell : UITableViewCell {
             
             pathogenImage.layer.cornerRadius = pathogenImage.bounds.width / 2
             
+            
+            let borderColor = UIColor(red: 25.0 / 255, green: 63.0 / 255, blue: 110.0 / 255, alpha: 1.0)
+            pathogenImage.layer.borderColor = borderColor.cgColor
             pathogenImage.layer.borderWidth = 5
-            pathogenImage.layer.borderColor = UIColor.white.cgColor
+            
+//            pathogenImage.layer.borderColor = UIColor.black.cgColor
             
             pathogenLabel.text = pathogen.name
             
