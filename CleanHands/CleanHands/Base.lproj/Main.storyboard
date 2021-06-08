@@ -24,7 +24,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMZ-JZ-dm7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="361"/>
+            <point key="canvasLocation" x="1131" y="386"/>
+        </scene>
+        <!--Achievements-->
+        <scene sceneID="WBE-Fh-PAr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Achievements" id="NLM-GW-vrx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="oim-y2-1fO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xCb-kG-MVW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1162" y="323"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="L0h-Iq-zB8">
@@ -40,7 +50,8 @@
                         <segue destination="NBQ-sy-ww3" kind="relationship" relationship="viewControllers" id="DX9-t2-pif"/>
                         <segue destination="SUw-TG-I8z" kind="relationship" relationship="viewControllers" id="TNB-Zw-xj6"/>
                         <segue destination="JCn-Ef-xxy" kind="relationship" relationship="viewControllers" id="dXc-0P-D10"/>
-                        <segue destination="3Sp-li-G5a" kind="relationship" relationship="viewControllers" id="Dgr-UP-uOp"/>
+                        <segue destination="NLM-GW-vrx" kind="relationship" relationship="viewControllers" id="8DW-Xa-SnF"/>
+                        <segue destination="3Sp-li-G5a" kind="relationship" relationship="viewControllers" id="9WN-gG-qz5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jan-Gp-8aa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

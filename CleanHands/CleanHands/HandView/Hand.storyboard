@@ -220,7 +220,7 @@
         <!--Wash Result View Controller-->
         <scene sceneID="wO5-JT-5na">
             <objects>
-                <viewController storyboardIdentifier="resultView" id="Pha-zR-fAn" customClass="washResultViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="resultView" id="Pha-zR-fAn" customClass="WashResultViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dvr-5f-CT8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

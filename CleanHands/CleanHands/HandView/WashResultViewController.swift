@@ -7,7 +7,7 @@
 
 import UIKit
 
-class washResultViewController: UIViewController {
+class WashResultViewController: UIViewController {
     
     @IBOutlet weak var resultView: UIView!
     let washDataList = User.userState.washDataList
@@ -53,7 +53,7 @@ class washResultViewController: UIViewController {
     }
     
 }
-extension washResultViewController:UICollectionViewDelegate, UICollectionViewDataSource {
+extension WashResultViewController:UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return washDataList[washDataList.count - 1].capturedPathogenDic.count
     }
@@ -69,7 +69,7 @@ extension washResultViewController:UICollectionViewDelegate, UICollectionViewDat
         return cell
     }
 }
-extension washResultViewController:UICollectionViewDelegateFlowLayout {
+extension WashResultViewController:UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.frame.width - 100) / 2 - padding
@@ -122,35 +122,5 @@ class PathogenCell : UICollectionViewCell {
             }
             numberOfPathogen.text = String(number)
         }
-    }
-}
-
-class TransitioningDelegate2: NSObject, UIViewControllerTransitioningDelegate {
-    
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return PresentationController2(presentedViewController: presented, presenting: presenting)
-    }
-}
-
-class PresentationController2: UIPresentationController {
-    
-    override var frameOfPresentedViewInContainerView: CGRect {
-        let bounds = presentingViewController.view.bounds
-        let size = CGSize(width: bounds.width * 0.9, height: bounds.height*2.5)
-        let origin = CGPoint(x: bounds.midX - size.width / 2, y: bounds.height)
-        return CGRect(origin: origin, size: size)
-    }
-
-    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
-        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-
-        presentedView?.autoresizingMask = [
-            .flexibleTopMargin,
-            .flexibleBottomMargin,
-            .flexibleLeftMargin,
-            .flexibleRightMargin
-        ]
-
-        presentedView?.translatesAutoresizingMaskIntoConstraints = true
     }
 }

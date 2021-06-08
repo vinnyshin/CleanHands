@@ -13,9 +13,11 @@
 		27D37651264525E40074EDAC /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37650264525E40074EDAC /* Settings.storyboard */; };
 		27D37654264526260074EDAC /* Statistic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37653264526260074EDAC /* Statistic.storyboard */; };
 		328E63A473D8D367C51144A6 /* Pods_CleanHands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E1CFD389E4207CA0DCB4F2 /* Pods_CleanHands.framework */; };
-		7A0073D62665E58F00E7057B /* washResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0073D52665E58F00E7057B /* washResultViewController.swift */; };
+		7A0073D62665E58F00E7057B /* WashResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0073D52665E58F00E7057B /* WashResultViewController.swift */; };
 		7A1D340C26452F5A002D460D /* HandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D340B26452F5A002D460D /* HandViewController.swift */; };
 		7A50EFAE265A8445008FF744 /* TimerModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50EFAD265A8445008FF744 /* TimerModalViewController.swift */; };
+		7A7F0E48266EEE6D0038B3FF /* Achievements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F0E47266EEE6D0038B3FF /* Achievements.storyboard */; };
+		7A7F0E4B266EF3350038B3FF /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F0E4A266EF3350038B3FF /* AchievementViewController.swift */; };
 		F13D8ECE2643EC6E00492E92 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13D8ECD2643EC6E00492E92 /* DummyData.swift */; };
 		F13D8ED72644100100492E92 /* Hand.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13D8ED62644100100492E92 /* Hand.storyboard */; };
 		F13D8EE52645281C00492E92 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13D8EE42645281C00492E92 /* StatisticViewController.swift */; };
@@ -34,9 +36,11 @@
 		27D3764A264521C40074EDAC /* CollectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewController.swift; sourceTree = "<group>"; };
 		27D37650264525E40074EDAC /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		27D37653264526260074EDAC /* Statistic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistic.storyboard; sourceTree = "<group>"; };
-		7A0073D52665E58F00E7057B /* washResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = washResultViewController.swift; sourceTree = "<group>"; };
+		7A0073D52665E58F00E7057B /* WashResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashResultViewController.swift; sourceTree = "<group>"; };
 		7A1D340B26452F5A002D460D /* HandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandViewController.swift; sourceTree = "<group>"; };
 		7A50EFAD265A8445008FF744 /* TimerModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModalViewController.swift; sourceTree = "<group>"; };
+		7A7F0E47266EEE6D0038B3FF /* Achievements.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievements.storyboard; sourceTree = "<group>"; };
+		7A7F0E4A266EF3350038B3FF /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		86E1CFD389E4207CA0DCB4F2 /* Pods_CleanHands.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanHands.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3946C4C15ED2ECFF19BAF25 /* Pods-CleanHands.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanHands.debug.xcconfig"; path = "Target Support Files/Pods-CleanHands/Pods-CleanHands.debug.xcconfig"; sourceTree = "<group>"; };
 		E26F87257DD2CF62ACE9FEE6 /* Pods-CleanHands.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanHands.release.xcconfig"; path = "Target Support Files/Pods-CleanHands/Pods-CleanHands.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,9 +86,18 @@
 				F13D8ED62644100100492E92 /* Hand.storyboard */,
 				7A1D340B26452F5A002D460D /* HandViewController.swift */,
 				7A50EFAD265A8445008FF744 /* TimerModalViewController.swift */,
-				7A0073D52665E58F00E7057B /* washResultViewController.swift */,
+				7A0073D52665E58F00E7057B /* WashResultViewController.swift */,
 			);
 			path = HandView;
+			sourceTree = "<group>";
+		};
+		7A7F0E49266EEEC40038B3FF /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				7A7F0E47266EEE6D0038B3FF /* Achievements.storyboard */,
+				7A7F0E4A266EF3350038B3FF /* AchievementViewController.swift */,
+			);
+			path = Achievement;
 			sourceTree = "<group>";
 		};
 		BE9C7CEA607F59F739404156 /* Frameworks */ = {
@@ -125,6 +138,7 @@
 		F16064A5261EF2820072858F /* CleanHands */ = {
 			isa = PBXGroup;
 			children = (
+				7A7F0E49266EEEC40038B3FF /* Achievement */,
 				F167EB712668BDFB008CA7DF /* Statistic */,
 				2744C36B265F831600543BD7 /* CollectionView */,
 				7A50EFAC265A83FE008FF744 /* HandView */,
@@ -212,6 +226,7 @@
 			files = (
 				27D37648264521370074EDAC /* Collection.storyboard in Resources */,
 				F16064B3261EF2850072858F /* LaunchScreen.storyboard in Resources */,
+				7A7F0E48266EEE6D0038B3FF /* Achievements.storyboard in Resources */,
 				F16064B0261EF2850072858F /* Assets.xcassets in Resources */,
 				27D37651264525E40074EDAC /* Settings.storyboard in Resources */,
 				F16064AE261EF2820072858F /* Main.storyboard in Resources */,
@@ -271,8 +286,9 @@
 			files = (
 				F1BF572026664857006C5201 /* Util.swift in Sources */,
 				F13D8ECE2643EC6E00492E92 /* DummyData.swift in Sources */,
+				7A7F0E4B266EF3350038B3FF /* AchievementViewController.swift in Sources */,
 				7A1D340C26452F5A002D460D /* HandViewController.swift in Sources */,
-				7A0073D62665E58F00E7057B /* washResultViewController.swift in Sources */,
+				7A0073D62665E58F00E7057B /* WashResultViewController.swift in Sources */,
 				7A50EFAE265A8445008FF744 /* TimerModalViewController.swift in Sources */,
 				27D3764B264521C40074EDAC /* CollectionTableViewController.swift in Sources */,
 				F16064AB261EF2820072858F /* ViewController.swift in Sources */,
