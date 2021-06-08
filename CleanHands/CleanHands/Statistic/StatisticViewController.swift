@@ -19,6 +19,7 @@ class StatisticViewController: UIViewController {
     @IBOutlet weak var avgWashNumLabel: UILabel!
     @IBOutlet weak var catchedPathoganNumLabel: UILabel!
     @IBOutlet weak var numCleanHandLabel: UILabel!
+    @IBOutlet weak var stateLabel: UILabel!
     
     private var today = Date()
     private var state : ChartState?{
@@ -29,6 +30,7 @@ class StatisticViewController: UIViewController {
             barChartView.notifyDataSetChanged()
             
             setInfoLabels()
+            setStateLabel()
         }
     }
     
@@ -118,10 +120,12 @@ class StatisticViewController: UIViewController {
         curChartDataSet.highlightEnabled = false
         curChartDataSet.colors = [.systemBlue]
         curChartDataSet.valueFormatter = DigitValueFormatter()
+        
+        
         curChartData = BarChartData(dataSet: curChartDataSet)
     }
     
-    func setInfoLabels(){
+    private func setInfoLabels(){
         let numList = numWashLists[state!.rawValue]
         let washList = washDataLists[state!.rawValue]
         let sumNumWash = numList.reduce(0, {(s1: Int, s2: Int) -> Int in
@@ -135,11 +139,7 @@ class StatisticViewController: UIViewController {
         }else{
             avgNumWash = sumNumWash / numList.count
         }
-            
-            
-        
-        
-        
+
         //catch한거 다 더하려면... 1. 워시데이터들로부터 딕셔너리 다 뽑아내기
         //워시 리스트로부터 딕셔너리 리스트를 뽑아왔다.
         let catchedDictList = washList.map({ (data: WashData) -> [Pathogen : Int] in
@@ -165,7 +165,16 @@ class StatisticViewController: UIViewController {
         
     }
         
-    
+    private func setStateLabel(){
+        if (state == ChartState.CUR_WEEK){
+            stateLabel.text = "이번 주"
+        }else if(state == ChartState.PREV_WEEK){
+            stateLabel.text = "지난 주 통계"
+        }else{
+            stateLabel.text = "2주 전 통계"
+        }
+            
+    }
     
     
     private func chartConfigue(){
@@ -180,6 +189,8 @@ class StatisticViewController: UIViewController {
         barChartView.xAxis.drawGridLinesEnabled = false
         barChartView.drawBordersEnabled = false
         barChartView.leftAxis.drawAxisLineEnabled = false
+        
+        barChartView.leftAxis.valueFormatter = DigitValueFormatter() as! IAxisValueFormatter
     }
     
     

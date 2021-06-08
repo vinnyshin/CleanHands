@@ -30,6 +30,12 @@
                                                     <action selector="changeChartPrev:" destination="62x-o8-5ha" eventType="touchUpInside" id="CNs-ms-aVI"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="me2-gZ-4GU">
+                                                <rect key="frame" x="166.33333333333334" y="0.0" width="41.333333333333343" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEg-xO-GN0">
                                                 <rect key="frame" x="354.33333333333331" y="0.0" width="19.666666666666686" height="22"/>
                                                 <state key="normal" image="arrow.right" catalog="system"/>
@@ -127,6 +133,7 @@
                         <outlet property="NumCleanHandLabel" destination="mzC-Bm-pMV" id="Pml-m2-sRt"/>
                         <outlet property="avgWashNumLabel" destination="NRn-Rc-wWn" id="qOa-8E-JKy"/>
                         <outlet property="barChartView" destination="xuz-Vb-pj4" id="FNO-LS-Km2"/>
+                        <outlet property="stateLabel" destination="me2-gZ-4GU" id="Xjp-SR-Wwv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VjF-hg-aph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

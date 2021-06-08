@@ -95,7 +95,12 @@ func daysBetween(start: Date, end: Date) -> Int {
 }
 
 
-class DigitValueFormatter : NSObject, IValueFormatter {
+class DigitValueFormatter : NSObject, IValueFormatter, IAxisValueFormatter {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        let valueWithoutDecimalPart = String(format: "%.0f", value)
+        return "\(valueWithoutDecimalPart)"
+    }
+    
 
     func stringForValue(_ value: Double,
                         entry: ChartDataEntry,
