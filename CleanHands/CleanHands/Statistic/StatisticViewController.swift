@@ -9,10 +9,10 @@ import UIKit
 import Charts
 
 class StatisticViewController: UIViewController {
-    private enum ChartState {
-        case PPrev
-        case Prev
-        case Cur
+    private enum ChartState : Int{
+        case PPREV_WEEK
+        case PREV_WEEK
+        case CUR_WEEK
     }
     
     @IBOutlet weak var barChartView: BarChartView!
@@ -33,33 +33,28 @@ class StatisticViewController: UIViewController {
     
     var curChartData : BarChartData?// 실제로 차트 뷰에 넣는 데이터.
     
-    var curWeekWashDataList :[WashData] = []
-    var prevWeekWashDataList :[WashData] = []
-    var pprevWeekWashDataList :[WashData] = []
-    
-    var curWeekNumWashingHands = [Int](repeating: 0, count: 7)
-    var prevWeekNumWashingHands = [Int](repeating: 0, count: 7)
-    var pprevWeekNumWashingHands = [Int](repeating: 0, count: 7)
+    var washDataLists : [[WashData]] = [[],[],[]]
+    var numWashLists = [[Int](repeating: 0, count: 7),[Int](repeating: 0, count: 7),[Int](repeating: 0, count: 7)]
     
     @IBAction func changeChartNext(_ sender: Any) {
-        if(state == ChartState.Cur){
+        if(state == ChartState.CUR_WEEK){
             return
         }
-        if(state == ChartState.Prev){
-            state = ChartState.Cur
-        }else if (state == ChartState.PPrev){
-            state = ChartState.Prev
+        if(state == ChartState.PREV_WEEK){
+            state = ChartState.CUR_WEEK
+        }else if (state == ChartState.PPREV_WEEK){
+            state = ChartState.PREV_WEEK
         }
     }
     
     @IBAction func changeChartPrev(_ sender: Any) {
-        if(state == ChartState.PPrev){
+        if(state == ChartState.PPREV_WEEK){
             return
         }
-        if(state == ChartState.Cur){
-            state = ChartState.Prev
-        }else if (state == ChartState.Prev){
-            state = ChartState.PPrev
+        if(state == ChartState.CUR_WEEK){
+            state = ChartState.PREV_WEEK
+        }else if (state == ChartState.PREV_WEEK){
+            state = ChartState.PPREV_WEEK
         }
     }
     
@@ -69,7 +64,7 @@ class StatisticViewController: UIViewController {
         barChartView.noDataFont = .systemFont(ofSize: 20)
         barChartView.noDataTextColor = .lightGray
         initWashDataList(dataList: randomWashList)
-        state = ChartState.Cur
+        state = ChartState.CUR_WEEK
         chartConfigue()
     }
     
@@ -79,40 +74,35 @@ class StatisticViewController: UIViewController {
         //1. 이번주, 지난주, 지지난주 데이터를 따로 리스트로 만들어준다.
         for washData in dataList {
             
-            
             let diff = daysBetween(start: washData.date, end: today)
             let condition = (diff - m)
             
             print("오늘 :\(dateToDayOfWeek(date: today))")
             print("비교대상 요일 : \(dateToDayOfWeek(date: washData.date)), diff : \(diff), condition : \(condition)")
             if(condition <= 0){
-                curWeekWashDataList.append(washData)
+                washDataLists[ChartState.CUR_WEEK.rawValue].append(washData)
             }else if(condition <= 7){
-                prevWeekWashDataList.append(washData)
+                washDataLists[ChartState.PREV_WEEK.rawValue].append(washData)
             }else if(condition <= 14){
-                pprevWeekWashDataList.append(washData)
+                washDataLists[ChartState.PPREV_WEEK.rawValue].append(washData)
             }
         }
         for i in 0..<7{
-            curWeekNumWashingHands[i] = curWeekWashDataList.filter{ dateToDayOfWeek(date: $0.date) == DAY_OF_WEEK[i]}.count
-        }
-        for i in 0..<7{
-            prevWeekNumWashingHands[i] = prevWeekWashDataList.filter{ dateToDayOfWeek(date: $0.date) == DAY_OF_WEEK[i]}.count
-        }
-        for i in 0..<7{
-            pprevWeekNumWashingHands[i] = pprevWeekWashDataList.filter{ dateToDayOfWeek(date: $0.date) == DAY_OF_WEEK[i]}.count
+            numWashLists[ChartState.CUR_WEEK.rawValue][i] = washDataLists[ChartState.CUR_WEEK.rawValue].filter{ dateToDayOfWeek(date: $0.date) == DAY_OF_WEEK[i]}.count
+            numWashLists[ChartState.PREV_WEEK.rawValue][i] = washDataLists[ChartState.PREV_WEEK.rawValue].filter{ dateToDayOfWeek(date: $0.date) == DAY_OF_WEEK[i]}.count
+            numWashLists[ChartState.PPREV_WEEK.rawValue][i] = washDataLists[ChartState.PPREV_WEEK.rawValue].filter{ dateToDayOfWeek(date: $0.date) == DAY_OF_WEEK[i]}.count
         }
  
     }
     
     func makeChartData(){
         var numList: [Int]
-        if (state == ChartState.Cur){
-            numList = curWeekNumWashingHands
-        }else if (state == ChartState.Prev){
-            numList = prevWeekNumWashingHands
+        if (state == ChartState.CUR_WEEK){
+            numList = numWashLists[ChartState.CUR_WEEK.rawValue]
+        }else if (state == ChartState.PREV_WEEK){
+            numList = numWashLists[ChartState.PREV_WEEK.rawValue]
         }else{
-            numList = pprevWeekNumWashingHands
+            numList = numWashLists[ChartState.PPREV_WEEK.rawValue]
         }
         var dataEntries :[BarChartDataEntry] = []// 차트에 넣을 데이터(요일별 손 씻은 횟수)
         
@@ -131,8 +121,8 @@ class StatisticViewController: UIViewController {
     func setInfoLabels(){
 //        @IBOutlet weak var avgWashNumLabel:
 //        @IBOutlet weak var CatchedPathoganNumLabel: UILabel!
-//        @IBOutlet weak var NumCleanHandLabel: UILabel!
-        
+//        @IBOutlet weak var NumCleanHandLabel:
+//        var avgWashNum =
 //        avgWashNumLabel.text =
     }
     
