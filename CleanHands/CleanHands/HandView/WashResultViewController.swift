@@ -7,11 +7,10 @@
 
 import UIKit
 
-class washResultViewController: UIViewController {
+class WashResultViewController: UIViewController {
     
     @IBOutlet weak var resultView: UIView!
     let washDataList = User.userState.washDataList
-    //private var customTransitioningDelegate = TransitioningDelegate2()
     let padding:CGFloat = 30
     
     @IBOutlet weak var washResultCollectionView: UICollectionView!
@@ -30,7 +29,7 @@ class washResultViewController: UIViewController {
         for indexPath in washResultCollectionView.indexPathsForVisibleItems {
             let pathogenCell:PathogenCell = washResultCollectionView.cellForItem(at: indexPath) as! PathogenCell
             pathogenCell.pathogenImage.layer.cornerRadius = pathogenCell.pathogenImage.layer.bounds.width/2
-            print(pathogenCell.pathogenImage.layer.bounds.width)
+            pathogenCell.borderView.layer.cornerRadius = pathogenCell.borderView.layer.bounds.width/2
         }
     }
     
@@ -49,14 +48,12 @@ class washResultViewController: UIViewController {
     }
     
     func animateModal() {
-        //view.layer.cornerRadius = 25
         modalPresentationStyle = .custom
-        modalTransitionStyle = .coverVertical             // use whatever transition you want
-        //transitioningDelegate = customTransitioningDelegate
+        modalTransitionStyle = .coverVertical
     }
     
 }
-extension washResultViewController:UICollectionViewDelegate, UICollectionViewDataSource {
+extension WashResultViewController:UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return washDataList[washDataList.count - 1].capturedPathogenDic.count
     }
@@ -72,7 +69,7 @@ extension washResultViewController:UICollectionViewDelegate, UICollectionViewDat
         return cell
     }
 }
-extension washResultViewController:UICollectionViewDelegateFlowLayout {
+extension WashResultViewController:UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.frame.width - 100) / 2 - padding
@@ -94,14 +91,21 @@ class PathogenCell : UICollectionViewCell {
     
     @IBOutlet weak var pathogenImage: UIImageView!
     @IBOutlet weak var pathogenName: UILabel!
+    @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var numberOfPathogen: UILabel!
     
     var item : Pathogen? {
         didSet {
+            borderView.layer.cornerRadius = self.borderView.frame.height/2
+            borderView.layer.masksToBounds = true
+            borderView.layer.borderColor = CGColor(red: 25/255, green: 63/255, blue: 110/255, alpha: 1)
+            borderView.layer.borderWidth = 3
+            
             pathogenImage.layer.cornerRadius = self.pathogenImage.frame.height/2
-            pathogenImage.layer.borderWidth = 1
-            pathogenImage.layer.borderColor = UIColor.clear.cgColor
+            pathogenImage.layer.borderWidth = 2
+            pathogenImage.layer.borderColor = UIColor.white.cgColor
             pathogenImage.clipsToBounds = true
+            
             guard let pathogen = item else {
                 return
             }
@@ -118,35 +122,5 @@ class PathogenCell : UICollectionViewCell {
             }
             numberOfPathogen.text = String(number)
         }
-    }
-}
-
-class TransitioningDelegate2: NSObject, UIViewControllerTransitioningDelegate {
-    
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return PresentationController2(presentedViewController: presented, presenting: presenting)
-    }
-}
-
-class PresentationController2: UIPresentationController {
-    
-    override var frameOfPresentedViewInContainerView: CGRect {
-        let bounds = presentingViewController.view.bounds
-        let size = CGSize(width: bounds.width * 0.9, height: bounds.height*2.5)
-        let origin = CGPoint(x: bounds.midX - size.width / 2, y: bounds.height)
-        return CGRect(origin: origin, size: size)
-    }
-
-    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
-        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-
-        presentedView?.autoresizingMask = [
-            .flexibleTopMargin,
-            .flexibleBottomMargin,
-            .flexibleLeftMargin,
-            .flexibleRightMargin
-        ]
-
-        presentedView?.translatesAutoresizingMaskIntoConstraints = true
     }
 }
