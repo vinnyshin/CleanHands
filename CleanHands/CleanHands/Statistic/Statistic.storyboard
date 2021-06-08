@@ -118,6 +118,9 @@
                     <tabBarItem key="tabBarItem" title="Statistic" image="StatisticTabIcon" id="Q9M-Sk-Bds"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="CatchedPathoganNumLabel" destination="PQn-9w-WXg" id="8AO-Sz-cPE"/>
+                        <outlet property="NumCleanHandLabel" destination="mzC-Bm-pMV" id="Pml-m2-sRt"/>
+                        <outlet property="avgWashNumLabel" destination="NRn-Rc-wWn" id="qOa-8E-JKy"/>
                         <outlet property="barChartView" destination="xuz-Vb-pj4" id="FNO-LS-Km2"/>
                     </connections>
                 </viewController>
