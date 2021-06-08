@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Charts
 
 let DAY_OF_WEEK_EN
     = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -91,4 +92,58 @@ func daysBetween(start: Date, end: Date) -> Int {
     let components = calendar.dateComponents([.day], from: date1, to: date2)
     return components.day!
     
+}
+
+
+class DigitValueFormatter : NSObject, IValueFormatter, IAxisValueFormatter {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        let valueWithoutDecimalPart = String(format: "%.0f", value)
+        return "\(valueWithoutDecimalPart)"
+    }
+    
+
+    func stringForValue(_ value: Double,
+                        entry: ChartDataEntry,
+                        dataSetIndex: Int,
+                        viewPortHandler: ViewPortHandler?) -> String {
+        let valueWithoutDecimalPart = String(format: "%.0f", value)
+        return "\(valueWithoutDecimalPart)"
+    }
+}
+
+
+
+func saveUserState() {
+    let documentsDirctory =
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let archiveURL = documentsDirctory.appendingPathComponent("userState").appendingPathExtension("json")
+            
+    let jsonEncodoer = JSONEncoder()
+    var jsonData : Data
+    do{
+        jsonData = try jsonEncodoer.encode(User.userState)
+        try jsonData.write(to: archiveURL)
+    }catch{
+        print(error)
+        return
+    }
+}
+
+func loadUser() -> User{
+    
+        let documentsDirctory =
+            FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirctory.appendingPathComponent("userState").appendingPathExtension("json")
+        let jsonDecoder = JSONDecoder()
+
+        var retrievedJsonData : Data
+    do{
+        var decoded :User
+        retrievedJsonData = try Data(contentsOf: archiveURL)
+        decoded = try jsonDecoder.decode(User.self, from: retrievedJsonData)
+        return decoded
+    }catch{
+        print(error)
+    }
+    return User(name: "initName", pathogenDic: [:], washDataList: generateWashDummies(), handState: HandState(lastWashTime: Date(), pathogenAmount: 0), exp: 0)
 }

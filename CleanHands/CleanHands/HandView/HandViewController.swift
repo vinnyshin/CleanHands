@@ -161,6 +161,7 @@ class HandViewController: UIViewController {
         AchievementManager.compeleteAchievement()
         
         pathogenImageList = Array<UIImageView>()
+        saveUserState()
     }
     
 

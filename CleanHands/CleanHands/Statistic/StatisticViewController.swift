@@ -19,6 +19,7 @@ class StatisticViewController: UIViewController {
     @IBOutlet weak var avgWashNumLabel: UILabel!
     @IBOutlet weak var catchedPathoganNumLabel: UILabel!
     @IBOutlet weak var numCleanHandLabel: UILabel!
+    @IBOutlet weak var stateLabel: UILabel!
     
     private var today = Date()
     private var state : ChartState?{
@@ -29,14 +30,15 @@ class StatisticViewController: UIViewController {
             barChartView.notifyDataSetChanged()
             
             setInfoLabels()
+            setStateLabel()
         }
     }
     
     
-    var curChartData : BarChartData?// 실제로 차트 뷰에 넣는 데이터.
     
+    var curChartData : BarChartData?// 실제로 차트 뷰에 넣는 데이터.
     var washDataLists : [[WashData]] = [[],[],[]]
-    var numWashLists = [[Int](repeating: 0, count: 7),[Int](repeating: 0, count: 7),[Int](repeating: 0, count: 7)]
+        var numWashLists = [[Int](repeating: 0, count: 7),[Int](repeating: 0, count: 7),[Int](repeating: 0, count: 7)]
     
     @IBAction func changeChartNext(_ sender: Any) {
         if(state == ChartState.CUR_WEEK){
@@ -65,15 +67,33 @@ class StatisticViewController: UIViewController {
         barChartView.noDataText = "데이터가 없습니다."
         barChartView.noDataFont = .systemFont(ofSize: 20)
         barChartView.noDataTextColor = .lightGray
-        initWashDataList(dataList: randomWashList)
+        
+//        initWashDataList(dataList: User.userState.washDataList)
+//        initWashDataList(dataList: randomWashList)
+
         state = ChartState.CUR_WEEK
+//        chartConfigue()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        initWashDataList(dataList: User.userState.washDataList)
         chartConfigue()
+
+        makeChartData()
+        barChartView.data = curChartData
+        barChartView.data?.notifyDataChanged()
+        barChartView.notifyDataSetChanged()
+        
+        setInfoLabels()
+        setStateLabel()
     }
     
 
     func initWashDataList(dataList: [WashData]){
         let m = criteriaFromWeekday(today: today)
         //1. 이번주, 지난주, 지지난주 데이터를 따로 리스트로 만들어준다.
+        var tempWashDataLists : [[WashData]] = [[],[],[]]
+
         for washData in dataList {
             
             let diff = daysBetween(start: washData.date, end: today)
@@ -82,18 +102,21 @@ class StatisticViewController: UIViewController {
             print("오늘 :\(dateToDayOfWeek(date: today))")
             print("비교대상 요일 : \(dateToDayOfWeek(date: washData.date)), diff : \(diff), condition : \(condition)")
             if(condition <= 0){
-                washDataLists[ChartState.CUR_WEEK.rawValue].append(washData)
+                tempWashDataLists[ChartState.CUR_WEEK.rawValue].append(washData)
             }else if(condition <= 7){
-                washDataLists[ChartState.PREV_WEEK.rawValue].append(washData)
+                tempWashDataLists[ChartState.PREV_WEEK.rawValue].append(washData)
             }else if(condition <= 14){
-                washDataLists[ChartState.PPREV_WEEK.rawValue].append(washData)
+                tempWashDataLists[ChartState.PPREV_WEEK.rawValue].append(washData)
             }
         }
+        washDataLists = tempWashDataLists
+            var tempNumWashLists = [[Int](repeating: 0, count: 7),[Int](repeating: 0, count: 7),[Int](repeating: 0, count: 7)]
         for i in 0..<7{
-            numWashLists[ChartState.CUR_WEEK.rawValue][i] = washDataLists[ChartState.CUR_WEEK.rawValue].filter{ dateToDayOfWeek(date: $0.date) == DAY_OF_WEEK[i]}.count
-            numWashLists[ChartState.PREV_WEEK.rawValue][i] = washDataLists[ChartState.PREV_WEEK.rawValue].filter{ dateToDayOfWeek(date: $0.date) == DAY_OF_WEEK[i]}.count
-            numWashLists[ChartState.PPREV_WEEK.rawValue][i] = washDataLists[ChartState.PPREV_WEEK.rawValue].filter{ dateToDayOfWeek(date: $0.date) == DAY_OF_WEEK[i]}.count
+            tempNumWashLists[ChartState.CUR_WEEK.rawValue][i] = washDataLists[ChartState.CUR_WEEK.rawValue].filter{ dateToDayOfWeek(date: $0.date) == DAY_OF_WEEK[i]}.count
+            tempNumWashLists[ChartState.PREV_WEEK.rawValue][i] = washDataLists[ChartState.PREV_WEEK.rawValue].filter{ dateToDayOfWeek(date: $0.date) == DAY_OF_WEEK[i]}.count
+            tempNumWashLists[ChartState.PPREV_WEEK.rawValue][i] = washDataLists[ChartState.PPREV_WEEK.rawValue].filter{ dateToDayOfWeek(date: $0.date) == DAY_OF_WEEK[i]}.count
         }
+        numWashLists = tempNumWashLists
  
     }
     
@@ -117,10 +140,13 @@ class StatisticViewController: UIViewController {
         let curChartDataSet = BarChartDataSet(entries: dataEntries)
         curChartDataSet.highlightEnabled = false
         curChartDataSet.colors = [.systemBlue]
+        curChartDataSet.valueFormatter = DigitValueFormatter()
+        
+        
         curChartData = BarChartData(dataSet: curChartDataSet)
     }
     
-    func setInfoLabels(){
+    private func setInfoLabels(){
         let numList = numWashLists[state!.rawValue]
         let washList = washDataLists[state!.rawValue]
         let sumNumWash = numList.reduce(0, {(s1: Int, s2: Int) -> Int in
@@ -134,11 +160,7 @@ class StatisticViewController: UIViewController {
         }else{
             avgNumWash = sumNumWash / numList.count
         }
-            
-            
-        
-        
-        
+
         //catch한거 다 더하려면... 1. 워시데이터들로부터 딕셔너리 다 뽑아내기
         //워시 리스트로부터 딕셔너리 리스트를 뽑아왔다.
         let catchedDictList = washList.map({ (data: WashData) -> [Pathogen : Int] in
@@ -164,7 +186,16 @@ class StatisticViewController: UIViewController {
         
     }
         
-    
+    private func setStateLabel(){
+        if (state == ChartState.CUR_WEEK){
+            stateLabel.text = "이번 주"
+        }else if(state == ChartState.PREV_WEEK){
+            stateLabel.text = "지난 주 통계"
+        }else{
+            stateLabel.text = "2주 전 통계"
+        }
+            
+    }
     
     
     private func chartConfigue(){
@@ -179,6 +210,9 @@ class StatisticViewController: UIViewController {
         barChartView.xAxis.drawGridLinesEnabled = false
         barChartView.drawBordersEnabled = false
         barChartView.leftAxis.drawAxisLineEnabled = false
+        
+        barChartView.leftAxis.axisMinimum = 0
+        barChartView.leftAxis.valueFormatter = DigitValueFormatter() as! IAxisValueFormatter
     }
     
     

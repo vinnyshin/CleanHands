@@ -98,7 +98,7 @@ struct Achievement:Equatable {
 }
 
 //병원체
-struct Pathogen : Equatable{
+struct Pathogen : Equatable, Codable{
     static func == (lhs: Pathogen, rhs: Pathogen) -> Bool {
         return lhs.name == rhs.name
     }
@@ -123,7 +123,7 @@ extension Pathogen : Hashable {
     }
 }
 
-enum Frequency {
+enum Frequency :String, Codable{
     case high, medium, low
     
     var toString: String {
@@ -138,14 +138,16 @@ enum Frequency {
     }
 }
 
-enum PathogenType {
+enum PathogenType : Int, Codable{
     case bacteria // 세균
     case virus    // 바이러스
     case mold     // 곰팡이
 }
 
-struct User {
-    static var userState = User(name: "initName", pathogenDic: [:], washDataList: [], handState: HandState(lastWashTime: Date(), pathogenAmount: 0), exp: 0)
+struct User : Codable{
+//    static var userState = User(name: "initName", pathogenDic: [:], washDataList: [], handState: HandState(lastWashTime: Date(), pathogenAmount: 0), exp: 0)
+    
+    static var userState = loadUser()
     
     var name: String
 //    var profileImage : String?
@@ -155,12 +157,12 @@ struct User {
     var exp: Int
 }
 
-struct WashData{
+struct WashData : Codable{
     let date: Date
     var capturedPathogenDic : [Pathogen : Int]
 }
 
-struct HandState{
+struct HandState: Codable{
     var lastWashTime: Date
     var pathogenAmount: Int
 }
