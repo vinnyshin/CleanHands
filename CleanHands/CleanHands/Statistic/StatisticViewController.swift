@@ -17,8 +17,8 @@ class StatisticViewController: UIViewController {
     
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var avgWashNumLabel: UILabel!
-    @IBOutlet weak var CatchedPathoganNumLabel: UILabel!
-    @IBOutlet weak var NumCleanHandLabel: UILabel!
+    @IBOutlet weak var catchedPathoganNumLabel: UILabel!
+    @IBOutlet weak var numCleanHandLabel: UILabel!
     
     private var today = Date()
     private var state : ChartState?{
@@ -27,6 +27,8 @@ class StatisticViewController: UIViewController {
             barChartView.data = curChartData
             barChartView.data?.notifyDataChanged()
             barChartView.notifyDataSetChanged()
+            
+            setInfoLabels()
         }
     }
     
@@ -119,13 +121,49 @@ class StatisticViewController: UIViewController {
     }
     
     func setInfoLabels(){
-//        @IBOutlet weak var avgWashNumLabel:
-//        @IBOutlet weak var CatchedPathoganNumLabel: UILabel!
-//        @IBOutlet weak var NumCleanHandLabel:
-//        var avgWashNum =
-//        avgWashNumLabel.text =
+        let numList = numWashLists[state!.rawValue]
+        let washList = washDataLists[state!.rawValue]
+        let sumNumWash = numList.reduce(0, {(s1: Int, s2: Int) -> Int in
+            return s1 + s2
+        })
+        
+        var avgNumWash : Int
+        
+        if (state == ChartState.CUR_WEEK){
+            avgNumWash = sumNumWash / (criteriaFromWeekday(today: today) + 1)
+        }else{
+            avgNumWash = sumNumWash / numList.count
+        }
+            
+            
+        
+        
+        
+        //catch한거 다 더하려면... 1. 워시데이터들로부터 딕셔너리 다 뽑아내기
+        //워시 리스트로부터 딕셔너리 리스트를 뽑아왔다.
+        let catchedDictList = washList.map({ (data: WashData) -> [Pathogen : Int] in
+            return data.capturedPathogenDic
+        })
+        
+        //딕셔너리 리스트에서
+        var sumNumCatched = 0
+        catchedDictList.forEach{
+            //각 아이템은 딕셔너리다.
+            let sumOfOneDictValue = $0.values.reduce(0, {(s1: Int, s2: Int) -> Int in
+                return s1 + s2
+            })
+            sumNumCatched += sumOfOneDictValue
+        }
+        
+        avgWashNumLabel.text = String(avgNumWash)
+        catchedPathoganNumLabel.text = String(sumNumCatched)
+        numCleanHandLabel.text = String(numList.reduce(0,{
+            $0 + $1
+        }))
+        
+        
     }
-    
+        
     
     
     
