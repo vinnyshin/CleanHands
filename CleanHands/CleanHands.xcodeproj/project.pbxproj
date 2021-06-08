@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273454F5266F4886000C21F3 /* SettingsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273454F4266F4886000C21F3 /* SettingsTableTableViewController.swift */; };
 		2744C36D265F835500543BD7 /* CollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744C36C265F835500543BD7 /* CollectionDetailViewController.swift */; };
 		27D37648264521370074EDAC /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37647264521370074EDAC /* Collection.storyboard */; };
 		27D3764B264521C40074EDAC /* CollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3764A264521C40074EDAC /* CollectionTableViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		273454F4266F4886000C21F3 /* SettingsTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableTableViewController.swift; sourceTree = "<group>"; };
 		2744C36C265F835500543BD7 /* CollectionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailViewController.swift; sourceTree = "<group>"; };
 		27D37647264521370074EDAC /* Collection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Collection.storyboard; sourceTree = "<group>"; };
 		27D3764A264521C40074EDAC /* CollectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		273454F3266F47A0000C21F3 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				27D37650264525E40074EDAC /* Settings.storyboard */,
+				273454F4266F4886000C21F3 /* SettingsTableTableViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		2744C36B265F831600543BD7 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +153,7 @@
 				F167EB712668BDFB008CA7DF /* Statistic */,
 				2744C36B265F831600543BD7 /* CollectionView */,
 				7A50EFAC265A83FE008FF744 /* HandView */,
+				273454F3266F47A0000C21F3 /* Settings */,
 				F16064A6261EF2820072858F /* AppDelegate.swift */,
 				F16064A8261EF2820072858F /* SceneDelegate.swift */,
 				F16064AA261EF2820072858F /* ViewController.swift */,
@@ -150,7 +162,6 @@
 				F16064B1261EF2850072858F /* LaunchScreen.storyboard */,
 				F16064B4261EF2850072858F /* Info.plist */,
 				F13D8ECD2643EC6E00492E92 /* DummyData.swift */,
-				27D37650264525E40074EDAC /* Settings.storyboard */,
 				F1BF571F26664857006C5201 /* Util.swift */,
 			);
 			path = CleanHands;
@@ -287,6 +298,7 @@
 				F1BF572026664857006C5201 /* Util.swift in Sources */,
 				F13D8ECE2643EC6E00492E92 /* DummyData.swift in Sources */,
 				7A7F0E4B266EF3350038B3FF /* AchievementViewController.swift in Sources */,
+				273454F5266F4886000C21F3 /* SettingsTableTableViewController.swift in Sources */,
 				7A1D340C26452F5A002D460D /* HandViewController.swift in Sources */,
 				7A0073D62665E58F00E7057B /* WashResultViewController.swift in Sources */,
 				7A50EFAE265A8445008FF744 /* TimerModalViewController.swift in Sources */,
