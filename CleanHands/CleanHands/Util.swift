@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Charts
 
 let DAY_OF_WEEK_EN
     = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -91,4 +92,16 @@ func daysBetween(start: Date, end: Date) -> Int {
     let components = calendar.dateComponents([.day], from: date1, to: date2)
     return components.day!
     
+}
+
+
+class DigitValueFormatter : NSObject, IValueFormatter {
+
+    func stringForValue(_ value: Double,
+                        entry: ChartDataEntry,
+                        dataSetIndex: Int,
+                        viewPortHandler: ViewPortHandler?) -> String {
+        let valueWithoutDecimalPart = String(format: "%.0f", value)
+        return "\(valueWithoutDecimalPart)"
+    }
 }

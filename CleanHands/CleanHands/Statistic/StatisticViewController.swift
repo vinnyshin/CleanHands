@@ -117,6 +117,7 @@ class StatisticViewController: UIViewController {
         let curChartDataSet = BarChartDataSet(entries: dataEntries)
         curChartDataSet.highlightEnabled = false
         curChartDataSet.colors = [.systemBlue]
+        curChartDataSet.valueFormatter = DigitValueFormatter()
         curChartData = BarChartData(dataSet: curChartDataSet)
     }
     
