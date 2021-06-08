@@ -88,11 +88,6 @@ class CollectionCell : UITableViewCell {
                 return
             }
             
-            // 25 63 110
-            // 찐파
-            
-            
-            
             borderView.layer.cornerRadius = self.borderView.frame.height/2
             borderView.layer.masksToBounds = true
             borderView.layer.borderColor = CGColor(red: 25/255, green: 63/255, blue: 110/255, alpha: 1)
