@@ -157,6 +157,7 @@ class HandViewController: UIViewController {
                 User.userState.pathogenDic[capturedPathogen] = number
             }
         }
+        AchievementManager.updateAchievement()
         
         pathogenImageList = Array<UIImageView>()
     }
