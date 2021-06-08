@@ -20,25 +20,35 @@ struct AchievementManager {
     }
     
     static func updateAchievement () {
+        var changed = false
         for achievement in achievements.entireAchievements {
             if (achievement.appeared) {
                 achievements.appearedAchievements.append(achievement)
                 if let index = achievements.entireAchievements.firstIndex(of: achievement) {
                     achievements.entireAchievements.remove(at: index)
                 }
+                changed = true
             }
         }
-        for achievement in achievements.appearedAchievements {
+        if (changed) {
+            compeleteAchievement()
+        }
+    }
+    static func compeleteAchievement() {
+        var changed = false
+        for var achievement in achievements.appearedAchievements {
             if (achievement.completed) {
+                achievement.completeDate = Date()
                 achievements.completedAchievements.append(achievement)
                 if let index = achievements.appearedAchievements.firstIndex(of: achievement) {
                     achievements.appearedAchievements.remove(at: index)
                 }
+                changed = true
             }
         }
-    }
-    static func compeleteButtonPressed() {
-        
+        if (changed) {
+            updateAchievement()
+        }
     }
 }
 
@@ -49,6 +59,7 @@ struct Achievement:Equatable {
     let reward: Int
     let appearConditions: [Achievement]
     let completeConditions: [Pathogen:Int]
+    var completeDate:Date?
     
     var appeared:Bool {
         for achievementCondition in appearConditions {
