@@ -11,7 +11,6 @@ class washResultViewController: UIViewController {
     
     @IBOutlet weak var resultView: UIView!
     let washDataList = User.userState.washDataList
-    //private var customTransitioningDelegate = TransitioningDelegate2()
     let padding:CGFloat = 30
     
     @IBOutlet weak var washResultCollectionView: UICollectionView!
@@ -30,7 +29,7 @@ class washResultViewController: UIViewController {
         for indexPath in washResultCollectionView.indexPathsForVisibleItems {
             let pathogenCell:PathogenCell = washResultCollectionView.cellForItem(at: indexPath) as! PathogenCell
             pathogenCell.pathogenImage.layer.cornerRadius = pathogenCell.pathogenImage.layer.bounds.width/2
-            print(pathogenCell.pathogenImage.layer.bounds.width)
+            pathogenCell.borderView.layer.cornerRadius = pathogenCell.borderView.layer.bounds.width/2
         }
     }
     
@@ -49,10 +48,8 @@ class washResultViewController: UIViewController {
     }
     
     func animateModal() {
-        //view.layer.cornerRadius = 25
         modalPresentationStyle = .custom
-        modalTransitionStyle = .coverVertical             // use whatever transition you want
-        //transitioningDelegate = customTransitioningDelegate
+        modalTransitionStyle = .coverVertical
     }
     
 }
@@ -94,14 +91,21 @@ class PathogenCell : UICollectionViewCell {
     
     @IBOutlet weak var pathogenImage: UIImageView!
     @IBOutlet weak var pathogenName: UILabel!
+    @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var numberOfPathogen: UILabel!
     
     var item : Pathogen? {
         didSet {
+            borderView.layer.cornerRadius = self.borderView.frame.height/2
+            borderView.layer.masksToBounds = true
+            borderView.layer.borderColor = CGColor(red: 25/255, green: 63/255, blue: 110/255, alpha: 1)
+            borderView.layer.borderWidth = 3
+            
             pathogenImage.layer.cornerRadius = self.pathogenImage.frame.height/2
-            pathogenImage.layer.borderWidth = 1
-            pathogenImage.layer.borderColor = UIColor.clear.cgColor
+            pathogenImage.layer.borderWidth = 2
+            pathogenImage.layer.borderColor = UIColor.white.cgColor
             pathogenImage.clipsToBounds = true
+            
             guard let pathogen = item else {
                 return
             }

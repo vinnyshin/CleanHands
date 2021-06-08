@@ -41,85 +41,85 @@
                                 <attributedString key="attributedText">
                                     <fragment content="마지막으로">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <font key="NSOriginalFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content=" ">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="손을">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <font key="NSOriginalFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content=" ">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="씻은">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <font key="NSOriginalFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content=" ">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="지">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <font key="NSOriginalFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content=" 1">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="시간">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <font key="NSOriginalFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content=" 21">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="분이">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <font key="NSOriginalFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content=" ">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="지났습니다">
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <font key="NSOriginalFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -128,7 +128,7 @@
                                         <string key="content">.
 12,632 마리의 세균을 서둘러 씻어내세요!</string>
                                         <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -228,7 +228,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Sc-iW-qHO">
                                 <rect key="frame" x="20.5" y="161.5" width="373" height="573"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wash pathogen list" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5e-uj-GOd">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="무슨 세균을 잡았을까?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5e-uj-GOd">
                                         <rect key="frame" x="0.0" y="31.5" width="373" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="QVU-B0-plX"/>
@@ -243,7 +243,9 @@
                                             <constraint firstAttribute="height" constant="40" id="Zbg-Zo-mYL"/>
                                             <constraint firstAttribute="width" constant="120" id="cjC-rr-TdH"/>
                                         </constraints>
-                                        <state key="normal" title="Button" backgroundImage="WashButtonBackground"/>
+                                        <state key="normal" title="확인" backgroundImage="WashButtonBackground">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="onForMoreDetailPressed:" destination="Pha-zR-fAn" eventType="touchUpInside" id="QAP-jB-VYu"/>
                                         </connections>
@@ -277,6 +279,10 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLQ-32-E8b">
+                                                            <rect key="frame" x="9" y="7.5" width="82.5" height="82.5"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        </view>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="salmonella" translatesAutoresizingMaskIntoConstraints="NO" id="xgY-Ga-UGH">
                                                             <rect key="frame" x="12.5" y="11.5" width="75" height="75"/>
                                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
@@ -284,6 +290,8 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="d15-c2-p1y" secondAttribute="trailing" id="2OT-hC-xfY"/>
+                                                        <constraint firstItem="ZLQ-32-E8b" firstAttribute="centerX" secondItem="KR7-A9-Q6B" secondAttribute="centerX" id="E2d-wY-mw2"/>
+                                                        <constraint firstItem="ZLQ-32-E8b" firstAttribute="centerY" secondItem="KR7-A9-Q6B" secondAttribute="centerY" multiplier="0.65" id="If2-Z8-N6w"/>
                                                         <constraint firstItem="jfA-OG-ugw" firstAttribute="centerX" secondItem="KR7-A9-Q6B" secondAttribute="centerX" id="K4s-Fd-GhT"/>
                                                         <constraint firstItem="xgY-Ga-UGH" firstAttribute="width" secondItem="KR7-A9-Q6B" secondAttribute="width" multiplier="0.75" id="TyE-kx-bdk"/>
                                                         <constraint firstItem="jfA-OG-ugw" firstAttribute="centerY" secondItem="KR7-A9-Q6B" secondAttribute="centerY" multiplier="1.4" id="Xjy-1N-YLq"/>
@@ -294,11 +302,14 @@
                                                         <constraint firstItem="xgY-Ga-UGH" firstAttribute="centerY" secondItem="KR7-A9-Q6B" secondAttribute="centerY" multiplier="0.65" id="oLy-JX-xqP"/>
                                                         <constraint firstItem="xgY-Ga-UGH" firstAttribute="height" secondItem="KR7-A9-Q6B" secondAttribute="height" multiplier="0.5" id="ow0-lK-6Q8"/>
                                                         <constraint firstItem="jfA-OG-ugw" firstAttribute="leading" secondItem="KR7-A9-Q6B" secondAttribute="leading" id="qXc-xl-h37"/>
+                                                        <constraint firstItem="ZLQ-32-E8b" firstAttribute="width" secondItem="xgY-Ga-UGH" secondAttribute="width" multiplier="1.1" id="vZs-NU-LGr"/>
+                                                        <constraint firstItem="ZLQ-32-E8b" firstAttribute="height" secondItem="xgY-Ga-UGH" secondAttribute="height" multiplier="1.1" id="wWh-8i-FeD"/>
                                                         <constraint firstItem="xgY-Ga-UGH" firstAttribute="centerX" secondItem="KR7-A9-Q6B" secondAttribute="centerX" id="yPP-2L-Mhv"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <size key="customSize" width="100" height="150"/>
                                                 <connections>
+                                                    <outlet property="borderView" destination="ZLQ-32-E8b" id="DBY-ye-Uf1"/>
                                                     <outlet property="numberOfPathogen" destination="d15-c2-p1y" id="VgO-3B-lpw"/>
                                                     <outlet property="pathogenImage" destination="xgY-Ga-UGH" id="9Rj-mx-3rM"/>
                                                     <outlet property="pathogenName" destination="jfA-OG-ugw" id="mwi-pF-ty3"/>
