@@ -7,9 +7,88 @@
 
 import Foundation
 
+struct AchievementManager {
+    static var achievements = AchievementManager(completedAchievements: [Achievement](), appearedAchievements: [Achievement](), entireAchievements: [Achievement]())
+    
+    var completedAchievements: [Achievement]
+    var appearedAchievements: [Achievement]
+    var entireAchievements: [Achievement]
+    
+    static func initList() {
+        achievements.entireAchievements = achievementList
+        AchievementManager.updateAchievement()
+    }
+    
+    static func updateAchievement () {
+        for achievement in achievements.entireAchievements {
+            if (achievement.appeared) {
+                achievements.appearedAchievements.append(achievement)
+                if let index = achievements.entireAchievements.firstIndex(of: achievement) {
+                    achievements.entireAchievements.remove(at: index)
+                }
+            }
+        }
+        for achievement in achievements.appearedAchievements {
+            if (achievement.completed) {
+                achievements.completedAchievements.append(achievement)
+                if let index = achievements.appearedAchievements.firstIndex(of: achievement) {
+                    achievements.appearedAchievements.remove(at: index)
+                }
+            }
+        }
+    }
+    static func compeleteButtonPressed() {
+        
+    }
+}
+
+struct Achievement:Equatable {
+    let id: Int
+    let name: String
+    let description: String
+    let reward: Int
+    let appearConditions: [Achievement]
+    let completeConditions: [Pathogen:Int]
+    
+    var appeared:Bool {
+        for achievementCondition in appearConditions {
+            if (!AchievementManager.achievements.completedAchievements.contains(achievementCondition)) {
+                return false
+            }
+        }
+        return true
+    }
+    
+    var completed: Bool {
+        let userPathogenDic = User.userState.pathogenDic
+        for (pathogen, number) in self.completeConditions {
+            guard let pathogenAmount = userPathogenDic[pathogen] else {
+                return false
+            }
+            if (pathogenAmount < number) {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    init(name:String, description:String, completeConditions:[Pathogen:Int], appearConditions: [Achievement], id:Int) {
+        self.name = name
+        self.description = description
+        self.completeConditions = completeConditions
+        self.appearConditions = appearConditions
+        self.reward = 0
+        self.id = id
+    }
+    static func == (lhs:Achievement, rhs:Achievement)->Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 //병원체
-struct Pathogen : Comparable{
-    static func < (lhs: Pathogen, rhs: Pathogen) -> Bool {
+struct Pathogen : Equatable{
+    static func == (lhs: Pathogen, rhs: Pathogen) -> Bool {
         return lhs.name == rhs.name
     }
     
@@ -141,3 +220,10 @@ func generateTestWashDataList() -> [WashData]{
 
 
 var testWashList = generateTestWashDataList()
+
+
+var achievement1 = Achievement(name: "살모넬라균 퇴치1", description: "살모넬라균을 50마리 잡으세요.", completeConditions: [dummyPathogen:50], appearConditions: [], id: 0)
+var achievement2 = Achievement(name: "살모넬라균 퇴치2", description: "살모넬라균을 150마리 잡으세요.", completeConditions: [dummyPathogen:150], appearConditions: [achievement1], id: 1)
+var achievement3 = Achievement(name: "살모넬라균 퇴치3", description: "살모넬라균을 300마리 잡으세요.", completeConditions: [dummyPathogen:300], appearConditions: [achievement2], id: 2)
+var achievement4 = Achievement(name: "살모넬라곤 퇴치1", description: "살모넬라곤을 50마리 잡으세요.", completeConditions: [dummyPathogen3:50], appearConditions: [], id: 3)
+var achievementList = [achievement1, achievement4, achievement2, achievement3]
