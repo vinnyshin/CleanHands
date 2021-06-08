@@ -9,6 +9,7 @@
 //TODO 타이머 관리
 import UIKit
 import GameplayKit
+import HealthKit
 
 class HandViewController: UIViewController {
     let widthGererater = GKGaussianDistribution(randomSource: GKRandomSource(), lowestValue: -2, highestValue: 8)
@@ -46,8 +47,9 @@ class HandViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startTimer()
         updateUI()
+        startTimer()
+        getWashData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -161,7 +163,6 @@ class HandViewController: UIViewController {
         AchievementManager.compeleteAchievement()
         
         pathogenImageList = Array<UIImageView>()
-        saveUserState()
     }
     
 
@@ -181,6 +182,7 @@ class HandViewController: UIViewController {
     @IBAction func onWashButtonPressed(_ sender: Any) {
         presentTimerModal()
         removePathogen()
+        saveUserState()
     }
     
     func presentTimerModal() {
@@ -195,5 +197,57 @@ class HandViewController: UIViewController {
         guard let resultView = self.storyboard?.instantiateViewController(identifier: "resultView") else {return}
         resultView.modalTransitionStyle = .coverVertical
         self.present(resultView, animated: true)
+    }
+    
+    func getWashData() {
+        HealthKitManager.shared.readRecentHandWash(for: Date()) {sample,_ in
+            if let washSample = sample as? HKCategorySample {
+                print(washSample)
+            }
+        }
+    }
+}
+
+struct HealthKitManager {
+    let healthStore:HKHealthStore
+    
+    public static let shared = HealthKitManager()
+    
+    public init() {
+        healthStore = HKHealthStore()
+    }
+    
+    func readRecentHandWash(for date:Date, completion: @escaping (HKSample?, Error?) -> Void)  {
+        guard HKHealthStore.isHealthDataAvailable() else {
+            return
+        }
+        guard let handWash = HKCategoryType.categoryType(forIdentifier: HKCategoryTypeIdentifier.handwashingEvent) else {
+            fatalError("unable to get hand wash data")
+        }
+        
+        healthStore.requestAuthorization(toShare: nil, read: [handWash]) { (success, error) in
+            let predicate = HKQuery.predicateForSamples(withStart: Date.distantPast, end: Date(), options: .strictEndDate)
+            let query = HKSampleQuery(sampleType: handWash,
+                                      predicate: predicate,
+                                      limit: HKObjectQueryNoLimit,
+                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { (query, samples, error) in
+                
+                DispatchQueue.main.async {
+                    
+                    if let err = error {
+                        completion(nil, err)
+                    } else {
+                        guard let actualSamples = samples else {
+                            completion(nil, error) // Here you will not get any error, but you have no data, so you have to pass custom error object that shows no data found.
+                            return
+                        }
+                        
+                        completion(actualSamples.first, nil)
+                    }
+                }
+            }
+            healthStore.execute(query)
+            
+        }
     }
 }
