@@ -107,6 +107,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <color key="tintColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="KFW-4k-NRG" secondAttribute="trailing" id="JzI-Z4-Bn7"/>
                                     <constraint firstAttribute="trailing" secondItem="cs6-fa-LRM" secondAttribute="trailing" id="MnO-50-SrK"/>
@@ -118,7 +119,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sa8-9v-akg"/>
-                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sa8-9v-akg" firstAttribute="trailing" secondItem="fma-e2-jhb" secondAttribute="trailing" constant="20" id="8KN-uH-G9S"/>
                             <constraint firstItem="fma-e2-jhb" firstAttribute="top" secondItem="sa8-9v-akg" secondAttribute="top" constant="20" id="Ytf-Cy-4dJ"/>
@@ -145,11 +146,14 @@
         <image name="StatisticTabIcon" width="19.697999954223633" height="21"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
