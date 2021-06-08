@@ -21,6 +21,9 @@ class StatisticViewController: UIViewController {
     @IBOutlet weak var numCleanHandLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     
+    @IBOutlet weak var graphView: UIView!
+    @IBOutlet weak var textView: UIView!
+    
     private var today = Date()
     private var state : ChartState?{
         didSet{
@@ -73,6 +76,8 @@ class StatisticViewController: UIViewController {
 
         state = ChartState.CUR_WEEK
 //        chartConfigue()
+        graphView.layer.cornerRadius = 10
+        textView.layer.cornerRadius = 10
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -139,7 +144,7 @@ class StatisticViewController: UIViewController {
         //2. 데이터엔트리와 라벨을 이용하여 데이터셋 만들기
         let curChartDataSet = BarChartDataSet(entries: dataEntries)
         curChartDataSet.highlightEnabled = false
-        curChartDataSet.colors = [.systemBlue]
+        curChartDataSet.colors = [UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1)]
         curChartDataSet.valueFormatter = DigitValueFormatter()
         
         

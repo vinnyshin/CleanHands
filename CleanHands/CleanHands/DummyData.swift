@@ -239,4 +239,5 @@ var achievement1 = Achievement(name: "살모넬라균 퇴치1", description: "�
 var achievement2 = Achievement(name: "살모넬라균 퇴치2", description: "살모넬라균을 150마리 잡으세요.", completeConditions: [dummyPathogen:150], appearConditions: [achievement1], id: 1)
 var achievement3 = Achievement(name: "살모넬라균 퇴치3", description: "살모넬라균을 300마리 잡으세요.", completeConditions: [dummyPathogen:300], appearConditions: [achievement2], id: 2)
 var achievement4 = Achievement(name: "살모넬라곤 퇴치1", description: "살모넬라곤을 50마리 잡으세요.", completeConditions: [dummyPathogen3:50], appearConditions: [], id: 3)
-var achievementList = [achievement1, achievement4, achievement2, achievement3]
+var achievement5 = Achievement(name: "살모사 퇴치", description: "살모넬라곤 퇴치에 지친 당신을 위해", completeConditions: [dummyPathogen2:500, dummyPathogen4: 700], appearConditions: [achievement4], id: 4)
+var achievementList = [achievement1, achievement4, achievement2, achievement3, achievement5]

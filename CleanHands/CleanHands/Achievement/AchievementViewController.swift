@@ -116,7 +116,7 @@ class AchievementDescriptionCell:UITableViewCell {
     @IBOutlet weak var descLabel: UILabel!
     var item:Achievement? {
         didSet{
-            var descString = item!.description + "\n\n"
+            var descString = item!.description + "\n"
             for (pathogen, number) in item!.completeConditions {
                 var userPathogenCount = 0
                 if let count = User.userState.pathogenDic[pathogen] {
@@ -125,7 +125,7 @@ class AchievementDescriptionCell:UITableViewCell {
                 if (userPathogenCount >= number) {
                     userPathogenCount = number
                 }
-                descString += pathogen.name + ": (\(userPathogenCount)/\(number))"
+                descString += "\n" + pathogen.name + ": (\(userPathogenCount)/\(number))"
             }
             if (item!.completed) {
                 let date = item?.completeDate?.description

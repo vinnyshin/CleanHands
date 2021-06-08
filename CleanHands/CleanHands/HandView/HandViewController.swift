@@ -47,6 +47,7 @@ class HandViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        handImageView.layoutIfNeeded()
         updateUI()
         startTimer()
         getWashData()
@@ -62,6 +63,7 @@ class HandViewController: UIViewController {
     }
     
     func createPathogen(numberOfCreate number:Int) {
+        view.layoutIfNeeded()
         let imageLeftX = handImageView.frame.minX
         let imageUpY = handImageView.frame.minY
         //let imageWidth = handImageView.frame.size.width
