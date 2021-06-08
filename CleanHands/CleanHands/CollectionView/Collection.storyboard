@@ -13,50 +13,65 @@
             <objects>
                 <tableViewController id="cnh-Ej-yWe" customClass="CollectionTableViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jxw-Fc-jXC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollectionCell" translatesAutoresizingMaskIntoConstraints="NO" id="c92-qS-ddW" customClass="CollectionCell" customModule="CleanHands" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="103"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="113"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c92-qS-ddW" id="Rbn-SN-5je">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Eqg-iw-ISB">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="salmonella" translatesAutoresizingMaskIntoConstraints="NO" id="leW-3z-Tti">
-                                                    <rect key="frame" x="0.0" y="10" width="83" height="83"/>
-                                                </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TD1-9t-lOO">
-                                                    <rect key="frame" x="83" y="10" width="251.5" height="83"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAe-DT-wDW">
+                                                    <rect key="frame" x="0.0" y="15" width="83" height="83"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N14-8z-s47">
-                                                            <rect key="frame" x="0.0" y="0.0" width="251.5" height="20.5"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="salmonella" translatesAutoresizingMaskIntoConstraints="NO" id="eDA-Na-teY">
+                                                            <rect key="frame" x="4" y="4" width="75" height="75"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="eDA-Na-teY" firstAttribute="height" secondItem="OAe-DT-wDW" secondAttribute="height" multiplier="0.9" id="BYz-I1-zuL"/>
+                                                        <constraint firstItem="eDA-Na-teY" firstAttribute="width" secondItem="OAe-DT-wDW" secondAttribute="width" multiplier="0.9" id="Ktv-4w-93h"/>
+                                                        <constraint firstItem="eDA-Na-teY" firstAttribute="centerX" secondItem="OAe-DT-wDW" secondAttribute="centerX" id="ZdT-iy-1bM"/>
+                                                        <constraint firstItem="eDA-Na-teY" firstAttribute="centerY" secondItem="OAe-DT-wDW" secondAttribute="centerY" id="s49-B9-Wgi"/>
+                                                    </constraints>
+                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TD1-9t-lOO">
+                                                    <rect key="frame" x="83" y="15" width="251.5" height="83"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N14-8z-s47">
+                                                            <rect key="frame" x="0.0" y="0.0" width="251.5" height="52"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e93-uk-3mX">
-                                                            <rect key="frame" x="0.0" y="20.5" width="251.5" height="62.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e93-uk-3mX">
+                                                            <rect key="frame" x="0.0" y="31.5" width="251.5" height="51.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="N14-8z-s47" firstAttribute="top" secondItem="TD1-9t-lOO" secondAttribute="top" id="9ed-KU-zA4"/>
+                                                    </constraints>
                                                 </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.compact.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aeP-qK-bcJ">
-                                                    <rect key="frame" x="331" y="11.5" width="83" height="80"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="aeP-qK-bcJ">
+                                                    <rect key="frame" x="331" y="15" width="83" height="83"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="leW-3z-Tti" firstAttribute="width" secondItem="TD1-9t-lOO" secondAttribute="width" multiplier="0.33" id="FmO-Fl-Wrx"/>
-                                                <constraint firstItem="aeP-qK-bcJ" firstAttribute="width" secondItem="leW-3z-Tti" secondAttribute="width" id="lfK-rb-uCn"/>
-                                                <constraint firstItem="leW-3z-Tti" firstAttribute="height" secondItem="aeP-qK-bcJ" secondAttribute="width" id="tbX-GK-GP4"/>
+                                                <constraint firstItem="OAe-DT-wDW" firstAttribute="width" secondItem="aeP-qK-bcJ" secondAttribute="width" id="7Ps-iB-flo"/>
+                                                <constraint firstItem="OAe-DT-wDW" firstAttribute="width" secondItem="TD1-9t-lOO" secondAttribute="width" multiplier="0.33" id="SHI-lW-xDb"/>
+                                                <constraint firstItem="aeP-qK-bcJ" firstAttribute="width" secondItem="OAe-DT-wDW" secondAttribute="height" id="cAo-vf-ICf"/>
                                             </constraints>
-                                            <directionalEdgeInsets key="directionalLayoutMargins" top="10" leading="0.0" bottom="10" trailing="0.0"/>
+                                            <directionalEdgeInsets key="directionalLayoutMargins" top="15" leading="0.0" bottom="15" trailing="0.0"/>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -67,8 +82,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="borderView" destination="OAe-DT-wDW" id="HrR-7J-lUt"/>
                                     <outlet property="exterminationCountLabel" destination="e93-uk-3mX" id="Yxj-x5-Z47"/>
-                                    <outlet property="pathogenImage" destination="leW-3z-Tti" id="u5f-E4-dwe"/>
+                                    <outlet property="labelStackView" destination="TD1-9t-lOO" id="Njg-OZ-htU"/>
+                                    <outlet property="pathogenImage" destination="eDA-Na-teY" id="0tf-bh-u3g"/>
                                     <outlet property="pathogenLabel" destination="N14-8z-s47" id="0hN-nc-gaU"/>
                                     <segue destination="Z2Y-J1-t4W" kind="show" id="wZr-Oh-2Vw"/>
                                 </connections>
@@ -91,9 +108,13 @@
         <scene sceneID="BPu-s7-FdQ">
             <objects>
                 <navigationController id="Z4b-jj-cbm" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6w9-4U-IpI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="6w9-4U-IpI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.098039215690000001" green="0.2470588235" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="cnh-Ej-yWe" kind="relationship" relationship="rootViewController" id="hhJ-Tk-3QG"/>
@@ -108,11 +129,11 @@
             <objects>
                 <viewController id="Z2Y-J1-t4W" customClass="CollectionDetailViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jTS-Qp-AUP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1612"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="By8-mM-ObE">
-                                <rect key="frame" x="0.0" y="88" width="414" height="1529"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1529"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fpv-Jx-8Ea">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="663"/>
@@ -323,7 +344,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.098039215686274508" green="0.2470588235" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.098039215686274508" green="0.24705882352941178" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Fpv-Jx-8Ea" firstAttribute="leading" secondItem="tQw-UR-fR3" secondAttribute="leading" id="SJj-ks-nXN"/>
                                     <constraint firstItem="Fpv-Jx-8Ea" firstAttribute="top" secondItem="tQw-UR-fR3" secondAttribute="top" id="VxH-iH-Bv4"/>
@@ -386,9 +407,10 @@
             <point key="canvasLocation" x="2540.579710144928" y="65.625"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="CollectionTabIcon" width="23" height="19.697999954223633"/>
-        <image name="chevron.compact.right" catalog="system" width="64" height="128"/>
+        <image name="RightArrow" width="10.413999557495117" height="18.829000473022461"/>
         <image name="pathogen" width="128" height="128"/>
         <image name="salmonella" width="548" height="306"/>
         <systemColor name="systemBackgroundColor">

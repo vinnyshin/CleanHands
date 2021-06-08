@@ -37,6 +37,7 @@ class CollectionDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setPathogenImageUI()
         setDetailsStackViewUI()
         setPathogenHeader()
