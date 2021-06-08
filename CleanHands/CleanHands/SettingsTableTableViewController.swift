@@ -50,14 +50,37 @@ class SettingsTableTableViewController: UITableViewController {
         return cell
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        if let indexPath = self.tableView.indexPathForSelectedRow,
-//           let detailVC = segue.destination as? CollectionDetailViewController {
-//            let index = User.userState.pathogenDic.index(User.userState.pathogenDic.startIndex, offsetBy: indexPath.row)
-//            detailVC.selectedPathogen = User.userState.pathogenDic.keys[index]
-//        }
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let sender = self.tableView.cellForRow(at: indexPath) as? SettingsCell{
+            // 애플워치 연동
+            if sender.nameLabel.text == cellNameList[0] {
+                performSegue(withIdentifier: "applewatch", sender: sender)
+            }
+            // 알림 설정
+            else if sender.nameLabel.text == cellNameList[1] {
+                performSegue(withIdentifier: "alarm", sender: sender)
+            }
+            // 도움말
+            else if sender.nameLabel.text == cellNameList[2] {
+                performSegue(withIdentifier: "help", sender: sender)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 애플워치 연동
+        if segue.identifier == "applewatch" {
+            
+        }
+        // 알림 설정
+        else if segue.identifier == "alarm" {
+            
+        }
+        // 도움말
+        else if segue.identifier == "help" {
+            
+        }
+    }
 }
 
 class SettingsCell: UITableViewCell {
