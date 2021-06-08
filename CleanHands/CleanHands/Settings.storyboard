@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -77,6 +78,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="TfS-Lc-Czc" id="tbk-GN-30F"/>
                                     <outlet property="settingsImageView" destination="a1S-rH-B8c" id="kGF-ji-noU"/>
+                                    <segue destination="e83-sY-TgE" kind="show" id="k40-yb-yuh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -92,6 +94,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lvt-8p-mX3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-409" y="-141"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DyV-xO-Va3">
+            <objects>
+                <viewController id="30t-kb-oUd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8I1-Vy-LyS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="a43-9y-zuL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qZw-JF-IMW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HHY-ks-CYr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="902" y="-520"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7UU-AR-01i">
+            <objects>
+                <viewController id="e83-sY-TgE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pm1-cv-2sF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="xeH-L1-Avm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OzK-7q-gXK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8KT-e8-D0x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="478" y="-141"/>
         </scene>
     </scenes>
     <resources>
