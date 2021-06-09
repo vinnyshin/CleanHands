@@ -23,52 +23,84 @@ class SettingsAlarmTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-//        return 1 + (isAlarmOn ? (isDoNotDisturbOn ? 4 : 2) : 0)
+//        if section == 0 {
+//            return 3
+//        }
+//        else {
+//            return 2
+//        }
         return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "isAlarmCell", for: indexPath)
-            isAlarmOnIndexPath = indexPath
-            return cell
-        }
-        else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "repeatCell", for: indexPath)
-            return cell
-        }
-        else if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "isDoNotDisturbCell", for: indexPath)
-            isDoNotDisturbIndexPath = indexPath
-            return cell
-        }
-        else if indexPath.row == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "fromTimePickerCell", for: indexPath)
-            return cell
-        }
-        // indexPath.row == 4
-        else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "toTimePickerCell", for: indexPath)
-            return cell
-        }
+//        if indexPath.section == 0 {
+            
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "isAlarmCell", for: indexPath)
+                return cell
+            }
+            else if indexPath.row == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "repeatCell", for: indexPath)
+                return cell
+            }
+            else if indexPath.row == 2{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "isDoNotDisturbCell", for: indexPath)
+                return cell
+            }
+////        }
+//        else {
+            else if indexPath.row == 3 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "fromTimePickerCell", for: indexPath)
+                return cell
+            }
+            // indexPath.row == 4
+            else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "toTimePickerCell", for: indexPath)
+                return cell
+            }
+//        }
+//        if indexPath.row == 0 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "isAlarmCell", for: indexPath)
+//            return cell
+//        }
+//        else if indexPath.row == 1 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "repeatCell", for: indexPath)
+//            return cell
+//        }
+//        else if indexPath.row == 2 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "isDoNotDisturbCell", for: indexPath)
+//            return cell
+//        }
+//        else if indexPath.row == 3 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "fromTimePickerCell", for: indexPath)
+//            return cell
+//        }
+//        // indexPath.row == 4
+//        else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "toTimePickerCell", for: indexPath)
+//            return cell
+//        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
-        if indexPath.row > 0 && isAlarmOn == false {
-            return 0.0  // collapsed
-        }
         
-        if indexPath.row > 2 && isDoNotDisturbOn == false {
-            return 0.0
-        }
+//        if indexPath.section == 0 {
+            if indexPath.row > 0 && isAlarmOn == false {
+                return 0.0  // collapsed
+            }
+//        }
+//        else {
+            if indexPath.row > 2 && isDoNotDisturbOn == false {
+                return 0.0
+            }
+//        }
+        
+        
         
         // expanded with row height of parent
         return super.tableView(tableView, heightForRowAt: indexPath)
