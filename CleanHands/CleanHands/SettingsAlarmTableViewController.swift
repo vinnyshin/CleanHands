@@ -189,7 +189,11 @@ class SettingsAlarmTableViewController: UITableViewController {
     }
     
     func setRepeatTime() {
-        print(delegate?.time)
+//        print(delegate?.time)
+        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! RepeatCell
+        if let timeString = delegate?.time {
+            cell.repeatConfigLabel.text = timeString
+        }
     }
 }
 
