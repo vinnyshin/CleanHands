@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		273454F5266F4886000C21F3 /* SettingsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273454F4266F4886000C21F3 /* SettingsTableTableViewController.swift */; };
-		273454F9266F5FD5000C21F3 /* SettingsAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273454F8266F5FD5000C21F3 /* SettingsAlarmViewController.swift */; };
+		273454F5266F4886000C21F3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273454F4266F4886000C21F3 /* SettingsTableViewController.swift */; };
 		273454FF266F7444000C21F3 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273454FE266F7444000C21F3 /* HealthKit.framework */; };
 		2744C36D265F835500543BD7 /* CollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744C36C265F835500543BD7 /* CollectionDetailViewController.swift */; };
+		2787449726708715006AE83D /* SettingsAlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2787449626708715006AE83D /* SettingsAlarmTableViewController.swift */; };
 		27D37648264521370074EDAC /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37647264521370074EDAC /* Collection.storyboard */; };
 		27D3764B264521C40074EDAC /* CollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3764A264521C40074EDAC /* CollectionTableViewController.swift */; };
 		27D37651264525E40074EDAC /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37650264525E40074EDAC /* Settings.storyboard */; };
@@ -35,11 +35,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		273454F4266F4886000C21F3 /* SettingsTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableTableViewController.swift; sourceTree = "<group>"; };
-		273454F8266F5FD5000C21F3 /* SettingsAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAlarmViewController.swift; sourceTree = "<group>"; };
+		273454F4266F4886000C21F3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		273454FD266F7444000C21F3 /* CleanHandsRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CleanHandsRelease.entitlements; sourceTree = "<group>"; };
 		273454FE266F7444000C21F3 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		2744C36C265F835500543BD7 /* CollectionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailViewController.swift; sourceTree = "<group>"; };
+		2787449626708715006AE83D /* SettingsAlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAlarmTableViewController.swift; sourceTree = "<group>"; };
 		27D37647264521370074EDAC /* Collection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Collection.storyboard; sourceTree = "<group>"; };
 		27D3764A264521C40074EDAC /* CollectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewController.swift; sourceTree = "<group>"; };
 		27D37650264525E40074EDAC /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -86,8 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				27D37650264525E40074EDAC /* Settings.storyboard */,
-				273454F4266F4886000C21F3 /* SettingsTableTableViewController.swift */,
-				273454F8266F5FD5000C21F3 /* SettingsAlarmViewController.swift */,
+				273454F4266F4886000C21F3 /* SettingsTableViewController.swift */,
+				2787449626708715006AE83D /* SettingsAlarmTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -313,8 +313,7 @@
 				F1BF572026664857006C5201 /* Util.swift in Sources */,
 				F13D8ECE2643EC6E00492E92 /* DummyData.swift in Sources */,
 				7A7F0E4B266EF3350038B3FF /* AchievementViewController.swift in Sources */,
-				273454F9266F5FD5000C21F3 /* SettingsAlarmViewController.swift in Sources */,
-				273454F5266F4886000C21F3 /* SettingsTableTableViewController.swift in Sources */,
+				273454F5266F4886000C21F3 /* SettingsTableViewController.swift in Sources */,
 				7A1D340C26452F5A002D460D /* HandViewController.swift in Sources */,
 				7A0073D62665E58F00E7057B /* WashResultViewController.swift in Sources */,
 				7A50EFAE265A8445008FF744 /* TimerModalViewController.swift in Sources */,
@@ -323,6 +322,7 @@
 				F13D8EE52645281C00492E92 /* StatisticViewController.swift in Sources */,
 				F16064A7261EF2820072858F /* AppDelegate.swift in Sources */,
 				F16064A9261EF2820072858F /* SceneDelegate.swift in Sources */,
+				2787449726708715006AE83D /* SettingsAlarmTableViewController.swift in Sources */,
 				2744C36D265F835500543BD7 /* CollectionDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,7 +492,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = CleanHands/CleanHands.entitlements;
 				CODE_SIGN_ENTITLEMENTS = CleanHands/CleanHandsRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8SAQ2YQD7A;

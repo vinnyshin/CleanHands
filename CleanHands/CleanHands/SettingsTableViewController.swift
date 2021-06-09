@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsTableTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController {
 
     let cellNameList = ["애플워치 연동", "알림 설정", "도움말"]
     let cellImageList = ["applewatch", "alarm", "questionmark.circle"]

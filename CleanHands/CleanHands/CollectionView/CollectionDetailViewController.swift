@@ -48,7 +48,7 @@ class CollectionDetailViewController: UIViewController {
         }
         
         for detailInfoView in detailInfoViewCollection {
-            setShadowUI(detailInfoView)
+            setDetailInfoUI(detailInfoView)
         }
         
         for detailInfoStackView in detailInfoStackViewCollection {
@@ -128,7 +128,8 @@ class CollectionDetailViewController: UIViewController {
         locationLabel.text = selectedPathogen.location
     }
     
-    func setShadowUI(_ view: UIView) {
+    func setDetailInfoUI(_ view: UIView) {
+        // shadow
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.01
 //        view.layer.shadowOffset = CGSize(width: 10, height: 10)
@@ -136,6 +137,8 @@ class CollectionDetailViewController: UIViewController {
         view.layer.shadowRadius = 2
         view.layer.masksToBounds = false
         
+        // radius
+        view.layer.cornerRadius = 10
     }
     
     
