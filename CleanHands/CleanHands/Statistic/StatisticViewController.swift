@@ -24,6 +24,9 @@ class StatisticViewController: UIViewController {
     @IBOutlet weak var graphView: UIView!
     @IBOutlet weak var textView: UIView!
     
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var prevButton: UIButton!
+    
     private var today = Date()
     private var state : ChartState?{
         didSet{
@@ -194,10 +197,22 @@ class StatisticViewController: UIViewController {
     private func setStateLabel(){
         if (state == ChartState.CUR_WEEK){
             stateLabel.text = "이번 주"
+            nextButton.isEnabled = false
+            prevButton.isEnabled = true
+            prevButton.alpha = 1
+            nextButton.alpha = 0
         }else if(state == ChartState.PREV_WEEK){
             stateLabel.text = "지난 주 통계"
+            nextButton.isEnabled = true
+            prevButton.isEnabled = true
+            prevButton.alpha = 1
+            nextButton.alpha = 1
         }else{
             stateLabel.text = "2주 전 통계"
+            nextButton.isEnabled = true
+            prevButton.isEnabled = false
+            prevButton.alpha = 0
+            nextButton.alpha = 1
         }
             
     }
