@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X27-SN-X6y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X27-SN-X6y">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -40,7 +40,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingsCell" id="Pqr-Ms-XJs" customClass="SettingsCell" customModule="CleanHands" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="113.5"/>
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="113.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pqr-Ms-XJs" id="ByT-Su-afb">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="113.5"/>
@@ -111,7 +111,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="isAlarmCell" id="HFU-YL-yQS" customClass="IsAlarmCell" customModule="CleanHands" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="61.5"/>
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="61.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HFU-YL-yQS" id="05p-Bu-Yl1">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="61.5"/>
@@ -162,7 +162,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="repeatCell" id="NIr-Pr-2Qk" customClass="RepeatCell" customModule="CleanHands" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="89.5" width="414" height="61.5"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="61.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NIr-Pr-2Qk" id="Osx-Ix-pF5">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="61.5"/>
@@ -222,28 +222,33 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="isDoNotDisturbCell" id="ykA-Wj-L6u" customClass="IsDoNotDisturbCell" customModule="CleanHands" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="151" width="414" height="61.5"/>
+                                <rect key="frame" x="0.0" y="147.5" width="414" height="62"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ykA-Wj-L6u" id="rcc-Ea-5Nb">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="61.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="pgj-9j-x4V">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="61.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="pgj-9j-x4V">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mZ1-TY-av8">
-                                                    <rect key="frame" x="15" y="11" width="41" height="39.5"/>
-                                                    <color key="tintColor" red="0.098039215690000001" green="0.2470588235" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="mZ1-TY-av8" secondAttribute="height" multiplier="1:1" id="Srl-RM-XwE"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="방해금지 모드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sq3-Cd-Vtd">
-                                                    <rect key="frame" x="69" y="20.5" width="273" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="yHi-l1-bxV">
+                                                    <rect key="frame" x="15" y="10.5" width="147.5" height="41"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mZ1-TY-av8">
+                                                            <rect key="frame" x="0.0" y="0.5" width="41.5" height="40"/>
+                                                            <color key="tintColor" red="0.098039215690000001" green="0.2470588235" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="mZ1-TY-av8" secondAttribute="height" multiplier="1:1" id="Srl-RM-XwE"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="방해금지 모드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sq3-Cd-Vtd">
+                                                            <rect key="frame" x="54.5" y="0.0" width="93" height="41"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9zD-ii-ryB">
                                                     <rect key="frame" x="355" y="15.5" width="51" height="31"/>
                                                     <connections>
@@ -252,7 +257,7 @@
                                                 </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mZ1-TY-av8" firstAttribute="width" secondItem="Sq3-Cd-Vtd" secondAttribute="width" multiplier="0.15" id="Sns-Zt-Viu"/>
+                                                <constraint firstItem="mZ1-TY-av8" firstAttribute="width" secondItem="pgj-9j-x4V" secondAttribute="width" multiplier="0.1" id="4th-HA-Rjb"/>
                                             </constraints>
                                             <directionalEdgeInsets key="directionalLayoutMargins" top="10" leading="15" bottom="10" trailing="10"/>
                                         </stackView>
@@ -270,7 +275,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="fromTimePickerCell" id="YkD-dJ-8VY" customClass="fromTimePickerCell" customModule="CleanHands" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="212.5" width="414" height="54"/>
+                                <rect key="frame" x="0.0" y="209.5" width="414" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YkD-dJ-8VY" id="ddS-B5-kAh">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
@@ -304,7 +309,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="toTimePickerCell" id="y4h-gX-wJw" customClass="toTimePickerCell" customModule="CleanHands" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="266.5" width="414" height="54"/>
+                                <rect key="frame" x="0.0" y="263.5" width="414" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y4h-gX-wJw" id="UzZ-WG-RmH">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
