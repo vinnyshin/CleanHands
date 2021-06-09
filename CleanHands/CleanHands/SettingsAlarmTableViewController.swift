@@ -10,13 +10,16 @@ import UserNotifications
 
 class SettingsAlarmTableViewController: UITableViewController {
     
-    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    var delegate: TimeDelegate?
     
     var isAlarmOn = false
     var isDoNotDisturbOn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        delegate = TimeDelegate()
+        delegate!.setRepeatTime = setRepeatTime
         
         self.tableView.tableFooterView = UIView()
         
@@ -175,6 +178,24 @@ class SettingsAlarmTableViewController: UITableViewController {
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let alarmTimeSelectModalTableVC = segue.destination as? AlarmTimeSelectModalViewController {
+            let delegate: TimeDelegate = self.delegate!
+            print("modal delegate!")
+            alarmTimeSelectModalTableVC.delegate = delegate
+            print(delegate)
+        }
+    }
+    
+    func setRepeatTime() {
+        print(delegate?.time)
+    }
+}
+
+class TimeDelegate {
+    var time: String = ""
+    var setRepeatTime: (() -> Void)?
 }
 
 class IsAlarmCell: UITableViewCell {
