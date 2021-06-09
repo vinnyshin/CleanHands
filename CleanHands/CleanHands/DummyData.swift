@@ -7,25 +7,18 @@
 
 import Foundation
 
-struct AchievementManager {
-    static var achievements = AchievementManager(completedAchievements: [Achievement](), appearedAchievements: [Achievement](), entireAchievements: [Achievement]())
-    
+struct AchievementManager:Codable{
     var completedAchievements: [Achievement]
     var appearedAchievements: [Achievement]
     var entireAchievements: [Achievement]
     
-    static func initList() {
-        achievements.entireAchievements = achievementList
-        AchievementManager.updateAchievement()
-    }
-    
     static func updateAchievement () {
         var changed = false
-        for achievement in achievements.entireAchievements {
+        for achievement in User.userState.achievementManager.entireAchievements {
             if (achievement.appeared) {
-                achievements.appearedAchievements.append(achievement)
-                if let index = achievements.entireAchievements.firstIndex(of: achievement) {
-                    achievements.entireAchievements.remove(at: index)
+                User.userState.achievementManager.appearedAchievements.append(achievement)
+                if let index = User.userState.achievementManager.entireAchievements.firstIndex(of: achievement) {
+                    User.userState.achievementManager.entireAchievements.remove(at: index)
                 }
                 changed = true
             }
@@ -36,12 +29,12 @@ struct AchievementManager {
     }
     static func compeleteAchievement() {
         var changed = false
-        for var achievement in achievements.appearedAchievements {
+        for var achievement in User.userState.achievementManager.appearedAchievements {
             if (achievement.completed) {
                 achievement.completeDate = Date()
-                achievements.completedAchievements.append(achievement)
-                if let index = achievements.appearedAchievements.firstIndex(of: achievement) {
-                    achievements.appearedAchievements.remove(at: index)
+                User.userState.achievementManager.completedAchievements.append(achievement)
+                if let index = User.userState.achievementManager.appearedAchievements.firstIndex(of: achievement) {
+                    User.userState.achievementManager.appearedAchievements.remove(at: index)
                 }
                 changed = true
             }
@@ -52,7 +45,7 @@ struct AchievementManager {
     }
 }
 
-struct Achievement:Equatable {
+struct Achievement:Equatable, Codable{
     let id: Int
     let name: String
     let description: String
@@ -63,7 +56,7 @@ struct Achievement:Equatable {
     
     var appeared:Bool {
         for achievementCondition in appearConditions {
-            if (!AchievementManager.achievements.completedAchievements.contains(achievementCondition)) {
+            if (!User.userState.achievementManager.completedAchievements.contains(achievementCondition)) {
                 return false
             }
         }
@@ -149,6 +142,7 @@ struct User : Codable{
     
     static var userState = loadUser()
     
+    var achievementManager = AchievementManager(completedAchievements: [Achievement](), appearedAchievements: [Achievement](), entireAchievements: achievementList)
     var name: String
 //    var profileImage : String?
     var pathogenDic: [Pathogen: Int]

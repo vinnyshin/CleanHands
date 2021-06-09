@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Wash-->
+        <!--Hand View Controller-->
         <scene sceneID="Fl5-At-BPM">
             <objects>
                 <viewController id="ABu-Ec-sst" customClass="HandViewController" customModule="CleanHands" customModuleProvider="target" sceneMemberID="viewController">
@@ -150,7 +150,7 @@
                             <constraint firstItem="R23-9R-BDM" firstAttribute="top" secondItem="vt9-3j-9SM" secondAttribute="bottom" multiplier="1.043" id="tZS-Pj-7Dq"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wash" image="WandTabIcon" id="XJC-uK-Gvk"/>
+                    <tabBarItem key="tabBarItem" title="" image="WandTabIcon" id="XJC-uK-Gvk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="explainText" destination="R23-9R-BDM" id="z5q-OT-aNU"/>

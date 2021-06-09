@@ -19,6 +19,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nj5-ve-MNC">
                                 <rect key="frame" x="10" y="26.5" width="394" height="698.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="achievementCell" id="kf0-nk-wXZ" customClass="AchievementCell" customModule="CleanHands" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="394" height="75"/>
@@ -97,7 +98,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nj5-ve-MNC" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.93" id="Hwb-gt-AeM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="nj5-ve-MNC" secondAttribute="bottom" id="LB7-j7-443"/>
@@ -209,11 +210,11 @@
             </objects>
             <point key="canvasLocation" x="1786.9565217391305" y="430.58035714285711"/>
         </scene>
-        <!--achevement-->
+        <!--Navigation Controller-->
         <scene sceneID="qrU-rl-0wj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wFM-MM-8O0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="achevement" image="hand.thumbsup" catalog="system" id="5wr-LX-RuJ"/>
+                    <tabBarItem key="tabBarItem" title="" image="crown.fill" catalog="system" id="5wr-LX-RuJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="zjn-au-w37">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -235,7 +236,7 @@
     </scenes>
     <color key="tintColor" systemColor="systemBackgroundColor"/>
     <resources>
-        <image name="hand.thumbsup" catalog="system" width="128" height="128"/>
+        <image name="crown.fill" catalog="system" width="128" height="92"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -96,7 +96,7 @@
                             <outlet property="delegate" destination="cnh-Ej-yWe" id="nnf-97-7Zc"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" tag="-3" title="Collection" image="CollectionTabIcon" id="Dx0-fa-IIb"/>
+                    <tabBarItem key="tabBarItem" tag="-3" title="" image="CollectionTabIcon" id="Dx0-fa-IIb"/>
                     <navigationItem key="navigationItem" title="목록" id="q7h-ZI-ibl"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>

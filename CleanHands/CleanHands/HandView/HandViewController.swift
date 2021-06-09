@@ -50,6 +50,7 @@ class HandViewController: UIViewController {
         handImageView.layoutIfNeeded()
         updateUI()
         startTimer()
+        AchievementManager.updateAchievement()
         getWashData()
     }
     
@@ -66,7 +67,6 @@ class HandViewController: UIViewController {
         view.layoutIfNeeded()
         let imageLeftX = handImageView.frame.minX
         let imageUpY = handImageView.frame.minY
-        //let imageWidth = handImageView.frame.size.width
         let devidedImageWidth = Int(handImageView.frame.size.width/7)
         
         for _ in Range(1...number) {
@@ -123,7 +123,7 @@ class HandViewController: UIViewController {
     func updateUI() {
         let timeInterval = Date().timeIntervalSince(User.userState.handState.lastWashTime)
         let hour = Int(timeInterval/3600)
-        let min = Int(timeInterval/60)
+        let min = (Int(timeInterval) % 3600)/60
         if (hour > 23) {
             explainText.text = "마지막으로 손을 씻은 지 오랜 시간이 지났습니다.\n\(pathogenImageList.count) 마리의 세균을 서둘러 씻어내세요!"
             let attributedStr = NSMutableAttributedString(string: explainText.text!)

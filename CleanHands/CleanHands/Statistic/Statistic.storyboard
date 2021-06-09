@@ -181,11 +181,11 @@
             </objects>
             <point key="canvasLocation" x="1107.2463768115942" y="225.00000000000003"/>
         </scene>
-        <!--Statistic-->
+        <!--Navigation Controller-->
         <scene sceneID="Vcy-Ac-F96">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2KL-Hx-NgB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Statistic" image="StatisticTabIcon" id="Q9M-Sk-Bds"/>
+                    <tabBarItem key="tabBarItem" title="" image="StatisticTabIcon" id="Q9M-Sk-Bds"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="7zP-R5-n1L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>

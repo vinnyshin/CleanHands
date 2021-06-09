@@ -22,7 +22,7 @@ class AchievementViewController: UIViewController {
         achievementTableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
-        isOpened = [Bool](repeating: false, count: AchievementManager.achievements.appearedAchievements.count + AchievementManager.achievements.completedAchievements.count)
+        isOpened = [Bool](repeating: false, count: User.userState.achievementManager.appearedAchievements.count + User.userState.achievementManager.completedAchievements.count)
         achievementTableView.reloadData()
     }
     
@@ -30,7 +30,7 @@ class AchievementViewController: UIViewController {
 }
 extension AchievementViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return AchievementManager.achievements.appearedAchievements.count + AchievementManager.achievements.completedAchievements.count
+        return User.userState.achievementManager.appearedAchievements.count + User.userState.achievementManager.completedAchievements.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (isOpened[section]) {
@@ -42,13 +42,13 @@ extension AchievementViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let appearedCount = AchievementManager.achievements.appearedAchievements.count
+        let appearedCount = User.userState.achievementManager.appearedAchievements.count
         var achievement:Achievement
         if (indexPath.section >= appearedCount) {
-            achievement = AchievementManager.achievements.completedAchievements[indexPath.section-appearedCount]
+            achievement = User.userState.achievementManager.completedAchievements[indexPath.section-appearedCount]
         }
         else {
-            achievement = AchievementManager.achievements.appearedAchievements[indexPath.section]
+            achievement = User.userState.achievementManager.appearedAchievements[indexPath.section]
         }
         
         if indexPath.row == 0 {
