@@ -152,6 +152,8 @@ class StatisticViewController: UIViewController {
         
         
         curChartData = BarChartData(dataSet: curChartDataSet)
+        curChartData?.barWidth = curChartData!.barWidth * 0.65
+        
     }
     
     private func setInfoLabels(){

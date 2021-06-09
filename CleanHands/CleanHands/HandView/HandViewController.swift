@@ -24,15 +24,18 @@ class HandViewController: UIViewController {
     var pathogenImageList = Array<UIImageView>()
     var capturedPathogenDic = [Pathogen:Int]()
     
+    var washDataViewString = "무슨 세균을 잡았을까?"
+    
     let pathogenCreateInterval:Double = 1
     let maxPathogenNum = 100
     let percentageOfGettingPathogen = 1.0
     
+    var isHealthKitLoaded = false
     var timerModalView : TimerModalViewController?
     var captureSuccess = false {
         didSet {
             if (captureSuccess) {
-                timerModalView!.dismiss(animated: false, completion: nil)
+                timerModalView?.dismiss(animated: false, completion: nil)
                 presentWashResultView()
                 captureSuccess = false
             }
@@ -52,6 +55,11 @@ class HandViewController: UIViewController {
         startTimer()
         AchievementManager.updateAchievement()
         getWashData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,6 +118,9 @@ class HandViewController: UIViewController {
     }
     
     @objc func onTimePassed() {
+        if (!isHealthKitLoaded) {
+            return
+        }
         let currentDate = Date()
         let expectedPathongenNumber = Int(currentDate.timeIntervalSince(User.userState.handState.lastWashTime)/pathogenCreateInterval)
 
@@ -182,6 +193,7 @@ class HandViewController: UIViewController {
     }
 
     @IBAction func onWashButtonPressed(_ sender: Any) {
+        washDataViewString = "어떤 세균을 잡았을까?"
         presentTimerModal()
         removePathogen()
         saveUserState()
@@ -198,14 +210,50 @@ class HandViewController: UIViewController {
     func presentWashResultView() {
         guard let resultView = self.storyboard?.instantiateViewController(identifier: "resultView") else {return}
         resultView.modalTransitionStyle = .coverVertical
-        self.present(resultView, animated: true)
+        let washResultView = resultView as! WashResultViewController
+        washResultView.titleString = washDataViewString
+        self.present(washResultView, animated: true)
     }
     
     func getWashData() {
         HealthKitManager.shared.readRecentHandWash(for: Date()) {sample,_ in
             if let washSample = sample as? HKCategorySample {
-                print(washSample)
+                let washDate = washSample.endDate
+                if (User.userState.handState.lastWashTime < washDate) {
+                    self.capturedPathogenDic = [Pathogen:Int]()
+                    
+                    let timeInterval  = washDate.timeIntervalSince(User.userState.handState.lastWashTime)
+                    User.userState.handState.lastWashTime = washDate
+                    
+                    var pathogenCount = Int(timeInterval/self.pathogenCreateInterval)
+                    if (pathogenCount > self.maxPathogenNum) {
+                        pathogenCount = self.maxPathogenNum
+                    }
+                    
+                    for _ in Range(0...pathogenCount) {
+                        self.getRandomPathogen()
+                    }
+                    
+                    let newWashData = WashData(date: washDate, capturedPathogenDic: self.capturedPathogenDic)
+                    User.userState.washDataList.append(newWashData)
+                    
+                    for (capturedPathogen, number) in self.capturedPathogenDic {
+                        if (User.userState.pathogenDic[capturedPathogen] != nil) {
+                            User.userState.pathogenDic[capturedPathogen]! += number
+                        }
+                        else {
+                            User.userState.pathogenDic[capturedPathogen] = number
+                        }
+                    }
+                    AchievementManager.updateAchievement()
+                    AchievementManager.compeleteAchievement()
+                    
+                    self.washDataViewString = "접속하지 않는 동안 손을 씻었어요!"
+                    self.captureSuccess = true
+                    saveUserState()
+                }
             }
+            self.isHealthKitLoaded = true
         }
     }
 }

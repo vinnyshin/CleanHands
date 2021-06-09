@@ -207,7 +207,6 @@ func generateWashDummies() -> [WashData]{
     for _ in 0...99{
         let temp = arc4random_uniform(21);
         list.append(WashData(date: getPrevDateBy(daysToSub: Int(temp)), capturedPathogenDic: dummyPathogenDic))
-        print(temp)
 
     }
     return list

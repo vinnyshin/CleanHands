@@ -10,8 +10,10 @@ import UIKit
 class WashResultViewController: UIViewController {
     
     @IBOutlet weak var resultView: UIView!
+    @IBOutlet weak var titleText: UILabel!
     let washDataList = User.userState.washDataList
     let padding:CGFloat = 30
+    var titleString = ""
     
     @IBOutlet weak var washResultCollectionView: UICollectionView!
     
@@ -21,7 +23,7 @@ class WashResultViewController: UIViewController {
         
         self.washResultCollectionView.delegate = self
         self.washResultCollectionView.dataSource = self
-        
+        titleText.text = titleString
     }
     override func viewDidLayoutSubviews() {
         self.view.layoutIfNeeded()

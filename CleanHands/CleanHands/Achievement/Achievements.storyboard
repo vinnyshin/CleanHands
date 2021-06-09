@@ -69,7 +69,7 @@
                                             <outlet property="nameLabel" destination="K6y-4b-f7A" id="cAT-up-AvO"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="160" id="RUr-e8-Uag" customClass="AchievementDescriptionCell" customModule="CleanHands" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="160" id="RUr-e8-Uag" customClass="AchievementDescriptionCell" customModule="CleanHands" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99.5" width="394" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RUr-e8-Uag" id="9oh-BK-vC2">

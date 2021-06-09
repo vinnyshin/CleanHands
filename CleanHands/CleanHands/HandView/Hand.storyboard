@@ -344,6 +344,7 @@
                     <navigationItem key="navigationItem" id="Eg5-hy-i9C"/>
                     <connections>
                         <outlet property="resultView" destination="6Sc-iW-qHO" id="fFa-Mm-ryw"/>
+                        <outlet property="titleText" destination="Q5e-uj-GOd" id="tHj-em-qnF"/>
                         <outlet property="washResultCollectionView" destination="srk-t2-bej" id="0ya-Vc-31F"/>
                     </connections>
                 </viewController>
