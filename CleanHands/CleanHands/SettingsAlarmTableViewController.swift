@@ -6,20 +6,79 @@
 //
 
 import UIKit
+import UserNotifications
 
 class SettingsAlarmTableViewController: UITableViewController {
+    
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     var isAlarmOn = false
     var isDoNotDisturbOn = false
     
-    var isAlarmOnIndexPath: IndexPath?
-    var isDoNotDisturbIndexPath: IndexPath?
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let notificationCenter = UNUserNotificationCenter.current()
+        
+        notificationCenter
+        .requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            if !granted {
+                print("User has declined notifications")
+            }
+        }
+        
+        notificationCenter.getNotificationSettings {
+            (settings) in
+              if settings.authorizationStatus != .authorized {
+                // Notifications not allowed
+              }
+        }
     }
+    
+    
+    func scheduleNotification() {
+        let center = UNUserNotificationCenter.current()
 
+        let content = UNMutableNotificationContent()
+        content.title = "손이 더러워요!"
+        content.body = "손을 안씻은지 오래됐어요! 손을 씻어주새요."
+        content.categoryIdentifier = "alarm"
+//        content.userInfo = ["customData": "fizzbuzz"]
+        content.sound = UNNotificationSound.default
+
+        // time interval을 바꾸면 가능
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // pull out the buried userInfo dictionary
+        let userInfo = response.notification.request.content.userInfo
+
+        if let customData = userInfo["customData"] as? String {
+            print("Custom data received: \(customData)")
+
+            switch response.actionIdentifier {
+            case UNNotificationDefaultActionIdentifier:
+                // the user swiped to unlock
+                print("Default identifier")
+
+            case "show":
+                // the user tapped our "show more info…" button
+                print("Show more information…")
+                break
+
+            default:
+                break
+            }
+        }
+
+        // you must call the completion handler when you're done
+        completionHandler()
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,7 +122,7 @@ class SettingsAlarmTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "toTimePickerCell", for: indexPath)
                 return cell
             }
-//        }
+
 //        if indexPath.row == 0 {
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "isAlarmCell", for: indexPath)
 //            return cell
@@ -89,18 +148,12 @@ class SettingsAlarmTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-//        if indexPath.section == 0 {
-            if indexPath.row > 0 && isAlarmOn == false {
-                return 0.0  // collapsed
-            }
-//        }
-//        else {
-            if indexPath.row > 2 && isDoNotDisturbOn == false {
-                return 0.0
-            }
-//        }
-        
-        
+        if indexPath.row > 0 && isAlarmOn == false {
+            return 0.0  // collapsed
+        }
+        if indexPath.row > 2 && isDoNotDisturbOn == false {
+            return 0.0
+        }
         
         // expanded with row height of parent
         return super.tableView(tableView, heightForRowAt: indexPath)
@@ -108,7 +161,7 @@ class SettingsAlarmTableViewController: UITableViewController {
     
     @IBAction func alarmSwitchChanged(_ sender: UISwitch) {
         isAlarmOn = sender.isOn
-        
+        scheduleNotification()
         tableView.beginUpdates()
         tableView.endUpdates()
     }
