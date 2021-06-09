@@ -8,7 +8,7 @@
 import UIKit
 
 class CollectionTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barStyle = .black

@@ -35,7 +35,11 @@ class HandViewController: UIViewController {
     var captureSuccess = false {
         didSet {
             if (captureSuccess) {
-                timerModalView?.dismiss(animated: false, completion: nil)
+                if let timerModalView = timerModalView {
+                    timerModalView.dismiss(animated: false, completion: nil)
+                    removePathogen()
+                    saveUserState()
+                }
                 presentWashResultView()
                 captureSuccess = false
             }
@@ -193,10 +197,8 @@ class HandViewController: UIViewController {
     }
 
     @IBAction func onWashButtonPressed(_ sender: Any) {
-        washDataViewString = "어떤 세균을 잡았을까?"
+        washDataViewString = "무슨 세균을 잡았을까?"
         presentTimerModal()
-        removePathogen()
-        saveUserState()
     }
     
     func presentTimerModal() {

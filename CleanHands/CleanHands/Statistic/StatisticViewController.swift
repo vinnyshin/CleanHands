@@ -149,7 +149,7 @@ class StatisticViewController: UIViewController {
         curChartDataSet.highlightEnabled = false
         curChartDataSet.colors = [UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1)]
         curChartDataSet.valueFormatter = DigitValueFormatter()
-        
+        curChartDataSet.drawValuesEnabled = false
         
         curChartData = BarChartData(dataSet: curChartDataSet)
         curChartData?.barWidth = curChartData!.barWidth * 0.65
@@ -198,19 +198,19 @@ class StatisticViewController: UIViewController {
         
     private func setStateLabel(){
         if (state == ChartState.CUR_WEEK){
-            stateLabel.text = "이번 주"
+            stateLabel.text = getWeekString(0)
             nextButton.isEnabled = false
             prevButton.isEnabled = true
             prevButton.alpha = 1
             nextButton.alpha = 0
         }else if(state == ChartState.PREV_WEEK){
-            stateLabel.text = "지난 주 통계"
+            stateLabel.text = getWeekString(1)
             nextButton.isEnabled = true
             prevButton.isEnabled = true
             prevButton.alpha = 1
             nextButton.alpha = 1
         }else{
-            stateLabel.text = "2주 전 통계"
+            stateLabel.text = getWeekString(2)
             nextButton.isEnabled = true
             prevButton.isEnabled = false
             prevButton.alpha = 0
@@ -219,6 +219,18 @@ class StatisticViewController: UIViewController {
             
     }
     
+    func getWeekString(_ weekFromNow:Int)->String {
+        let weekValue = 3600 * 24 * 7
+        let timeInterval = -criteriaFromWeekday(today: Date()) * 3600 * 24
+        let startDayOfWeek = Date(timeIntervalSinceNow: TimeInterval(timeInterval - weekValue * weekFromNow)).description
+        var endDayOfWeek = Date(timeIntervalSinceNow: TimeInterval(timeInterval - weekValue * (weekFromNow - 1)))
+        if (Date() < endDayOfWeek ) {
+            endDayOfWeek = Date()
+        }
+        let splitStartDayOfWeek = startDayOfWeek.split(separator: " ")[0]
+        let splitEndDayOfWeek = endDayOfWeek.description.split(separator: " ")[0]
+        return "\(splitStartDayOfWeek) ~ \(splitEndDayOfWeek)"
+    }
     
     private func chartConfigue(){
         
