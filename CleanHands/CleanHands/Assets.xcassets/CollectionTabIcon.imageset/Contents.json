@@ -1,6 +1,12 @@
 {
   "images" : [
     {
+      "alignment-insets" : {
+        "bottom" : 0,
+        "left" : 30,
+        "right" : 0,
+        "top" : 30
+      },
       "filename" : "CollectionTabIcon.svg",
       "idiom" : "universal",
       "scale" : "1x"
@@ -17,5 +23,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
   }
 }
