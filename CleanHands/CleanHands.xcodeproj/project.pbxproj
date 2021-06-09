@@ -15,6 +15,7 @@
 		27D3764B264521C40074EDAC /* CollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3764A264521C40074EDAC /* CollectionTableViewController.swift */; };
 		27D37651264525E40074EDAC /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37650264525E40074EDAC /* Settings.storyboard */; };
 		27D37654264526260074EDAC /* Statistic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37653264526260074EDAC /* Statistic.storyboard */; };
+		27E651952670FFFB00711243 /* AlarmTimeSelectModalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E651942670FFFB00711243 /* AlarmTimeSelectModalTableViewController.swift */; };
 		328E63A473D8D367C51144A6 /* Pods_CleanHands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E1CFD389E4207CA0DCB4F2 /* Pods_CleanHands.framework */; };
 		7A0073D62665E58F00E7057B /* WashResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0073D52665E58F00E7057B /* WashResultViewController.swift */; };
 		7A1D340C26452F5A002D460D /* HandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D340B26452F5A002D460D /* HandViewController.swift */; };
@@ -44,6 +45,7 @@
 		27D3764A264521C40074EDAC /* CollectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewController.swift; sourceTree = "<group>"; };
 		27D37650264525E40074EDAC /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		27D37653264526260074EDAC /* Statistic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistic.storyboard; sourceTree = "<group>"; };
+		27E651942670FFFB00711243 /* AlarmTimeSelectModalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTimeSelectModalTableViewController.swift; sourceTree = "<group>"; };
 		7A0073D52665E58F00E7057B /* WashResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashResultViewController.swift; sourceTree = "<group>"; };
 		7A1D340B26452F5A002D460D /* HandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandViewController.swift; sourceTree = "<group>"; };
 		7A50EFAD265A8445008FF744 /* TimerModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModalViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				27D37650264525E40074EDAC /* Settings.storyboard */,
 				273454F4266F4886000C21F3 /* SettingsTableViewController.swift */,
 				2787449626708715006AE83D /* SettingsAlarmTableViewController.swift */,
+				27E651942670FFFB00711243 /* AlarmTimeSelectModalTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				F16064AB261EF2820072858F /* ViewController.swift in Sources */,
 				F13D8EE52645281C00492E92 /* StatisticViewController.swift in Sources */,
 				F16064A7261EF2820072858F /* AppDelegate.swift in Sources */,
+				27E651952670FFFB00711243 /* AlarmTimeSelectModalTableViewController.swift in Sources */,
 				F16064A9261EF2820072858F /* SceneDelegate.swift in Sources */,
 				2787449726708715006AE83D /* SettingsAlarmTableViewController.swift in Sources */,
 				2744C36D265F835500543BD7 /* CollectionDetailViewController.swift in Sources */,
