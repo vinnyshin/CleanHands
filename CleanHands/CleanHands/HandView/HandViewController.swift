@@ -26,7 +26,7 @@ class HandViewController: UIViewController {
     
     var washDataViewString = "무슨 세균을 잡았을까?"
     
-    let pathogenCreateInterval:Double = 1
+    let pathogenCreateInterval:Double = 60
     let maxPathogenNum = 100
     let percentageOfGettingRarePathogen = 0.3
     let percentageOfGettingEpicPathogen = 0.1
@@ -60,6 +60,7 @@ class HandViewController: UIViewController {
         updateUI()
         startTimer()
         AchievementManager.updateAchievement()
+        User.addAvailablePathogens()
         getWashData()
     }
     
@@ -131,8 +132,7 @@ class HandViewController: UIViewController {
         let expectedPathongenNumber = Int(currentDate.timeIntervalSince(User.userState.handState.lastWashTime)/pathogenCreateInterval)
 
         if (pathogenImageList.count < expectedPathongenNumber)  {
-//            createPathogen(numberOfCreate: expectedPathongenNumber - pathogenImageList.count)
-            createPathogen(numberOfCreate: 100)
+            createPathogen(numberOfCreate: expectedPathongenNumber - pathogenImageList.count)
         }
         updateUI()
     }
@@ -186,8 +186,8 @@ class HandViewController: UIViewController {
     
 
     func getRandomPathogen() {
-        let randomInt = Int.random(in: 0...pathogenList.count-1)
-        let newPathogen = pathogenList[randomInt]
+        let randomInt = Int.random(in: 0...User.userState.availablePathogens.count-1)
+        let newPathogen = User.userState.availablePathogens[randomInt]
         
         var percentageOfGettingPathogen:Double
         
