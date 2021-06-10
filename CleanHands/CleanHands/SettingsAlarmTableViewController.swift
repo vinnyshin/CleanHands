@@ -47,7 +47,7 @@ class SettingsAlarmTableViewController: UITableViewController {
 
         let content = UNMutableNotificationContent()
         content.title = "손이 더러워요!"
-        content.body = "손을 안씻은지 오래됐어요! 손을 씻어주새요."
+        content.body = "손을 안씻은지 오래됐어요! 손을 씻어주세요."
         content.categoryIdentifier = "alarm"
 //        content.userInfo = ["customData": "fizzbuzz"]
         content.sound = UNNotificationSound.default
