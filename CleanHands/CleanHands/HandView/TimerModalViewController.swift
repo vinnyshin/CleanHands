@@ -9,6 +9,7 @@ import UIKit
 
 class TimerModalViewController: UIViewController {
     @IBOutlet weak var remainTimeLabel: UILabel!
+    @IBOutlet weak var modalButton: UIButton!
     @IBOutlet weak var washProgressBar: UIProgressView!
     var scaled = false
     var handViewController:HandViewController?
@@ -70,7 +71,7 @@ class TimerModalViewController: UIViewController {
             timer?.invalidate()
             timer = nil
             completeWash = true
-            remainTimeLabel.text = "완료"
+            modalButton.setTitle("완료", for: .normal)
             //self.dismiss(animated: true, completion: nil)
         }
     }
@@ -83,10 +84,10 @@ class TimerModalViewController: UIViewController {
     }
     @IBAction func cancelButtonPressed(_ sender: Any) {
         if (completeWash) {
-            self.dismiss(animated: true, completion: nil)
+            handViewController?.captureSuccess = true
         }
         else {
-            handViewController?.captureSuccess = true
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

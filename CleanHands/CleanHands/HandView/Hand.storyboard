@@ -209,6 +209,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="modalButton" destination="jyS-TA-qwn" id="0yt-xI-t7i"/>
                         <outlet property="remainTimeLabel" destination="s8p-QD-BU6" id="iBq-bF-BhL"/>
                         <outlet property="washProgressBar" destination="Hao-ye-t4j" id="YXp-6m-VWf"/>
                     </connections>
@@ -357,7 +358,7 @@
         <image name="Hand" width="85.5" height="120"/>
         <image name="WandTabIcon" width="15.774999618530273" height="20.507999420166016"/>
         <image name="WashButtonBackground" width="58" height="21"/>
-        <image name="salmonella" width="548" height="306"/>
+        <image name="salmonella" width="172" height="144"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
