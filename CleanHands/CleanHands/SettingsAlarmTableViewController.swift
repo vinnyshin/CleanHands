@@ -47,16 +47,51 @@ class SettingsAlarmTableViewController: UITableViewController {
 
         let content = UNMutableNotificationContent()
         content.title = "손이 더러워요!"
-        content.body = "손을 안씻은지 오래됐어요! 손을 씻어주새요."
+        content.body = "손을 안씻은지 오래됐어요! 손을 씻어주세요."
         content.categoryIdentifier = "alarm"
 //        content.userInfo = ["customData": "fizzbuzz"]
         content.sound = UNNotificationSound.default
 
         // time interval을 바꾸면 가능
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-
-
+        
+        
+        let presetAlarms = ["30분", "1시간", "1시간 30분", "2시간", "2시간 30분", "3시간", "3시간 30분", "4시간"]
+        
+        var timeInt: Double = 0
+        if let time = delegate?.time {
+            if time == presetAlarms[0] {
+                timeInt = 1800
+            }
+            else if time == presetAlarms[1] {
+                timeInt = 1800 * 2
+            }
+            else if time == presetAlarms[2] {
+                timeInt = 1800 * 3
+            }
+            else if time == presetAlarms[3] {
+                timeInt = 1800 * 4
+            }
+            else if time == presetAlarms[4] {
+                timeInt = 1800 * 5
+            }
+            else if time == presetAlarms[5] {
+                timeInt = 1800 * 6
+            }
+            else if time == presetAlarms[6] {
+                timeInt = 1800 * 7
+            }
+            else if time == presetAlarms[7] {
+                timeInt = 1800 * 8
+            }
+            else {
+                // default time is 2 hours
+                timeInt = 1800 * 4
+            }
+        }
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInt, repeats: true)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
         center.add(request)
     }
     
@@ -182,14 +217,11 @@ class SettingsAlarmTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let alarmTimeSelectModalTableVC = segue.destination as? AlarmTimeSelectModalViewController {
             let delegate: TimeDelegate = self.delegate!
-            print("modal delegate!")
             alarmTimeSelectModalTableVC.delegate = delegate
-            print(delegate)
         }
     }
     
     func setRepeatTime() {
-//        print(delegate?.time)
         let cell = self.tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! RepeatCell
         if let timeString = delegate?.time {
             cell.repeatConfigLabel.text = timeString
