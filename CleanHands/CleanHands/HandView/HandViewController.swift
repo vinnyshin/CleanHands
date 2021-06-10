@@ -185,8 +185,8 @@ class HandViewController: UIViewController {
 
     func getRandomPathogen() {
         if (drand48() < percentageOfGettingPathogen) {
-            let randomInt = Int.random(in: 0...dummyPathogenList.count-1)
-            let newPathogen = dummyPathogenList[randomInt]
+            let randomInt = Int.random(in: 0...pathogenList.count-1)
+            let newPathogen = pathogenList[randomInt]
             if (capturedPathogenDic[newPathogen] != nil) {
                 capturedPathogenDic[newPathogen]! += 1
             }
