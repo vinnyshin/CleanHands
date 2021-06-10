@@ -28,7 +28,9 @@ class HandViewController: UIViewController {
     
     let pathogenCreateInterval:Double = 1
     let maxPathogenNum = 100
-    let percentageOfGettingPathogen = 1.0
+    let percentageOfGettingRarePathogen = 0.3
+    let percentageOfGettingEpicPathogen = 0.1
+    let percentageOfGettingCommonPathogen = 0.5
     
     var isHealthKitLoaded = false
     var timerModalView : TimerModalViewController?
@@ -184,9 +186,22 @@ class HandViewController: UIViewController {
     
 
     func getRandomPathogen() {
+        let randomInt = Int.random(in: 0...pathogenList.count-1)
+        let newPathogen = pathogenList[randomInt]
+        
+        var percentageOfGettingPathogen:Double
+        
+        switch newPathogen.frequency {
+            case .high:
+                percentageOfGettingPathogen = percentageOfGettingCommonPathogen
+                break
+            case .medium:
+                percentageOfGettingPathogen = percentageOfGettingRarePathogen
+                break
+            case .low:
+                percentageOfGettingPathogen = percentageOfGettingEpicPathogen
+        }
         if (drand48() < percentageOfGettingPathogen) {
-            let randomInt = Int.random(in: 0...dummyPathogenList.count-1)
-            let newPathogen = dummyPathogenList[randomInt]
             if (capturedPathogenDic[newPathogen] != nil) {
                 capturedPathogenDic[newPathogen]! += 1
             }
