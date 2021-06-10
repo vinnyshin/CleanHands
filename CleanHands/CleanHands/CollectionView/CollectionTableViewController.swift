@@ -102,7 +102,7 @@ class CollectionCell : UITableViewCell {
             let textColor = UIColor(red: 25.0 / 255, green: 63.0 / 255, blue: 110.0 / 255, alpha: 1.0)
             
             let attributedPathogenNameString = NSMutableAttributedString()
-                .normal(pathogen.name, fontSize: 15)
+                .normal(pathogen.name, fontSize: 17)
             
             pathogenLabel.attributedText = attributedPathogenNameString
             pathogenLabel.textColor = textColor

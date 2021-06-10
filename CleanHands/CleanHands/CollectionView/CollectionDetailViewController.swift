@@ -63,6 +63,8 @@ class CollectionDetailViewController: UIViewController {
     
     
     func setDetailsStackViewUI() {
+        detailsStackView.layer.cornerRadius = 25
+        detailsStackView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         detailsStackView.layoutMargins = UIEdgeInsets(top: 100, left: 0, bottom: 100, right: 0)
         detailsStackView.isLayoutMarginsRelativeArrangement = true
     }
@@ -121,8 +123,7 @@ class CollectionDetailViewController: UIViewController {
     }
     
     func setContentsUI() {
-        decriptionLabel.text = selectedPathogen.description + selectedPathogen.description + selectedPathogen.description
-        
+        decriptionLabel.text = selectedPathogen.description
         symptomLabel.text = selectedPathogen.symptom
         careMethodLabel.text = selectedPathogen.careMethod
         locationLabel.text = selectedPathogen.location
