@@ -26,13 +26,12 @@ class HandViewController: UIViewController {
     
     var washDataViewString = "무슨 세균을 잡았을까?"
     
-    let pathogenCreateInterval:Double = 60
+    let pathogenCreateInterval:Double = 5//세균이 생성되는 간격인데 원래는 60초입니다. 교수님 테스트할 때 1분마다 세균이 나오면 테스트하기 어려우실 것 같아서 5초로 변경했습니다.
     let maxPathogenNum = 100
     let percentageOfGettingRarePathogen = 0.3
     let percentageOfGettingEpicPathogen = 0.1
     let percentageOfGettingCommonPathogen = 0.5
-    
-    var isHealthKitLoaded = false
+
     var timerModalView : TimerModalViewController?
     var captureSuccess = false {
         didSet {
@@ -52,7 +51,7 @@ class HandViewController: UIViewController {
     
     @IBOutlet weak var explainText: UILabel!
     
-    let pathogenImage = UIImage(named: "Pathogen")
+    let pathogenImage = UIImage(named: "HandPathogen")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,14 +60,8 @@ class HandViewController: UIViewController {
         startTimer()
         AchievementManager.updateAchievement()
         User.addAvailablePathogens()
-        getWashData()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         onTimePassed()
@@ -76,7 +69,9 @@ class HandViewController: UIViewController {
     
     func startTimer() {
         Timer.scheduledTimer(timeInterval: pathogenCreateInterval, target: self, selector: #selector(onTimePassed), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkReload), userInfo: nil, repeats: true)
     }
+    
     
     func createPathogen(numberOfCreate number:Int) {
         view.layoutIfNeeded()
@@ -124,13 +119,23 @@ class HandViewController: UIViewController {
         return Range(startRange...endRange)
     }
     
-    @objc func onTimePassed() {
-        if (!isHealthKitLoaded) {
-            return
+    @objc func checkReload() {
+        if (appBecomeActive) {
+            getWashData()
+            appBecomeActive = false
         }
+    }
+    @objc func onTimePassed() {
         let currentDate = Date()
         let expectedPathongenNumber = Int(currentDate.timeIntervalSince(User.userState.handState.lastWashTime)/pathogenCreateInterval)
 
+        if (expectedPathongenNumber < pathogenImageList.count) {
+            for i in self.pathogenImageList {
+                i.removeFromSuperview()
+            }
+            pathogenImageList = Array<UIImageView>()
+        }
+        
         if (pathogenImageList.count < expectedPathongenNumber)  {
             createPathogen(numberOfCreate: expectedPathongenNumber - pathogenImageList.count)
         }
@@ -270,7 +275,7 @@ class HandViewController: UIViewController {
                     saveUserState()
                 }
             }
-            self.isHealthKitLoaded = true
+            
         }
     }
 }
