@@ -85,7 +85,7 @@ class TimerModalViewController: UIViewController {
     }
     @IBAction func cancelButtonPressed(_ sender: Any) {
         if (completeWash) {
-            handViewController?.captureSuccess = true
+            //handViewController?.captureSuccess = true
         }
         else {
             self.dismiss(animated: true, completion: nil)

@@ -208,6 +208,7 @@
                             <constraint firstItem="s8p-QD-BU6" firstAttribute="centerY" secondItem="meT-Id-ONc" secondAttribute="centerY" multiplier="0.5" id="uSC-sR-PRv"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ElA-5G-4SG"/>
                     <connections>
                         <outlet property="modalButton" destination="jyS-TA-qwn" id="0yt-xI-t7i"/>
                         <outlet property="remainTimeLabel" destination="s8p-QD-BU6" id="iBq-bF-BhL"/>

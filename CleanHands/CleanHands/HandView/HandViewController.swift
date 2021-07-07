@@ -36,19 +36,19 @@ class HandViewController: UIViewController {
     var isHealthKitLoaded = false
     
     var timerModalView : TimerModalViewController?
-    var captureSuccess = false {
-        didSet {
-            if (captureSuccess) {
-                if let timerModalView = timerModalView {
-                    timerModalView.dismiss(animated: false, completion: nil)
-                    removePathogen()
-                    saveUserState()
-                }
-                presentWashResultView()
-                captureSuccess = false
-            }
-        }
-    }
+//    var captureSuccess = false {
+//        didSet {
+//            if (captureSuccess) {
+//                if let timerModalView = timerModalView {
+//                    timerModalView.dismiss(animated: false, completion: nil)
+//                    removePathogen()
+//                    saveUserState()
+//                }
+//                presentWashResultView()
+//                captureSuccess = false
+//            }
+//        }
+//    }
     
     @IBOutlet weak var handImageView: UIImageView!
     
@@ -221,16 +221,18 @@ class HandViewController: UIViewController {
 
     @IBAction func onWashButtonPressed(_ sender: Any) {
         washDataViewString = "무슨 세균을 잡았을까?"
-        presentTimerModal()
+        removePathogen()
+        saveUserState()
+        presentWashResultView()
     }
     
-    func presentTimerModal() {
-        guard let getTimerModalView = self.storyboard?.instantiateViewController(identifier: "timerModalView") else {return}
-        let timerModalView = getTimerModalView as! TimerModalViewController
-        timerModalView.handViewController = self
-        self.timerModalView = timerModalView
-        self.present(timerModalView, animated: true)
-    }
+//    func presentTimerModal() {
+//        guard let getTimerModalView = self.storyboard?.instantiateViewController(identifier: "timerModalView") else {return}
+//        let timerModalView = getTimerModalView as! TimerModalViewController
+//        timerModalView.handViewController = self
+//        self.timerModalView = timerModalView
+//        self.present(timerModalView, animated: true)
+//    }
     
     func presentWashResultView() {
         guard let resultView = self.storyboard?.instantiateViewController(identifier: "resultView") else {return}
@@ -274,7 +276,8 @@ class HandViewController: UIViewController {
                     AchievementManager.compeleteAchievement()
                     
                     self.washDataViewString = "접속하지 않는 동안 손을 씻었어요!"
-                    self.captureSuccess = true
+                    //self.captureSuccess = true
+                    self.presentWashResultView()
                     saveUserState()
                 }
             }
