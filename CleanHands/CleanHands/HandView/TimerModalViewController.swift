@@ -20,6 +20,7 @@ class TimerModalViewController: UIViewController {
     var completeWash = false
     
     var remainTime = 20
+    let totalTime:Float = 20
     var timeText:String {
         if (remainTime > 9) {
             return "00 : " + String(remainTime)
@@ -63,11 +64,11 @@ class TimerModalViewController: UIViewController {
     }
     
     @objc func onTimePassed() {
-        washProgressBar.progress += 0.05
+        washProgressBar.progress += 1/totalTime
         remainTime -= 1
         remainTimeLabel.text = timeText
         
-        if (washProgressBar.progress >= 1) {
+        if (remainTime <= 0) {
             timer?.invalidate()
             timer = nil
             completeWash = true
