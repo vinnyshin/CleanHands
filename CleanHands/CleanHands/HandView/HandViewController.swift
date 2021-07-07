@@ -31,6 +31,7 @@ class HandViewController: UIViewController {
     let percentageOfGettingRarePathogen = 0.3
     let percentageOfGettingEpicPathogen = 0.1
     let percentageOfGettingCommonPathogen = 0.5
+    let dirtyPathogenNumber:Double = 60
     
     var isHealthKitLoaded = false
     var timerModalView : TimerModalViewController?
@@ -133,6 +134,7 @@ class HandViewController: UIViewController {
 
         if (pathogenImageList.count < expectedPathongenNumber)  {
             createPathogen(numberOfCreate: expectedPathongenNumber - pathogenImageList.count)
+            //createPathogen(numberOfCreate: 500)
         }
         updateUI()
     }
@@ -147,7 +149,7 @@ class HandViewController: UIViewController {
             attributedStr.addAttribute(.foregroundColor, value: UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1), range: (explainText.text! as NSString).range(of: "\(pathogenImageList.count) 마리"))
             explainText.attributedText = attributedStr
         }
-        else if (timeInterval > 600) {
+        else if (timeInterval > dirtyPathogenNumber) {
             explainText.text = "마지막으로 손을 씻은 지 \(hour)시간 \(min)분 지났습니다. \n\(pathogenImageList.count) 마리의 세균을 서둘러 씻어내세요!"
             let attributedStr = NSMutableAttributedString(string: explainText.text!)
             attributedStr.addAttribute(.foregroundColor, value: UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1), range: (explainText.text! as NSString).range(of: "\(hour)시간 \(min)분"))
@@ -165,7 +167,6 @@ class HandViewController: UIViewController {
         for i in pathogenImageList {
             getRandomPathogen()
             i.removeFromSuperview()
-            //usleep(50000)
         }
         let newWashData = WashData(date: Date(), capturedPathogenDic: capturedPathogenDic)
         User.userState.washDataList.append(newWashData)

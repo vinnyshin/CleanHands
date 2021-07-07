@@ -145,5 +145,5 @@ func loadUser() -> User{
     }catch{
         print(error)
     }
-    return User(name: "initName", pathogenDic: [:], washDataList: generateWashDummies(), handState: HandState(lastWashTime: Date(), pathogenAmount: 0), exp: 0)
+    return User(name: "initName", pathogenDic: [:], washDataList: randomWashList, handState: HandState(lastWashTime: Date(), pathogenAmount: 0), exp: 0)
 }
