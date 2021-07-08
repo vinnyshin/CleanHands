@@ -187,7 +187,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sx3-Hr-Cvy">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sx3-Hr-Cvy">
                                                             <rect key="frame" x="140.5" y="0.0" width="140.5" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
@@ -274,26 +274,58 @@
                                     <outlet property="doNotDisturbSwitch" destination="9zD-ii-ryB" id="Rhb-r3-3NH"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="fromTimePickerCell" id="YkD-dJ-8VY" customClass="fromTimePickerCell" customModule="CleanHands" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="209.5" width="414" height="63"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="timePickerCell" id="YkD-dJ-8VY" customClass="TimePickerCell" customModule="CleanHands" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="209.5" width="414" height="66.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YkD-dJ-8VY" id="ddS-B5-kAh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="66.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Cgv-xE-KHx">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Cgv-xE-KHx">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="66.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w47-8D-qDI">
-                                                    <rect key="frame" x="15" y="22.5" width="56" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="eWA-aa-Amt">
-                                                    <rect key="frame" x="71" y="4.5" width="343" height="54.5"/>
-                                                    <locale key="locale" localeIdentifier="ko"/>
-                                                </datePicker>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WwT-iH-aNg">
+                                                    <rect key="frame" x="15" y="4" width="192" height="58.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w47-8D-qDI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="58" height="58.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="w47-8D-qDI" secondAttribute="height" id="bCg-r3-GAj"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="eWA-aa-Amt">
+                                                            <rect key="frame" x="63" y="4.5" width="129" height="50"/>
+                                                            <locale key="locale" localeIdentifier="ko"/>
+                                                        </datePicker>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="w47-8D-qDI" firstAttribute="width" secondItem="eWA-aa-Amt" secondAttribute="width" multiplier="0.45" id="Kky-8C-bQD"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3fb-ch-rg5">
+                                                    <rect key="frame" x="222" y="4" width="192" height="58.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0F-6r-3gP">
+                                                            <rect key="frame" x="0.0" y="0.0" width="58" height="58.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="z0F-6r-3gP" secondAttribute="height" multiplier="1:1" id="XEy-PG-fUd"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="HKq-CW-jcZ">
+                                                            <rect key="frame" x="63" y="4.5" width="129" height="50"/>
+                                                            <locale key="locale" localeIdentifier="ko"/>
+                                                        </datePicker>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="z0F-6r-3gP" firstAttribute="width" secondItem="HKq-CW-jcZ" secondAttribute="width" multiplier="0.45" id="3ZK-Zf-DHj"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <directionalEdgeInsets key="directionalLayoutMargins" top="4" leading="15" bottom="4" trailing="0.0"/>
                                         </stackView>
@@ -306,42 +338,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="fromTimePicker" destination="eWA-aa-Amt" id="1u6-kG-Uu6"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="toTimePickerCell" id="y4h-gX-wJw" customClass="toTimePickerCell" customModule="CleanHands" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="272.5" width="414" height="62"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y4h-gX-wJw" id="UzZ-WG-RmH">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kU6-Vf-F2D">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKa-os-VTc">
-                                                    <rect key="frame" x="15" y="22" width="56" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="GwB-Z3-bwU">
-                                                    <rect key="frame" x="71" y="4.5" width="343" height="53.5"/>
-                                                    <locale key="locale" localeIdentifier="ko"/>
-                                                </datePicker>
-                                            </subviews>
-                                            <directionalEdgeInsets key="directionalLayoutMargins" top="4" leading="15" bottom="4" trailing="0.0"/>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="kU6-Vf-F2D" firstAttribute="leading" secondItem="UzZ-WG-RmH" secondAttribute="leading" id="BBK-dW-7Tr"/>
-                                        <constraint firstAttribute="bottom" secondItem="kU6-Vf-F2D" secondAttribute="bottom" id="Fxm-DF-box"/>
-                                        <constraint firstAttribute="trailing" secondItem="kU6-Vf-F2D" secondAttribute="trailing" id="cIA-nD-FjO"/>
-                                        <constraint firstItem="kU6-Vf-F2D" firstAttribute="top" secondItem="UzZ-WG-RmH" secondAttribute="top" id="dJw-Fd-kOT"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="toTimePicker" destination="GwB-Z3-bwU" id="FBo-A3-tDD"/>
+                                    <outlet property="fromTimePicker" destination="eWA-aa-Amt" id="j5A-lb-Qg3"/>
+                                    <outlet property="toTimePicker" destination="HKq-CW-jcZ" id="ZAq-mI-lTz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -49,15 +49,12 @@ class SettingsAlarmTableViewController: UITableViewController {
         content.title = "손이 더러워요!"
         content.body = "손을 안씻은지 오래됐어요! 손을 씻어주세요."
         content.categoryIdentifier = "alarm"
-//        content.userInfo = ["customData": "fizzbuzz"]
         content.sound = UNNotificationSound.default
-
-        // time interval을 바꾸면 가능
-        
         
         let presetAlarms = ["30분", "1시간", "1시간 30분", "2시간", "2시간 30분", "3시간", "3시간 30분", "4시간"]
         
         var timeInt: Double = 0
+        
         if let time = delegate?.time {
             if time == presetAlarms[0] {
                 timeInt = 1800
@@ -125,6 +122,7 @@ class SettingsAlarmTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        if section == 0 {
@@ -133,7 +131,7 @@ class SettingsAlarmTableViewController: UITableViewController {
 //        else {
 //            return 2
 //        }
-        return 5
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -154,15 +152,16 @@ class SettingsAlarmTableViewController: UITableViewController {
             }
 ////        }
 //        else {
-            else if indexPath.row == 3 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "fromTimePickerCell", for: indexPath)
-                return cell
-            }
-            // indexPath.row == 4
+//            indexPath.row == 3
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "toTimePickerCell", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "timePickerCell", for: indexPath)
                 return cell
             }
+//            // indexPath.row == 4
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "toTimePickerCell", for: indexPath)
+//                return cell
+//            }
 
 //        if indexPath.row == 0 {
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "isAlarmCell", for: indexPath)
@@ -226,6 +225,7 @@ class SettingsAlarmTableViewController: UITableViewController {
         if let timeString = delegate?.time {
             cell.repeatConfigLabel.text = timeString
         }
+        self.tableView.deselectRow(at: IndexPath.init(row: 1, section: 0), animated: true)
     }
 }
 
@@ -255,12 +255,10 @@ class IsDoNotDisturbCell: UITableViewCell {
     @IBOutlet weak var doNotDisturbSwitch: UISwitch!
 }
 
-class fromTimePickerCell: UITableViewCell {
-    // 시작시간 설정
+class TimePickerCell: UITableViewCell {
+    // 방해금지 시간 설정
+    
     @IBOutlet weak var fromTimePicker: UIDatePicker!
-}
-
-class toTimePickerCell: UITableViewCell {
-    // 종료시간 설정
     @IBOutlet weak var toTimePicker: UIDatePicker!
+    
 }

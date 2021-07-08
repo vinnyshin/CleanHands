@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		273454F5266F4886000C21F3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273454F4266F4886000C21F3 /* SettingsTableViewController.swift */; };
-		273454FF266F7444000C21F3 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273454FE266F7444000C21F3 /* HealthKit.framework */; };
 		2744C36D265F835500543BD7 /* CollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744C36C265F835500543BD7 /* CollectionDetailViewController.swift */; };
 		2787449726708715006AE83D /* SettingsAlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2787449626708715006AE83D /* SettingsAlarmTableViewController.swift */; };
 		27D37648264521370074EDAC /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D37647264521370074EDAC /* Collection.storyboard */; };
@@ -79,7 +78,6 @@
 			files = (
 				328E63A473D8D367C51144A6 /* Pods_CleanHands.framework in Frameworks */,
 				7A7F0E4F266F77480038B3FF /* HealthKit.framework in Frameworks */,
-				273454FF266F7444000C21F3 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +224,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					F16064A2261EF2820072858F = {
 						CreatedOnToolsVersion = 12.4;
