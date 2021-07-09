@@ -159,6 +159,8 @@ struct User : Codable{
     var washDataList: [WashData]
     var handState: HandState
     var exp: Int
+    var isAlarmOn: Bool
+    var isDoNotDisturbOn: Bool
     
     static func addAvailablePathogens() {
         for pathogen in pathogenList {
@@ -167,6 +169,7 @@ struct User : Codable{
             }
         }
     }
+    
 }
 
 struct WashData : Codable{

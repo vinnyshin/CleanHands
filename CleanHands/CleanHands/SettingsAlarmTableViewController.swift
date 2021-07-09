@@ -11,12 +11,14 @@ import UserNotifications
 class SettingsAlarmTableViewController: UITableViewController {
     
     var delegate: TimeDelegate?
-    
-    var isAlarmOn = false
-    var isDoNotDisturbOn = false
+    var isAlarmOn: Bool = false
+    var isDoNotDisturbOn: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        isAlarmOn = User.userState.isAlarmOn
+        isDoNotDisturbOn = User.userState.isDoNotDisturbOn
         
         delegate = TimeDelegate()
         delegate!.setRepeatTime = setRepeatTime
@@ -41,6 +43,9 @@ class SettingsAlarmTableViewController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setAlarmSwitch()
+    }
     
     func scheduleNotification() {
         let center = UNUserNotificationCenter.current()
@@ -200,15 +205,18 @@ class SettingsAlarmTableViewController: UITableViewController {
     }
     
     @IBAction func alarmSwitchChanged(_ sender: UISwitch) {
-        isAlarmOn = sender.isOn
+        isAlarmOn = !isAlarmOn
+        User.userState.isAlarmOn = !User.userState.isAlarmOn
+        saveUserState()
         scheduleNotification()
         tableView.beginUpdates()
         tableView.endUpdates()
     }
     
     @IBAction func doNotDisturbSwitchChanged(_ sender: UISwitch) {
-        isDoNotDisturbOn = sender.isOn
-        
+        isDoNotDisturbOn = !isDoNotDisturbOn
+        User.userState.isDoNotDisturbOn = !User.userState.isDoNotDisturbOn
+        saveUserState()
         tableView.beginUpdates()
         tableView.endUpdates()
     }
@@ -226,6 +234,14 @@ class SettingsAlarmTableViewController: UITableViewController {
             cell.repeatConfigLabel.text = timeString
         }
         self.tableView.deselectRow(at: IndexPath.init(row: 1, section: 0), animated: true)
+    }
+    
+    func setAlarmSwitch() {
+        let alarmCell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! IsAlarmCell
+        let isDoNotDisturbCell = self.tableView.cellForRow(at: IndexPath.init(row: 2, section: 0)) as! IsDoNotDisturbCell
+        
+        alarmCell.alarmSwitch.isOn = isAlarmOn
+        isDoNotDisturbCell.doNotDisturbSwitch.isOn = isDoNotDisturbOn
     }
 }
 
@@ -257,7 +273,6 @@ class IsDoNotDisturbCell: UITableViewCell {
 
 class TimePickerCell: UITableViewCell {
     // 방해금지 시간 설정
-    
     @IBOutlet weak var fromTimePicker: UIDatePicker!
     @IBOutlet weak var toTimePicker: UIDatePicker!
     
