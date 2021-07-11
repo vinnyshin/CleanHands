@@ -161,6 +161,8 @@ struct User : Codable{
     var exp: Int
     var isAlarmOn: Bool
     var isDoNotDisturbOn: Bool
+    var doNotDisturbFrom: Date?
+    var doNotDisturbTo: Date?
     
     static func addAvailablePathogens() {
         for pathogen in pathogenList {

@@ -45,7 +45,9 @@ class SettingsAlarmTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setAlarmSwitch()
+        setDoNotDisturb()
     }
+    
     
     func scheduleNotification() {
         let center = UNUserNotificationCenter.current()
@@ -58,43 +60,75 @@ class SettingsAlarmTableViewController: UITableViewController {
         
         let presetAlarms = ["30분", "1시간", "1시간 30분", "2시간", "2시간 30분", "3시간", "3시간 30분", "4시간"]
         
-        var timeInt: Double = 0
+        var interval: Int = 0
         
         if let time = delegate?.time {
             if time == presetAlarms[0] {
-                timeInt = 1800
+                interval = 1800
             }
             else if time == presetAlarms[1] {
-                timeInt = 1800 * 2
+                interval = 1800 * 2
             }
             else if time == presetAlarms[2] {
-                timeInt = 1800 * 3
+                interval = 1800 * 3
             }
             else if time == presetAlarms[3] {
-                timeInt = 1800 * 4
+                interval = 1800 * 4
             }
             else if time == presetAlarms[4] {
-                timeInt = 1800 * 5
+                interval = 1800 * 5
             }
             else if time == presetAlarms[5] {
-                timeInt = 1800 * 6
+                interval = 1800 * 6
             }
             else if time == presetAlarms[6] {
-                timeInt = 1800 * 7
+                interval = 1800 * 7
             }
             else if time == presetAlarms[7] {
-                timeInt = 1800 * 8
+                interval = 1800 * 8
             }
             else {
                 // default time is 2 hours
-                timeInt = 1800 * 4
+                interval = 1800 * 4
             }
         }
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInt, repeats: true)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let now = Date()
         
-        center.add(request)
+        var i = 0
+        
+        while true {
+            let date: Date = now + TimeInterval(i)
+            
+            if isDoNotDisturbOn {
+                
+                let fromTime = User.userState.doNotDisturbFrom!
+                let toTime = User.userState.doNotDisturbTo!
+                
+                if fromTime < date && date < toTime {
+                    i = i + interval
+                    if i > 86400 {
+                        break
+                    }
+                    continue
+                }
+            }
+            
+            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+            
+            print(dateComponents)
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            
+            center.add(request)
+            
+            i = i + interval
+            if i > 86400 {
+                break
+            }
+        }
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -130,19 +164,11 @@ class SettingsAlarmTableViewController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0 {
-//            return 3
-//        }
-//        else {
-//            return 2
-//        }
         return 4
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        if indexPath.section == 0 {
-            
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "isAlarmCell", for: indexPath)
                 return cell
@@ -151,44 +177,14 @@ class SettingsAlarmTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "repeatCell", for: indexPath)
                 return cell
             }
-            else if indexPath.row == 2{
+            else if indexPath.row == 2 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "isDoNotDisturbCell", for: indexPath)
                 return cell
             }
-////        }
-//        else {
-//            indexPath.row == 3
             else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "timePickerCell", for: indexPath)
                 return cell
             }
-//            // indexPath.row == 4
-//            else {
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "toTimePickerCell", for: indexPath)
-//                return cell
-//            }
-
-//        if indexPath.row == 0 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "isAlarmCell", for: indexPath)
-//            return cell
-//        }
-//        else if indexPath.row == 1 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "repeatCell", for: indexPath)
-//            return cell
-//        }
-//        else if indexPath.row == 2 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "isDoNotDisturbCell", for: indexPath)
-//            return cell
-//        }
-//        else if indexPath.row == 3 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "fromTimePickerCell", for: indexPath)
-//            return cell
-//        }
-//        // indexPath.row == 4
-//        else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "toTimePickerCell", for: indexPath)
-//            return cell
-//        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -208,7 +204,13 @@ class SettingsAlarmTableViewController: UITableViewController {
         isAlarmOn = !isAlarmOn
         User.userState.isAlarmOn = !User.userState.isAlarmOn
         saveUserState()
-        scheduleNotification()
+        
+        if isAlarmOn {
+            scheduleNotification()
+        } else {
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        }
+        
         tableView.beginUpdates()
         tableView.endUpdates()
     }
@@ -217,6 +219,13 @@ class SettingsAlarmTableViewController: UITableViewController {
         isDoNotDisturbOn = !isDoNotDisturbOn
         User.userState.isDoNotDisturbOn = !User.userState.isDoNotDisturbOn
         saveUserState()
+        
+        if isDoNotDisturbOn {
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        }
+        
+        scheduleNotification()
+        
         tableView.beginUpdates()
         tableView.endUpdates()
     }
@@ -233,6 +242,9 @@ class SettingsAlarmTableViewController: UITableViewController {
         if let timeString = delegate?.time {
             cell.repeatConfigLabel.text = timeString
         }
+        
+        scheduleNotification()
+        
         self.tableView.deselectRow(at: IndexPath.init(row: 1, section: 0), animated: true)
     }
     
@@ -242,6 +254,41 @@ class SettingsAlarmTableViewController: UITableViewController {
         
         alarmCell.alarmSwitch.isOn = isAlarmOn
         isDoNotDisturbCell.doNotDisturbSwitch.isOn = isDoNotDisturbOn
+    }
+    
+    func setDoNotDisturb() {
+        let timepickerCell = self.tableView.cellForRow(at: IndexPath.init(row: 3, section: 0)) as! TimePickerCell
+        
+        if let fromTime = User.userState.doNotDisturbFrom,
+           let toTime = User.userState.doNotDisturbTo {
+            timepickerCell.fromTimePicker.date = fromTime
+            timepickerCell.toTimePicker.date = toTime
+        } else {
+            let from = Date()
+            let to = Date()
+            timepickerCell.fromTimePicker.date = from
+            timepickerCell.toTimePicker.date = to
+            User.userState.doNotDisturbFrom = from
+            User.userState.doNotDisturbTo = to
+            saveUserState()
+        }
+    }
+    
+    @IBAction func fromTimePickerChanged(_ sender: UIDatePicker) {
+        User.userState.doNotDisturbFrom = sender.date
+        saveUserState()
+    }
+    
+    @IBAction func toTimePickerChanged(_ sender: UIDatePicker) {
+        let timepickerCell = self.tableView.cellForRow(at: IndexPath.init(row: 3, section: 0)) as! TimePickerCell
+        
+        if timepickerCell.fromTimePicker.date > sender.date {
+            let date = sender.date + TimeInterval(86400)
+            User.userState.doNotDisturbTo = date
+        } else {
+            User.userState.doNotDisturbTo = sender.date
+        }
+        saveUserState()
     }
 }
 

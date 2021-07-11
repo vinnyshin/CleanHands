@@ -299,6 +299,9 @@
                                                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="eWA-aa-Amt">
                                                             <rect key="frame" x="63" y="4.5" width="129" height="50"/>
                                                             <locale key="locale" localeIdentifier="ko"/>
+                                                            <connections>
+                                                                <action selector="fromTimePickerChanged:" destination="30t-kb-oUd" eventType="valueChanged" id="0H5-8b-51O"/>
+                                                            </connections>
                                                         </datePicker>
                                                     </subviews>
                                                     <constraints>
@@ -320,6 +323,9 @@
                                                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="HKq-CW-jcZ">
                                                             <rect key="frame" x="63" y="4.5" width="129" height="50"/>
                                                             <locale key="locale" localeIdentifier="ko"/>
+                                                            <connections>
+                                                                <action selector="toTimePickerChanged:" destination="30t-kb-oUd" eventType="valueChanged" id="12D-aG-B1z"/>
+                                                            </connections>
                                                         </datePicker>
                                                     </subviews>
                                                     <constraints>
