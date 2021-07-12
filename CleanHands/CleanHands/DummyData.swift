@@ -204,31 +204,31 @@ var pathogenList = [escherichiaCoil, salmonella, coronaVirus, sars, ebolaVirus, 
 
 var dummyPathogenDic = [coronaVirus: 120]
 
-func generateWashDummies() -> [WashData]{
-    var list :[WashData] = []
-
-    for _ in 0...99{
-        let temp = arc4random_uniform(21);
-        list.append(WashData(date: getPrevDateBy(daysToSub: Int(temp)), capturedPathogenDic: dummyPathogenDic))
-
-    }
-    return list
-}
-
-var randomWashList = generateWashDummies()
-
-func generateTestWashDataList() -> [WashData]{
-    var list :[WashData] = []
-
-    for i in 0...21{
-        list.append(WashData(date: getPrevDateBy(daysToSub: i), capturedPathogenDic: dummyPathogenDic))
-    }
-    return list
-}
-
-
-
-var testWashList = generateTestWashDataList()
+//func generateWashDummies() -> [WashData]{
+//    var list :[WashData] = []
+//
+//    for _ in 0...99{
+//        let temp = arc4random_uniform(21);
+//        list.append(WashData(date: getPrevDateBy(daysToSub: Int(temp)), capturedPathogenDic: dummyPathogenDic))
+//
+//    }
+//    return list
+//}
+//
+//var randomWashList = generateWashDummies()
+//
+//func generateTestWashDataList() -> [WashData]{
+//    var list :[WashData] = []
+//
+//    for i in 0...21{
+//        list.append(WashData(date: getPrevDateBy(daysToSub: i), capturedPathogenDic: dummyPathogenDic))
+//    }
+//    return list
+//}
+//
+//
+//
+//var testWashList = generateTestWashDataList()
 
 var achievement_tutorial = Achievement(name: "튜토리얼", description: "살모넬라균 3000마리 퇴치", completeConditions: [salmonella:3000], appearConditions: [], id: 0)
 var achievement_esch = Achievement(name: "대장균 퇴치 1", description: "대장균 50000마리 퇴치", completeConditions: [escherichiaCoil:50000], appearConditions: [achievement_tutorial], id: 1)
