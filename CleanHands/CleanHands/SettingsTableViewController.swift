@@ -9,8 +9,11 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
 
-    let cellNameList = ["애플워치 연동", "알림 설정", "도움말"]
-    let cellImageList = ["applewatch", "alarm", "questionmark.circle"]
+//    let cellNameList = ["애플워치 연동", "알림 설정", "도움말"]
+//    let cellImageList = ["applewatch", "alarm", "questionmark.circle"]
+    
+    let cellNameList = ["알림 설정"]
+    let cellImageList = ["alarm"]
     
     
     override func viewDidLoad() {
@@ -52,17 +55,21 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let sender = self.tableView.cellForRow(at: indexPath) as? SettingsCell{
-            // 애플워치 연동
+//            // 애플워치 연동
+//            if sender.nameLabel.text == cellNameList[0] {
+//                performSegue(withIdentifier: "applewatch", sender: sender)
+//            }
+//            // 알림 설정
+//            else if sender.nameLabel.text == cellNameList[1] {
+//                performSegue(withIdentifier: "alarm", sender: sender)
+//            }
+//            // 도움말
+//            else if sender.nameLabel.text == cellNameList[2] {
+//                performSegue(withIdentifier: "help", sender: sender)
+//            }
+            
             if sender.nameLabel.text == cellNameList[0] {
-                performSegue(withIdentifier: "applewatch", sender: sender)
-            }
-            // 알림 설정
-            else if sender.nameLabel.text == cellNameList[1] {
                 performSegue(withIdentifier: "alarm", sender: sender)
-            }
-            // 도움말
-            else if sender.nameLabel.text == cellNameList[2] {
-                performSegue(withIdentifier: "help", sender: sender)
             }
         }
     }
