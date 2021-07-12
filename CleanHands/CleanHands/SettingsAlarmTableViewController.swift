@@ -298,6 +298,10 @@ class SettingsAlarmTableViewController: UITableViewController {
     @IBAction func fromTimePickerChanged(_ sender: UIDatePicker) {
         User.userState.doNotDisturbFrom = sender.date
         saveUserState()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        scheduleNotification()
+        
+        
     }
     
     @IBAction func toTimePickerChanged(_ sender: UIDatePicker) {
@@ -310,6 +314,9 @@ class SettingsAlarmTableViewController: UITableViewController {
             User.userState.doNotDisturbTo = sender.date
         }
         saveUserState()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        scheduleNotification()
+        
     }
 }
 
