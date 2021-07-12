@@ -151,7 +151,7 @@ class HandViewController: UIViewController {
     }
     @objc func onTimePassed() {
         let currentDate = Date()
-        var expectedPathongenNumber = Int(currentDate.timeIntervalSince(User.userState.handState.lastWashTime)/pathogenCreateInterval)
+        let expectedPathongenNumber = Int(currentDate.timeIntervalSince(User.userState.handState.lastWashTime)/pathogenCreateInterval)
 
         if (expectedPathongenNumber < pathogenImageList.count) {
             for i in self.pathogenImageList {
