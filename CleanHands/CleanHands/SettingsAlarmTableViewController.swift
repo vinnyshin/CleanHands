@@ -22,6 +22,9 @@ class SettingsAlarmTableViewController: UITableViewController {
         
         
         delegate = TimeDelegate()
+        if let time = User.userState.repeatTime {
+            delegate?.time = time
+        }
         delegate!.setRepeatTime = setRepeatTime
         
         self.tableView.tableFooterView = UIView()
@@ -68,6 +71,7 @@ class SettingsAlarmTableViewController: UITableViewController {
         var interval: Int = 0
         
         if let time = delegate?.time {
+            print(time)
             if time == presetAlarms[0] {
                 interval = 1800
             }
@@ -214,10 +218,10 @@ class SettingsAlarmTableViewController: UITableViewController {
         User.userState.isAlarmOn = !User.userState.isAlarmOn
         saveUserState()
         
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
         if isAlarmOn {
             scheduleNotification()
-        } else {
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
         
         tableView.beginUpdates()
@@ -229,10 +233,8 @@ class SettingsAlarmTableViewController: UITableViewController {
         User.userState.isDoNotDisturbOn = !User.userState.isDoNotDisturbOn
         saveUserState()
         
-        if isDoNotDisturbOn {
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        }
-        
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        print("DoNotDisturb! changed")
         scheduleNotification()
         
         tableView.beginUpdates()
@@ -248,9 +250,14 @@ class SettingsAlarmTableViewController: UITableViewController {
     
     func setRepeatTime() {
         let cell = self.tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! RepeatCell
+        
         if let timeString = delegate?.time {
             cell.repeatConfigLabel.text = timeString
             User.userState.repeatTime = timeString
+            saveUserState()
+        } else {
+            cell.repeatConfigLabel.text = "2시간"
+            User.userState.repeatTime = "2시간"
             saveUserState()
         }
         
