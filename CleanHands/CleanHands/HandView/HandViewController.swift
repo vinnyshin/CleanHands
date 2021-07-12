@@ -26,12 +26,12 @@ class HandViewController: UIViewController {
     
     var washDataViewString = "무슨 세균을 잡았을까?"
     
-    let pathogenCreateInterval:Double = 5//세균이 생성되는 간격인데 원래는 60초입니다. 교수님 테스트할 때 1분마다 세균이 나오면 테스트하기 어려우실 것 같아서 5초로 변경했습니다.
-    let maxPathogenNum = 100
+    let pathogenCreateInterval:Double = 5
+    let maxPathogenNum = 120
     let percentageOfGettingRarePathogen = 0.3
     let percentageOfGettingEpicPathogen = 0.1
     let percentageOfGettingCommonPathogen = 0.5
-    let dirtyPathogenNumber:Double = 60
+    let dirtyPathogenNumber:Int = 1
     
     var isHealthKitLoaded = false
     
@@ -50,9 +50,11 @@ class HandViewController: UIViewController {
 //        }
 //    }
     
+
     @IBOutlet weak var handImageView: UIImageView!
     
     @IBOutlet weak var explainText: UILabel!
+    @IBOutlet weak var washButton: UIButton!
     
     let pathogenImage = UIImage(named: "HandPathogen")
     
@@ -151,12 +153,14 @@ class HandViewController: UIViewController {
         let hour = Int(timeInterval/3600)
         let min = (Int(timeInterval) % 3600)/60
         if (hour > 23) {
+            washButton.isEnabled = true
             explainText.text = "마지막으로 손을 씻은 지 오랜 시간이 지났습니다.\n\(pathogenImageList.count) 마리의 세균을 서둘러 씻어내세요!"
             let attributedStr = NSMutableAttributedString(string: explainText.text!)
             attributedStr.addAttribute(.foregroundColor, value: UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1), range: (explainText.text! as NSString).range(of: "\(pathogenImageList.count) 마리"))
             explainText.attributedText = attributedStr
         }
-        else if (timeInterval > dirtyPathogenNumber) {
+        else if (pathogenImageList.count >= dirtyPathogenNumber){
+            washButton.isEnabled = true
             explainText.text = "마지막으로 손을 씻은 지 \(hour)시간 \(min)분 지났습니다. \n\(pathogenImageList.count) 마리의 세균을 서둘러 씻어내세요!"
             let attributedStr = NSMutableAttributedString(string: explainText.text!)
             attributedStr.addAttribute(.foregroundColor, value: UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1), range: (explainText.text! as NSString).range(of: "\(hour)시간 \(min)분"))
@@ -164,6 +168,7 @@ class HandViewController: UIViewController {
             explainText.attributedText = attributedStr
         }
         else {
+            washButton.isEnabled = false
             explainText.text = "손이 깨끗해요!"
         }
     }
@@ -238,6 +243,7 @@ class HandViewController: UIViewController {
         guard let resultView = self.storyboard?.instantiateViewController(identifier: "resultView") else {return}
         resultView.modalTransitionStyle = .coverVertical
         let washResultView = resultView as! WashResultViewController
+        washResultView.handViewController = self
         washResultView.titleString = washDataViewString
         self.present(washResultView, animated: true)
     }

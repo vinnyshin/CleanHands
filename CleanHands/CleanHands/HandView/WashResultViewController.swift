@@ -14,6 +14,7 @@ class WashResultViewController: UIViewController {
     let washDataList = User.userState.washDataList
     let padding:CGFloat = 30
     var titleString = ""
+    var handViewController:HandViewController?
     
     @IBOutlet weak var washResultCollectionView: UICollectionView!
     
@@ -45,8 +46,8 @@ class WashResultViewController: UIViewController {
         animateModal()
     }
     @IBAction func onForMoreDetailPressed(_ sender: Any) {
+        handViewController!.updateUI()
         self.dismiss(animated: true, completion: nil)
-        
     }
     
     func animateModal() {

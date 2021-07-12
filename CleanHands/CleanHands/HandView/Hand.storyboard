@@ -155,6 +155,7 @@
                     <connections>
                         <outlet property="explainText" destination="R23-9R-BDM" id="z5q-OT-aNU"/>
                         <outlet property="handImageView" destination="vt9-3j-9SM" id="fvL-gw-iPs"/>
+                        <outlet property="washButton" destination="6JE-Jq-WlV" id="JDh-N5-HG2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tSH-rl-LNA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
