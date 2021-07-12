@@ -105,7 +105,11 @@ class SettingsAlarmTableViewController: UITableViewController {
                 let fromTime = User.userState.doNotDisturbFrom!
                 let toTime = User.userState.doNotDisturbTo!
                 
-                if fromTime < date && date < toTime {
+                if fromTime <= date && date <= toTime {
+                    print(fromTime)
+                    print(date)
+                    print(toTime)
+                    print()
                     i = i + interval
                     if i > 86400 {
                         break
@@ -114,7 +118,7 @@ class SettingsAlarmTableViewController: UITableViewController {
                 }
             }
             
-            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+            let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
             
             print(dateComponents)
             
@@ -125,7 +129,7 @@ class SettingsAlarmTableViewController: UITableViewController {
             center.add(request)
             
             i = i + interval
-            if i > 86400 {
+            if i >= 86400 {
                 break
             }
         }
@@ -261,8 +265,17 @@ class SettingsAlarmTableViewController: UITableViewController {
         
         if let fromTime = User.userState.doNotDisturbFrom,
            let toTime = User.userState.doNotDisturbTo {
-            timepickerCell.fromTimePicker.date = fromTime
-            timepickerCell.toTimePicker.date = toTime
+
+            if toTime < Date() {
+                timepickerCell.fromTimePicker.date = Date(timeInterval: 86400, since: fromTime)
+                timepickerCell.toTimePicker.date = Date(timeInterval: 86400, since: toTime)
+                User.userState.doNotDisturbFrom = timepickerCell.fromTimePicker.date
+                User.userState.doNotDisturbTo = timepickerCell.toTimePicker.date
+                saveUserState()
+            } else {
+                timepickerCell.fromTimePicker.date = fromTime
+                timepickerCell.toTimePicker.date = toTime
+            }
         } else {
             let from = Date()
             let to = Date()
