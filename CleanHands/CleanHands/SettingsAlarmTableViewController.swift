@@ -104,7 +104,7 @@ class SettingsAlarmTableViewController: UITableViewController {
         
         let now = Date()
         
-        var i = 0
+        var i = interval
         
         while true {
             let date: Date = now + TimeInterval(i)
@@ -114,11 +114,14 @@ class SettingsAlarmTableViewController: UITableViewController {
                 let fromTime = User.userState.doNotDisturbFrom!
                 let toTime = User.userState.doNotDisturbTo!
                 
+                print(fromTime)
+                print(date)
+                print("now \(now)")
+                print(toTime)
+                print()
                 if fromTime <= date && date <= toTime {
-                    print(fromTime)
-                    print(date)
-                    print(toTime)
-                    print()
+                    
+                    
                     i = i + interval
                     if i > 86400 {
                         break
@@ -138,7 +141,7 @@ class SettingsAlarmTableViewController: UITableViewController {
             center.add(request)
             
             i = i + interval
-            if i >= 86400 {
+            if i > 86400 {
                 break
             }
         }
@@ -280,7 +283,7 @@ class SettingsAlarmTableViewController: UITableViewController {
         
         if let fromTime = User.userState.doNotDisturbFrom,
            let toTime = User.userState.doNotDisturbTo {
-
+            
             if toTime < Date() {
                 timepickerCell.fromTimePicker.date = Date(timeInterval: 86400, since: fromTime)
                 timepickerCell.toTimePicker.date = Date(timeInterval: 86400, since: toTime)
@@ -305,6 +308,7 @@ class SettingsAlarmTableViewController: UITableViewController {
     @IBAction func fromTimePickerChanged(_ sender: UIDatePicker) {
         User.userState.doNotDisturbFrom = sender.date
         saveUserState()
+        
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         scheduleNotification()
         
@@ -315,12 +319,14 @@ class SettingsAlarmTableViewController: UITableViewController {
         let timepickerCell = self.tableView.cellForRow(at: IndexPath.init(row: 3, section: 0)) as! TimePickerCell
         
         if timepickerCell.fromTimePicker.date > sender.date {
+            
             let date = sender.date + TimeInterval(86400)
             User.userState.doNotDisturbTo = date
         } else {
             User.userState.doNotDisturbTo = sender.date
         }
         saveUserState()
+        
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         scheduleNotification()
         
