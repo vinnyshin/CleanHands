@@ -21,17 +21,36 @@ class HandViewController: UIViewController {
                       [0.7, 1, 2, 2.5, 1, 2, 2.5],
                       [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5]]
     
-    var pathogenImageList = Array<UIImageView>()
+    
     var capturedPathogenDic = [Pathogen:Int]()
     
     var washDataViewString = "무슨 세균을 잡았을까?"
     
-    let pathogenCreateInterval:Double = 5
+    let pathogenCreateInterval:Double = 60
     let maxPathogenNum = 120
     let percentageOfGettingRarePathogen = 0.3
     let percentageOfGettingEpicPathogen = 0.1
     let percentageOfGettingCommonPathogen = 0.5
     let dirtyPathogenNumber:Int = 1
+    
+    var pathogenImageList = Array<UIImageView>()
+    var currentPathogenCountList = Array<Int>()
+    var currentPathogenCount:Int {
+        var num = 0
+        for n in currentPathogenCountList {
+            num += n
+        }
+        return num
+    }
+    
+    func addPathogenImageList(imageView:UIImageView) {
+        pathogenImageList.append(imageView)
+        currentPathogenCountList.append(Int.random(in: Range(100...1000)))
+    }
+    func flushPathogenImageList(){
+        pathogenImageList = Array<UIImageView>()
+        currentPathogenCountList = Array<Int>()
+    }
     
     var isHealthKitLoaded = false
     
@@ -107,7 +126,7 @@ class HandViewController: UIViewController {
             pathogenView.frame = CGRect(x: Int(x), y: y, width: 10, height: 10)
             
             self.view.addSubview(pathogenView)
-            pathogenImageList.append(pathogenView)
+            addPathogenImageList(imageView: pathogenView)
             
             User.userState.handState.pathogenAmount = pathogenImageList.count
         }
@@ -138,7 +157,7 @@ class HandViewController: UIViewController {
             for i in self.pathogenImageList {
                 i.removeFromSuperview()
             }
-            pathogenImageList = Array<UIImageView>()
+            flushPathogenImageList()
         }
         
         if (pathogenImageList.count < expectedPathongenNumber)  {
@@ -154,17 +173,17 @@ class HandViewController: UIViewController {
         let min = (Int(timeInterval) % 3600)/60
         if (hour > 23) {
             washButton.isEnabled = true
-            explainText.text = "마지막으로 손을 씻은 지 오랜 시간이 지났습니다.\n\(pathogenImageList.count) 마리의 세균을 서둘러 씻어내세요!"
+            explainText.text = "마지막으로 손을 씻은 지 오랜 시간이 지났습니다.\n\(currentPathogenCount) 마리의 세균을 서둘러 씻어내세요!"
             let attributedStr = NSMutableAttributedString(string: explainText.text!)
-            attributedStr.addAttribute(.foregroundColor, value: UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1), range: (explainText.text! as NSString).range(of: "\(pathogenImageList.count) 마리"))
+            attributedStr.addAttribute(.foregroundColor, value: UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1), range: (explainText.text! as NSString).range(of: "\(currentPathogenCount) 마리"))
             explainText.attributedText = attributedStr
         }
         else if (pathogenImageList.count >= dirtyPathogenNumber){
             washButton.isEnabled = true
-            explainText.text = "마지막으로 손을 씻은 지 \(hour)시간 \(min)분 지났습니다. \n\(pathogenImageList.count) 마리의 세균을 서둘러 씻어내세요!"
+            explainText.text = "마지막으로 손을 씻은 지 \(hour)시간 \(min)분 지났습니다. \n\(currentPathogenCount) 마리의 세균을 서둘러 씻어내세요!"
             let attributedStr = NSMutableAttributedString(string: explainText.text!)
             attributedStr.addAttribute(.foregroundColor, value: UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1), range: (explainText.text! as NSString).range(of: "\(hour)시간 \(min)분"))
-            attributedStr.addAttribute(.foregroundColor, value: UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1), range: (explainText.text! as NSString).range(of: "\(pathogenImageList.count) 마리"))
+            attributedStr.addAttribute(.foregroundColor, value: UIColor(red: 178/255, green: 211/255, blue: 227/255, alpha: 1), range: (explainText.text! as NSString).range(of: "\(currentPathogenCount) 마리"))
             explainText.attributedText = attributedStr
         }
         else {
@@ -176,8 +195,10 @@ class HandViewController: UIViewController {
     func removePathogen() {
         User.userState.handState.lastWashTime = Date()
         capturedPathogenDic = [Pathogen:Int]()
+        var iter = 0
         for i in pathogenImageList {
-            getRandomPathogen()
+            getRandomPathogen(currentPathogenCountList[iter])
+            iter += 1
             i.removeFromSuperview()
         }
         let newWashData = WashData(date: Date(), capturedPathogenDic: capturedPathogenDic)
@@ -194,11 +215,11 @@ class HandViewController: UIViewController {
         AchievementManager.updateAchievement()
         AchievementManager.compeleteAchievement()
         
-        pathogenImageList = Array<UIImageView>()
+        flushPathogenImageList()
     }
     
 
-    func getRandomPathogen() {
+    func getRandomPathogen(_ num:Int) {
         let randomInt = Int.random(in: 0...User.userState.availablePathogens.count-1)
         let newPathogen = User.userState.availablePathogens[randomInt]
         
@@ -216,10 +237,10 @@ class HandViewController: UIViewController {
         }
         if (drand48() < percentageOfGettingPathogen) {
             if (capturedPathogenDic[newPathogen] != nil) {
-                capturedPathogenDic[newPathogen]! += 1
+                capturedPathogenDic[newPathogen]! += num
             }
             else {
-                capturedPathogenDic[newPathogen] = 1
+                capturedPathogenDic[newPathogen] = num
             }
         }
     }
@@ -264,7 +285,7 @@ class HandViewController: UIViewController {
                     }
                     
                     for _ in Range(0...pathogenCount) {
-                        self.getRandomPathogen()
+                        self.getRandomPathogen(Int.random(in: Range(100...1000)))
                     }
                     
                     let newWashData = WashData(date: washDate, capturedPathogenDic: self.capturedPathogenDic)
@@ -278,6 +299,9 @@ class HandViewController: UIViewController {
                             User.userState.pathogenDic[capturedPathogen] = number
                         }
                     }
+                    
+                    self.onTimePassed()
+                    
                     AchievementManager.updateAchievement()
                     AchievementManager.compeleteAchievement()
                     
