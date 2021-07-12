@@ -20,6 +20,7 @@ class SettingsAlarmTableViewController: UITableViewController {
         isAlarmOn = User.userState.isAlarmOn
         isDoNotDisturbOn = User.userState.isDoNotDisturbOn
         
+        
         delegate = TimeDelegate()
         delegate!.setRepeatTime = setRepeatTime
         
@@ -46,6 +47,10 @@ class SettingsAlarmTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         setAlarmSwitch()
         setDoNotDisturb()
+        
+        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! RepeatCell
+        
+        cell.repeatConfigLabel.text = User.userState.repeatTime
     }
     
     
@@ -245,8 +250,11 @@ class SettingsAlarmTableViewController: UITableViewController {
         let cell = self.tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! RepeatCell
         if let timeString = delegate?.time {
             cell.repeatConfigLabel.text = timeString
+            User.userState.repeatTime = timeString
+            saveUserState()
         }
         
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         scheduleNotification()
         
         self.tableView.deselectRow(at: IndexPath.init(row: 1, section: 0), animated: true)

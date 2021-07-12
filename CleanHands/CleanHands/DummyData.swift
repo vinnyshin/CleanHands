@@ -163,6 +163,7 @@ struct User : Codable{
     var isDoNotDisturbOn: Bool
     var doNotDisturbFrom: Date?
     var doNotDisturbTo: Date?
+    var repeatTime: String?
     
     static func addAvailablePathogens() {
         for pathogen in pathogenList {
