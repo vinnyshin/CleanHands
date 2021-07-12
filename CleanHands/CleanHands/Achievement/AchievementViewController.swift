@@ -102,7 +102,10 @@ class AchievementCell:UITableViewCell {
                 var neededPathogenCount = 0
                 for (pathogen, number) in item!.completeConditions {
                     neededPathogenCount += number
-                    if let count = User.userState.pathogenDic[pathogen] {
+                    if var count = User.userState.pathogenDic[pathogen] {
+                        if (count > number) {
+                            count = number
+                        }
                         userPathogenCount += count
                     }
                 }
