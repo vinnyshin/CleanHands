@@ -34,10 +34,10 @@ class HandViewController: UIViewController {
     let dirtyPathogenNumber:Int = 1
     
     var pathogenImageList = Array<UIImageView>()
-    var currentPathogenCountList = Array<Int>()
+    
     var currentPathogenCount:Int {
         var num = 0
-        for n in currentPathogenCountList {
+        for n in User.userState.currentPathogenCountList {
             num += n
         }
         return num
@@ -45,11 +45,11 @@ class HandViewController: UIViewController {
     
     func addPathogenImageList(imageView:UIImageView) {
         pathogenImageList.append(imageView)
-        currentPathogenCountList.append(Int.random(in: Range(100...1000)))
+        User.userState.currentPathogenCountList.append(Int.random(in: Range(100...1000)))
     }
     func flushPathogenImageList(){
         pathogenImageList = Array<UIImageView>()
-        currentPathogenCountList = Array<Int>()
+        User.userState.currentPathogenCountList = Array<Int>()
     }
     
     var isHealthKitLoaded = false
@@ -97,7 +97,7 @@ class HandViewController: UIViewController {
     }
     
     
-    func createPathogen(numberOfCreate number:Int) {
+    func createPathogen(numberOfCreate number:Int, applyCountList:Bool) {
         view.layoutIfNeeded()
         let imageLeftX = handImageView.frame.minX
         let imageUpY = handImageView.frame.minY
@@ -126,9 +126,14 @@ class HandViewController: UIViewController {
             pathogenView.frame = CGRect(x: Int(x), y: y, width: 10, height: 10)
             
             self.view.addSubview(pathogenView)
-            addPathogenImageList(imageView: pathogenView)
+            if (applyCountList) {
+                addPathogenImageList(imageView: pathogenView)
+            }
+            else {
+                pathogenImageList.append(pathogenView)
+            }
             
-            User.userState.handState.pathogenAmount = pathogenImageList.count
+            User.userState.handState.pathogenAmount = currentPathogenCount
         }
     }
     
@@ -154,17 +159,25 @@ class HandViewController: UIViewController {
         let expectedPathongenNumber = Int(currentDate.timeIntervalSince(User.userState.handState.lastWashTime)/pathogenCreateInterval)
 
         if (expectedPathongenNumber < pathogenImageList.count) {
-            for i in self.pathogenImageList {
+            for i in pathogenImageList {
                 i.removeFromSuperview()
             }
             flushPathogenImageList()
         }
-        
+        if (pathogenImageList.count != User.userState.currentPathogenCountList.count) {
+            if (pathogenImageList.count == 0) {
+                createPathogen(numberOfCreate: User.userState.currentPathogenCountList.count, applyCountList: false)
+            }
+            else {
+                print("unexpected bug");
+            }
+        }
         if (pathogenImageList.count < expectedPathongenNumber)  {
-            createPathogen(numberOfCreate: expectedPathongenNumber - pathogenImageList.count)
+            createPathogen(numberOfCreate: expectedPathongenNumber - pathogenImageList.count, applyCountList: true)
             //createPathogen(numberOfCreate: 500)
         }
         updateUI()
+        saveUserState()
     }
     
     func updateUI() {
@@ -197,7 +210,7 @@ class HandViewController: UIViewController {
         capturedPathogenDic = [Pathogen:Int]()
         var iter = 0
         for i in pathogenImageList {
-            getRandomPathogen(currentPathogenCountList[iter])
+            getRandomPathogen(User.userState.currentPathogenCountList[iter])
             iter += 1
             i.removeFromSuperview()
         }

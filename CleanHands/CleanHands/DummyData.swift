@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct AchievementManager:Codable{
     var completedAchievements: [Achievement]
@@ -150,6 +151,8 @@ struct User : Codable{
 //    static var userState = User(name: "initName", pathogenDic: [:], washDataList: [], handState: HandState(lastWashTime: Date(), pathogenAmount: 0), exp: 0)
     
     static var userState = loadUser()
+    
+    var currentPathogenCountList = Array<Int>()
     
     var availablePathogens = [Pathogen]()
     var achievementManager = AchievementManager(completedAchievements: [Achievement](), appearedAchievements: [Achievement](), entireAchievements: achievementList)
