@@ -4,10 +4,6 @@
 <dict>
 	<key>User Interface Style</key>
 	<string>Light</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Need hand wash data to update your hand state automatically</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Need hand wash data to update your hand state automatically</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
