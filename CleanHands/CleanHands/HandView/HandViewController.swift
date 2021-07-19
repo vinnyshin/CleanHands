@@ -9,7 +9,6 @@
 //TODO 타이머 관리
 import UIKit
 import GameplayKit
-import HealthKit
 
 class HandViewController: UIViewController {
     let widthGererater = GKGaussianDistribution(randomSource: GKRandomSource(), lowestValue: -2, highestValue: 8)
@@ -52,23 +51,7 @@ class HandViewController: UIViewController {
         User.userState.currentPathogenCountList = Array<Int>()
     }
     
-    var isHealthKitLoaded = false
-    
     var timerModalView : TimerModalViewController?
-//    var captureSuccess = false {
-//        didSet {
-//            if (captureSuccess) {
-//                if let timerModalView = timerModalView {
-//                    timerModalView.dismiss(animated: false, completion: nil)
-//                    removePathogen()
-//                    saveUserState()
-//                }
-//                presentWashResultView()
-//                captureSuccess = false
-//            }
-//        }
-//    }
-    
 
     @IBOutlet weak var handImageView: UIImageView!
     
@@ -93,7 +76,6 @@ class HandViewController: UIViewController {
     
     func startTimer() {
         Timer.scheduledTimer(timeInterval: pathogenCreateInterval, target: self, selector: #selector(onTimePassed), userInfo: nil, repeats: true)
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkReload), userInfo: nil, repeats: true)
     }
     
     
@@ -147,13 +129,7 @@ class HandViewController: UIViewController {
 
         return Range(startRange...endRange)
     }
-    
-    @objc func checkReload() {
-        if (appBecomeActive) {
-            getWashData()
-            appBecomeActive = false
-        }
-    }
+
     @objc func onTimePassed() {
         let currentDate = Date()
         let expectedPathongenNumber = Int(currentDate.timeIntervalSince(User.userState.handState.lastWashTime)/pathogenCreateInterval)
@@ -265,14 +241,6 @@ class HandViewController: UIViewController {
         presentWashResultView()
     }
     
-//    func presentTimerModal() {
-//        guard let getTimerModalView = self.storyboard?.instantiateViewController(identifier: "timerModalView") else {return}
-//        let timerModalView = getTimerModalView as! TimerModalViewController
-//        timerModalView.handViewController = self
-//        self.timerModalView = timerModalView
-//        self.present(timerModalView, animated: true)
-//    }
-    
     func presentWashResultView() {
         guard let resultView = self.storyboard?.instantiateViewController(identifier: "resultView") else {return}
         resultView.modalTransitionStyle = .coverVertical
@@ -280,95 +248,5 @@ class HandViewController: UIViewController {
         washResultView.handViewController = self
         washResultView.titleString = washDataViewString
         self.present(washResultView, animated: true)
-    }
-    
-    func getWashData() {
-        HealthKitManager.shared.readRecentHandWash(for: Date()) {sample,_ in
-            if let washSample = sample as? HKCategorySample {
-                let washDate = washSample.endDate
-                if (User.userState.handState.lastWashTime < washDate) {
-                    self.capturedPathogenDic = [Pathogen:Int]()
-                    
-                    let timeInterval  = washDate.timeIntervalSince(User.userState.handState.lastWashTime)
-                    User.userState.handState.lastWashTime = washDate
-                    
-                    var pathogenCount = Int(timeInterval/self.pathogenCreateInterval)
-                    if (pathogenCount > self.maxPathogenNum) {
-                        pathogenCount = self.maxPathogenNum
-                    }
-                    
-                    for _ in Range(0...pathogenCount) {
-                        self.getRandomPathogen(Int.random(in: Range(100...1000)))
-                    }
-                    
-                    let newWashData = WashData(date: washDate, capturedPathogenDic: self.capturedPathogenDic)
-                    User.userState.washDataList.append(newWashData)
-                    
-                    for (capturedPathogen, number) in self.capturedPathogenDic {
-                        if (User.userState.pathogenDic[capturedPathogen] != nil) {
-                            User.userState.pathogenDic[capturedPathogen]! += number
-                        }
-                        else {
-                            User.userState.pathogenDic[capturedPathogen] = number
-                        }
-                    }
-                    
-                    self.onTimePassed()
-                    
-                    AchievementManager.updateAchievement()
-                    AchievementManager.compeleteAchievement()
-                    
-                    self.washDataViewString = "접속하지 않는 동안 손을 씻었어요!"
-                    //self.captureSuccess = true
-                    self.presentWashResultView()
-                    saveUserState()
-                }
-            }
-            
-        }
-    }
-}
-
-struct HealthKitManager {
-    let healthStore:HKHealthStore
-    
-    public static let shared = HealthKitManager()
-    
-    public init() {
-        healthStore = HKHealthStore()
-    }
-    
-    func readRecentHandWash(for date:Date, completion: @escaping (HKSample?, Error?) -> Void)  {
-        guard HKHealthStore.isHealthDataAvailable() else {
-            return
-        }
-        guard let handWash = HKCategoryType.categoryType(forIdentifier: HKCategoryTypeIdentifier.handwashingEvent) else {
-            fatalError("unable to get hand wash data")
-        }
-        
-        healthStore.requestAuthorization(toShare: nil, read: [handWash]) { (success, error) in
-            let predicate = HKQuery.predicateForSamples(withStart: Date.distantPast, end: Date(), options: .strictEndDate)
-            let query = HKSampleQuery(sampleType: handWash,
-                                      predicate: predicate,
-                                      limit: HKObjectQueryNoLimit,
-                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { (query, samples, error) in
-                
-                DispatchQueue.main.async {
-                    
-                    if let err = error {
-                        completion(nil, err)
-                    } else {
-                        guard let actualSamples = samples else {
-                            completion(nil, error) // Here you will not get any error, but you have no data, so you have to pass custom error object that shows no data found.
-                            return
-                        }
-                        
-                        completion(actualSamples.first, nil)
-                    }
-                }
-            }
-            healthStore.execute(query)
-            
-        }
     }
 }
