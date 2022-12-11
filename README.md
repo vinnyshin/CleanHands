@@ -1,5 +1,8 @@
 # CleanHands
 
+### 앱스토어에서 만나보실 수 있어요 ~
+https://apps.apple.com/kr/app/cleanhands/id1576459779
+
 손을 깨끗하게 씻어서 귀여운~ 세균을 획득하는 
 
 세계 최강 한드-클리닝 어플리케이션!
