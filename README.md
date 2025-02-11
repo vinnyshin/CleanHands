@@ -1,5 +1,7 @@
 # CleanHands
 
+### 간략한 [코드 설명](https://github.com/vinnyshin/CleanHands/wiki/CleanHands-%EA%B8%B0%EB%8A%A5-(%EC%BD%94%EB%93%9C))
+
 ### 앱스토어에서 만나보실 수 있어요 ~
 https://apps.apple.com/kr/app/cleanhands/id1576459779
 
